@@ -3,111 +3,70 @@
 #include <QGraphicsView>
 #include <QRandomGenerator>
 #include "math.h"
-#include "ccleaningrobot.h"
-#include "cgcleaningrobot.h"
-#include "csearchingrobot.h"
-#include "cgsearchingrobot.h"
-#include "cfightingrobot.h"
-#include "cgfightingrobot.h"
-#include "cobstacle.h"
-#include "cgobstacle.h"
-#include "cdirt.h"
-#include "cgdirt.h"
-#include "cmine.h"
-#include "cgmine.h"
-#include "ctreasure.h"
-#include "cgtreasure.h"
+
 
 using namespace std;
 
 CMap::CMap(QGraphicsScene *s)
 {
     scene = s;
-    //initialization of the objects
-    qreal obstaclecount = 1;
 
-    for(int i=0; i<obstaclecount; i++)
+    int obstaclecount = 3;
+    add<CObstacle, CGObstacle>(obstaclecount);
+
+    int dirtcount = 4;
+    add<CDirt, CGDirt>(dirtcount);
+
+    int crobotcount = 4;
+    add<CCleaningRobot, CGCleaningRobot>(crobotcount);
+
+    int srobotcount = 4;
+    add<CSearchingRobot, CGSearchingRobot>(srobotcount);
+
+    int frobotcount = 8;
+    add<CFightingRobot, CGFightingRobot>(frobotcount);
+
+    int treasurecount = 4;
+    add<CTreasure, CGTreasure>(treasurecount);
+
+    int minecount = 4;
+    add<CMine, CGMine>(minecount);
+}
+
+QGraphicsScene* CMap::getScene()
+{
+    return scene;
+}
+
+template <class object_type, class gobject_type> void CMap::add(int n)
+{
+    for(int i = 0; i<n; i++)
     {
-        CObstacle *obstacle = new CObstacle(this);
-        addObject(obstacle);
-        CGObstacle *gobstacle = new CGObstacle(obstacle);
-        addGObject(gobstacle);
-        scene->addItem(gobstacle);
+        object_type *no = new object_type(this);
+        addObject(no);
+        gobject_type *ngo = new gobject_type(no);
+        addGObject(ngo);
+        scene->addItem(ngo);
     }
+}
 
-    qreal dirtcount = 15;
+std::vector<CObject*> CMap::getObjectList()
+{
+    return ObjectList;
+}
 
-    for(int i=0; i<dirtcount; i++)
-    {
-        CDirt *dirt = new CDirt(this);
-        addObject(dirt);
-        CGDirt *gdirt = new CGDirt(dirt);
-        addGObject(gdirt);
-        scene->addItem(gdirt);
-    }
-
-    qreal crobotcount = 15;
-
-    for(int i=0; i<crobotcount; i++)
-    {
-        CCleaningRobot *crobot = new CCleaningRobot(this);
-        addObject(crobot);
-        CGCleaningRobot *gcrobot = new CGCleaningRobot(crobot);
-        addGObject(gcrobot);
-        scene->addItem(gcrobot);
-    }
-
-    qreal srobotcount = 3;
-
-    for(int i=0; i<srobotcount; i++)
-    {
-        CSearchingRobot *srobot = new CSearchingRobot(this);
-        addObject(srobot);
-        CGSearchingRobot *gsrobot = new CGSearchingRobot(srobot);
-        addGObject(gsrobot);
-        scene->addItem(gsrobot);
-    }
-
-    qreal frobotcount = 0;
-
-    for(int i=0; i<frobotcount; i++)
-    {
-        CFightingRobot *frobot = new CFightingRobot(this);
-        addObject(frobot);
-        CGFightingRobot *gfrobot = new CGFightingRobot(frobot);
-        addGObject(gfrobot);
-        scene->addItem(gfrobot);
-    }
-
-    qreal treasurecount = 5;
-    for(int i=0; i<treasurecount; i++)
-    {
-        CTreasure *treasure = new CTreasure(this);
-        addObject(treasure);
-        CGTreasure *gtreasure = new CGTreasure(treasure);
-        addGObject(gtreasure);
-        scene->addItem(gtreasure);
-    }
-
-
-    qreal minecount = 1;
-    for(int i=0; i<minecount; i++)
-    {
-        CMine *mine = new CMine(this);
-        addObject(mine);
-        CGMine *gmine = new CGMine(mine);
-        addGObject(gmine);
-        scene->addItem(gmine);
-    }
+std::vector<CGObject*> CMap::getGObjectList()
+{
+    return GObjectList;
 }
 
 vector<CObject*> CMap::getNeighboorsList(CObject *o)
 {
     vector<CObject*> neighboors;
     for(unsigned int i=0; i<ObjectList.size(); i++){
-        qreal distance = ((ObjectList.at(i)->getx()-o->getx())*(ObjectList.at(i)->getx()-o->getx()))+((ObjectList.at(i)->gety()-o->gety())*(ObjectList.at(i)->gety()-o->gety()));
+        qreal distance = ((ObjectList.at(i)->getX()-o->getX())*(ObjectList.at(i)->getX()-o->getX()))+((ObjectList.at(i)->getY()-o->getY())*(ObjectList.at(i)->getY()-o->getY()));
         distance = sqrt(distance);
-        if(distance <= o->getrange()){
+        if(distance <= o->getRange()){
             if(o != ObjectList.at(i))
                 neighboors.push_back(ObjectList.at(i));
         }

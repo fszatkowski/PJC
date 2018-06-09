@@ -1,6 +1,7 @@
 #include "crobot.h"
 #include "cmath"
 #include <QRandomGenerator>
+#include "cmap.h"
 
 CRobot::CRobot(CMap *m)
     :CMovable(QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
@@ -8,19 +9,28 @@ CRobot::CRobot(CMap *m)
               0,
               100, m)
 {
+    objectShape = Rect;
+    width = robot_width;
+    height = robot_height;
 }
 
 CRobot::CRobot(qreal xv, qreal yv, CMap *m)
     :CMovable(xv, yv, 0, 100, m)
 {
+    objectShape = Rect;
+    width = robot_width;
+    height = robot_height;
 }
 
 CRobot::CRobot(qreal xv, qreal yv, qreal anglev, qreal rangev, CMap *m)
     :CMovable(xv, yv, anglev, rangev, m)
 {
+    objectShape = Rect;
+    width = robot_width;
+    height = robot_height;
 }
 
-void CRobot::move_randomly()
+void CRobot::moveRandomly()
 {
 
     int change_angle = (QRandomGenerator::global()->bounded(10));
@@ -36,7 +46,7 @@ void CRobot::move_randomly()
     y += robot_speed*sin(angle);
 }
 
-void CRobot::avoid_boundaries()
+void CRobot::returnToMap()
 {
     qreal rate = M_PI/9 * QRandomGenerator::global()->bounded(0, 3);
 
@@ -97,7 +107,7 @@ void CRobot::addItem(CNonMovable *item)
     items.push_back(item);
 }
 
-void CRobot::go_to(CObject *o)
+void CRobot::goTo(CObject *o)
 {
     qreal rate = M_PI/9;
 
@@ -106,8 +116,8 @@ void CRobot::go_to(CObject *o)
 
     qreal x1 = cos(angle);
     qreal y1 = sin(angle);
-    qreal x2 = (o->getx()-x);
-    qreal y2 = (o->gety()-y);
+    qreal x2 = (o->getX()-x);
+    qreal y2 = (o->getY()-y);
     qreal dot = x1*x2 + y1*y2;
     qreal det = x1*y2 - y1*x2;
 
@@ -128,48 +138,49 @@ void CRobot::go_to(CObject *o)
     }
 }
 
-void CRobot::avoid(std::vector<CNonMovable*> o, std::vector<CRobot*> r)
+void CRobot::avoid(std::vector<CNonMovable*> o, std::vector<CRobot*> r, std::vector<CObstacle*> ob)
 {
-    qreal rate = M_PI/9; //* QRandomGenerator::global()->bounded(3, 5);
+    qreal rate = M_PI/36 * QRandomGenerator::global()->bounded(3, 5);
 
-    qreal x_test = x + robot_speed * cos(angle);
-    qreal y_test = y + robot_speed * sin(angle);
     bool collides = 0;
-    bool will_collide = 1;
+    bool will_collide = 0;
+    bool will_collide_obstacle = 0;
+    bool collides_obstacle = 0;
 
     for(unsigned int i = 0; i<o.size(); i++)
     {
-        qreal distance = (o[i]->getx()-x_test)*(o[i]->getx()-x_test)+(o[i]->gety()-y_test)*(o[i]->gety()-y_test);
-        distance = sqrt(distance);
-        if(distance < ((1.5*robot_height+robot_width)/2+o[i]->getvalue()/2))
+        if(willCollide(o[i], robot_speed, 0))
             will_collide = 1;
     }
     for(unsigned int i = 0; i<o.size(); i++)
     {
-        qreal distance = (o[i]->getx()-x)*(o[i]->getx()-x)+(o[i]->gety()-y)*(o[i]->gety()-y);
-        distance = sqrt(distance);
-        if(distance < ((1.5*robot_height+robot_width)/3+o[i]->getvalue()/2))
+        if(collidesWith(o[i]))
             will_collide = 1;
     }
     for(unsigned int i = 0; i<r.size(); i++)
     {
-        qreal distance = (r[i]->getx()-x)*(r[i]->getx()-x)+(r[i]->gety()-y)*(r[i]->gety()-y);
-        distance = sqrt(distance);
-        if(distance < 1.5*(robot_height+robot_width))
+        if(collidesWith(r[i]))
             collides = 1;
     }
     for(unsigned int i = 0; i<r.size(); i++)
     {
-        qreal distance = (r[i]->getx()+robot_speed*cos(r[i]->getangle())-x_test)
-                *(r[i]->getx()+robot_speed*cos(r[i]->getangle())-x_test)
-                +(r[i]->gety()+robot_speed*sin(r[i]->getangle())-y_test)
-                *(r[i]->gety()+robot_speed*sin(r[i]->getangle())-y_test);
-        distance = sqrt(distance);
-        if(distance < 1.5*(robot_height+robot_width))
+        if(willCollide(r[i], robot_speed, robot_speed))
             will_collide = 1;
     }
 
-    if(!collides || (collides && !will_collide && r.size()+o.size() > 3))
+    for(unsigned int i = 0; i<ob.size(); i++)
+    {
+        if(willCollide(ob[i], robot_speed, obstacle_speed))
+            will_collide_obstacle = 1;
+    }
+
+    for(unsigned int i = 0; i<ob.size(); i++)
+    {
+        if(collidesWith(ob[i]))
+            collides_obstacle = 1;
+    }
+
+    if(!will_collide && !collides && (!will_collide_obstacle && !collides) || (collides_obstacle && will_collide_obstacle))
     {
         x += robot_speed * cos(angle);
         y += robot_speed * sin(angle);
@@ -184,13 +195,19 @@ void CRobot::avoid(std::vector<CNonMovable*> o, std::vector<CRobot*> r)
         qreal y_test = y + sin(angle + rate) * robot_speed;
         for(unsigned int i = 0; i<o.size(); i++)
         {
-            qreal distance = (o[i]->getx()-x_test)*(o[i]->getx()-x_test)+(o[i]->gety()-y_test)*(o[i]->gety()-y_test);
+            qreal distance = (o[i]->getX()-x_test)*(o[i]->getX()-x_test)+(o[i]->getY()-y_test)*(o[i]->getY()-y_test);
             distance = sqrt(distance);
             dist_plus += distance;
         }
         for(unsigned int i = 0; i<r.size(); i++)
         {
-            qreal distance = (r[i]->getx()-x_test)*(r[i]->getx()-x_test)+(r[i]->gety()-y_test)*(r[i]->gety()-y_test);
+            qreal distance = (r[i]->getX()-x_test)*(r[i]->getX()-x_test)+(r[i]->getY()-y_test)*(r[i]->getY()-y_test);
+            distance = sqrt(distance);
+            dist_plus += distance;
+        }
+        for(unsigned int i=0; i<ob.size(); i++)
+        {
+            qreal distance = (ob[i]->getX()-x_test)*(ob[i]->getX()-x_test)+(ob[i]->getY()-y_test)*(ob[i]->getY()-y_test);
             distance = sqrt(distance);
             dist_plus += distance;
         }
@@ -199,13 +216,19 @@ void CRobot::avoid(std::vector<CNonMovable*> o, std::vector<CRobot*> r)
         y_test = y + sin(angle - rate) * robot_speed;
         for(unsigned int i = 0; i<o.size(); i++)
         {
-            qreal distance = (o[i]->getx()-x_test)*(o[i]->getx()-x_test)+(o[i]->gety()-y_test)*(o[i]->gety()-y_test);
+            qreal distance = (o[i]->getX()-x_test)*(o[i]->getX()-x_test)+(o[i]->getY()-y_test)*(o[i]->getY()-y_test);
             distance = sqrt(distance);
             dist_minus += distance;
         }
         for(unsigned int i = 0; i<r.size(); i++)
         {
-            qreal distance = (r[i]->getx()-x_test)*(r[i]->getx()-x_test)+(r[i]->gety()-y_test)*(r[i]->gety()-y_test);
+            qreal distance = (r[i]->getX()-x_test)*(r[i]->getX()-x_test)+(r[i]->getY()-y_test)*(r[i]->getY()-y_test);
+            distance = sqrt(distance);
+            dist_minus += distance;
+        }
+        for(unsigned int i=0; i<ob.size(); i++)
+        {
+            qreal distance = (ob[i]->getX()-x_test)*(ob[i]->getX()-x_test)+(ob[i]->getY()-y_test)*(ob[i]->getY()-y_test);
             distance = sqrt(distance);
             dist_minus += distance;
         }
@@ -214,5 +237,11 @@ void CRobot::avoid(std::vector<CNonMovable*> o, std::vector<CRobot*> r)
             angle += rate;
         else
             angle -= rate;
+
+        //if(!will_collide_obstacle)
+        //{
+            x += robot_speed * cos(angle);
+            y += robot_speed * sin(angle);
+        //}
     }
 }

@@ -3,6 +3,7 @@
 #include "ccleaningrobot.h"
 #include "csearchingrobot.h"
 #include "cfightingrobot.h"
+#include "cmap.h"
 
 CMine::CMine(CMap *m)
     :CNonMovable(QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
@@ -12,6 +13,9 @@ CMine::CMine(CMap *m)
                         QRandomGenerator::global()->bounded(20, 50),
                         m)
 {
+    objectShape = Circle;
+    width = value;
+    height = value;
 }
 
 CMine::~CMine()
@@ -43,7 +47,7 @@ void CMine::destroy(std::vector<CRobot*> robots)
 {
     for(unsigned int i=0; i<robots.size(); i++)
     {
-        qreal distance = (robots.at(i)->getx()-x)*(robots.at(i)->getx()-x)+(robots.at(i)->gety()-y)*(robots.at(i)->gety()-y);
+        qreal distance = (robots.at(i)->getX()-x)*(robots.at(i)->getX()-x)+(robots.at(i)->getY()-y)*(robots.at(i)->getY()-y);
         distance = sqrt(distance);
         if(distance<(value+((robot_height+robot_width)/2))/2)
         {

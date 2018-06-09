@@ -1,9 +1,14 @@
 #include "cobstacle.h"
 #include <QRandomGenerator>
+#include "cmap.h"
+#include "cnonmovable.h"
 
 CObstacle::CObstacle(qreal xv, qreal yv, CMap *m)
     :CMovable(xv, yv, 0, 0, m)
 {
+    objectShape = Rect;
+    width = robot_width;
+    height = robot_height;
 }
 
 CObstacle::CObstacle(CMap *m)
@@ -13,6 +18,9 @@ CObstacle::CObstacle(CMap *m)
               50, m)
 {
     angle=QRandomGenerator::global()->bounded(0, 3)*M_PI/2;
+    objectShape = Rect;
+    width = robot_width;
+    height = robot_height;
 }
 
 CObstacle::~CObstacle()
@@ -44,5 +52,17 @@ void CObstacle::move()
 
 void CObstacle::update()
 {
-    move();
+    for(unsigned int i = 0; i<map->getNeighboorsList(this).size(); i++)
+    {
+        CNonMovable *toErase = dynamic_cast<CNonMovable*>(map->getNeighboorsList(this)[i]);
+        if(toErase)
+        {
+            if(collidesWith(toErase))
+            {
+                map->deleteFromMap(toErase);
+                delete toErase;
+            }
+        }
+    }
+    move();    
 }

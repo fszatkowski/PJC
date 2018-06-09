@@ -2,12 +2,15 @@
 #include <QRandomGenerator>
 #include "ccleaningrobot.h"
 #include "csearchingrobot.h"
+#include "cmap.h"
+#include "cbullet.h"
+#include "cgbullet.h"
 
 CFightingRobot::CFightingRobot(CMap *m)
     :CRobot(QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
               QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
               QRandomGenerator::global()->bounded(0, 2*M_PI),
-              100, m)
+              150, m)
 {
 }
 
@@ -46,18 +49,18 @@ void CFightingRobot::move()
         qreal closest_distance = range;
         for(unsigned int i=0; i<robots.size(); i++)
         {
-            qreal distance = (robots.at(i)->getx()-x)*(robots.at(i)->getx()-x)+(robots.at(i)->gety()-y)*(robots.at(i)->gety()-y);
+            qreal distance = (robots.at(i)->getX()-x)*(robots.at(i)->getX()-x)+(robots.at(i)->getY()-y)*(robots.at(i)->getY()-y);
             if(distance < closest_distance)
             {
                 closest = i;
                 closest_distance = distance;
             }
         }
-        go_to(robots.at(closest));
+        goTo(robots[closest]);
     }
 
     else
-        move_randomly();
+        moveRandomly();
 }
 
 //attack if colliding with robot
@@ -79,9 +82,6 @@ void CFightingRobot::update()
             CObstacle *obstacle = dynamic_cast<CObstacle*>(mobject);
             if(obstacle)
             {
-                qreal distance = (obstacle->getx()-x)*(obstacle->getx()-x)+(obstacle->gety()-y)*(obstacle->gety()-y);
-                distance = sqrt(distance);
-                if(distance < (robot_height+robot_width)/3 + obstacle_height+obstacle_width/3)
                     obstacles.push_back(obstacle);
             }
             else
@@ -89,10 +89,7 @@ void CFightingRobot::update()
                 CRobot *robot = dynamic_cast<CRobot*>(mobject);
                 if(robot)
                 {
-                    qreal distance = (robot->getx()-x)*(robot->getx()-x)+(robot->gety()-y)*(robot->gety()-y);
-                    distance = sqrt(distance);
-                    if(distance < (robot_height+robot_width)/2)
-                        robots.push_back(robot);
+                    robots.push_back(robot);
                 }
             }
         }
@@ -103,27 +100,30 @@ void CFightingRobot::update()
         }
     }
 
-    //if there are any robots colliding - attack
+    //if there are any robots attack
     if(robots.size() != 0)
     {
-        for(unsigned i=0; i<robots.size(); i++)
+        unsigned int closest = 0;
+        qreal closest_distance = range;
+        for(unsigned int i=0; i<robots.size(); i++)
         {
-            attack(robots.at(i));
+            qreal distance = (robots.at(i)->getX()-x)*(robots.at(i)->getX()-x)+(robots.at(i)->getY()-y)*(robots.at(i)->getY()-y);
+            distance = sqrt(distance);
+            if(distance < closest_distance)
+            {
+                closest = i;
+                closest_distance = distance;
+            }
         }
+        attack(robots[closest]);
     }
-
-    //if there are obstacles - stay
-    if(obstacles.size() !=0)
-    {
-        return;
-    }
-
-    else if(others.size()!=0)
-        avoid(others, empty);
+    unsigned int n_objects = others.size() + obstacles.size();
+    if(n_objects!=0)
+        avoid(others, empty, obstacles);
 
     else if(!(x <= map_size/2 && x >= -map_size/2 && y <= map_size/2 && y >= -map_size/2))
     {
-        avoid_boundaries();
+        returnToMap();
     }
 
     else
@@ -132,28 +132,22 @@ void CFightingRobot::update()
 
 void CFightingRobot::attack(CRobot *robot)
 {
-    CCleaningRobot *crobot = dynamic_cast<CCleaningRobot*>(robot);
-    if(crobot)
+
+    qreal x1 = cos(angle);
+    qreal y1 = sin(angle);
+    qreal x2 = (robot->getX()-x);
+    qreal y2 = (robot->getY()-y);
+    qreal dot = x1*x2 + y1*y2;
+    qreal det = x1*y2 - y1*x2;
+
+    qreal diff = atan2(det, dot);
+
+    if((abs(diff) <= M_PI/18) && !QRandomGenerator::global()->bounded(0,5))
     {
-        map->deleteFromMap(crobot);
-        delete crobot;
-    }
-    else
-    {
-        CSearchingRobot *srobot = dynamic_cast<CSearchingRobot*>(robot);
-        if(srobot)
-        {
-            map->deleteFromMap(srobot);
-            delete srobot;
-        }
-        else
-        {
-            CFightingRobot *frobot = dynamic_cast<CFightingRobot*>(robot);
-            if(frobot)
-            {
-                map->deleteFromMap(frobot);
-                delete frobot;
-            }
-        }
+        CBullet *bullet = new CBullet(map, this);
+        map->addObject(bullet);
+        CGBullet *gbullet = new CGBullet(bullet);
+        map->addGObject(gbullet);
+        map->getScene()->addItem(gbullet);
     }
 }

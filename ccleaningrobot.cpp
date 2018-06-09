@@ -1,5 +1,6 @@
 #include "ccleaningrobot.h"
 #include <QRandomGenerator>
+#include "cmap.h"
 
 CCleaningRobot::CCleaningRobot(CMap *m)
     :CRobot(QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
@@ -45,7 +46,7 @@ void CCleaningRobot::move()
         qreal closest_distance = range;
         for(unsigned int i=0; i<dirts.size(); i++)
         {
-            qreal distance = (dirts.at(i)->getx()-x)*(dirts.at(i)->getx()-x)+(dirts.at(i)->gety()-y)*(dirts.at(i)->gety()-y);
+            qreal distance = (dirts.at(i)->getX()-x)*(dirts.at(i)->getX()-x)+(dirts.at(i)->getY()-y)*(dirts.at(i)->getY()-y);
             if(distance < closest_distance)
             {
                 closest = i;
@@ -53,12 +54,12 @@ void CCleaningRobot::move()
             }
         }
 
-        go_to(dirts.at(closest));
+        goTo(dirts.at(closest));
     }
 
     else
     {
-        move_randomly();
+        moveRandomly();
     }
 }
 
@@ -85,10 +86,7 @@ void CCleaningRobot::update()
             CObstacle *obstacle = dynamic_cast<CObstacle*>(mobject);
             if(obstacle)
             {
-                qreal distance = (obstacle->getx()-x)*(obstacle->getx()-x)+(obstacle->gety()-y)*(obstacle->gety()-y);
-                distance = sqrt(distance);
-                if(distance < (robot_height+robot_width)/3 + obstacle_height+obstacle_width/3)
-                    obstacles.push_back(obstacle);
+                obstacles.push_back(obstacle);
             }
             else
             {
@@ -105,7 +103,7 @@ void CCleaningRobot::update()
                 CDirt *dirt = dynamic_cast<CDirt*>(nmobject);
                 if(dirt)
                 {
-                    qreal distance = (dirt->getx()-x)*(dirt->getx()-x)+(dirt->gety()-y)*(dirt->gety()-y);
+                    qreal distance = (dirt->getX()-x)*(dirt->getX()-x)+(dirt->getY()-y)*(dirt->getY()-y);
                     distance = sqrt(distance);
                     if(distance < (robot_height+robot_width)/4+dirt->getvalue()/2)
                     dirts.push_back(dirt);
@@ -131,14 +129,13 @@ void CCleaningRobot::update()
         return;
     }
 
-    else if(others.size() != 0)
-    {
-        avoid(others, robots);
-    }
+    unsigned int n_objects = others.size() + obstacles.size() + robots.size();
+    if(n_objects!=0)
+        avoid(others, robots, obstacles);
 
     else if(!(x <= map_size/2 && x >= -map_size/2 && y <= map_size/2 && y >= -map_size/2))
     {
-        avoid_boundaries();
+        returnToMap();
     }
 
     else

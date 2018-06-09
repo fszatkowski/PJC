@@ -3,8 +3,8 @@
 CGObject::CGObject(CObject *o)
 {
     object=o;
-    map=o->getmap();
-    setPos(o->getx(), o->gety());
+    map=o->getMap();
+    setPos(o->getX(), o->getY());
 }
 
 CObject* CGObject::getCObject()

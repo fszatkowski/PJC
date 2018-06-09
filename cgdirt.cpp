@@ -27,6 +27,6 @@ void CGDirt::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
 
 void CGDirt::advance()
 {
-    setPos(object->getx(), object->gety());
+    setPos(object->getX(), object->getY());
     update(boundingRect());
 }

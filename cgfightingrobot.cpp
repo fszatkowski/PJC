@@ -22,12 +22,12 @@ QPainterPath CGFightingRobot::shape() const
 void CGFightingRobot::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     painter->setBrush(Qt::red);
-    painter->rotate(object->getangle()*180/M_PI);
+    painter->rotate(object->getAngle()*180/M_PI);
     painter->drawRect(-robot_width/2, -robot_height/2, robot_width, robot_height);
 }
 
 void CGFightingRobot::advance()
 {
-    setPos(object->getx(), object->gety());
+    setPos(object->getX(), object->getY());
     update(boundingRect());
 }

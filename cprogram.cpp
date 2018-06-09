@@ -1,8 +1,7 @@
 #include "cprogram.h"
 #include <QGraphicsView>
 #include <QRandomGenerator>
-#include "cdirt.h"
-#include "cgdirt.h"
+#include "cmap.h"
 
 CProgram::CProgram()
 {
@@ -34,23 +33,35 @@ CProgram::CProgram()
 
 void CProgram::step()
 {
-    for(unsigned int i=0; i<map->ObjectList.size(); i++)
+    for(unsigned int i=0; i<map->getObjectList().size(); i++)
     {
-        map->ObjectList.at(i)->update();
+        map->getObjectList()[i]->update();
     }
-    for(unsigned int i=0; i<map->GObjectList.size(); i++)
+    for(unsigned int i=0; i<map->getGObjectList().size(); i++)
     {
-        map->GObjectList.at(i)->advance();
+        map->getGObjectList()[i]->advance();
     }
-    /*
-    int spawn_dirt = (QRandomGenerator::global()->bounded(100));
-    if(!spawn_dirt)
+
+    //in every step, add with random chance objects
+    //if some robots get deleted, add new ones so that simulation keeps on going
+
+    int spawn = (QRandomGenerator::global()->bounded(0, 100));
+    if(!spawn)
     {
-        CDirt *dirt = new CDirt(map);
-        map->addObject(dirt);
-        CGDirt *gdirt = new CGDirt(dirt);
-        map->addGObject(gdirt);
-        map->scene->addItem(gdirt);
+        map->add<CDirt, CGDirt>(1);
+        return;
     }
-    */
+    spawn--;
+    if(!spawn)
+    {
+        map->add<CTreasure, CGTreasure>(1);
+        return;
+    }
+    spawn *= 5;
+    spawn--;
+    if(!spawn)
+    {
+        map->add<CMine, CGMine>(1);
+        return;
+    }
 }

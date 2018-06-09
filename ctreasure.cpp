@@ -1,5 +1,6 @@
 #include "ctreasure.h"
 #include <QRandomGenerator>
+#include "cmap.h"
 
 CTreasure::CTreasure(CMap *m)
     :CNonMovable(QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
@@ -9,6 +10,9 @@ CTreasure::CTreasure(CMap *m)
                         QRandomGenerator::global()->bounded(20, 50),
                         m)
 {
+    objectShape = Square;
+    width = value;
+    height = value;
 }
 
 CTreasure::~CTreasure()
@@ -24,6 +28,8 @@ void CTreasure::update()
         value-=(QRandomGenerator::global()->bounded(1, 2));
         if(value<10)value=10;
     }
+    width = value;
+    height = value;
 }
 
 //when treasure is collected, remove it from the map

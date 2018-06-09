@@ -45,7 +45,9 @@ SOURCES += \
     cgmine.cpp \
     cgtreasure.cpp \
     cgsearchingrobot.cpp \
-    cgfightingrobot.cpp
+    cgfightingrobot.cpp \
+    cbullet.cpp \
+    cgbullet.cpp
 
 HEADERS += \
     cmap.h \
@@ -69,6 +71,8 @@ HEADERS += \
     cgmine.h \
     cgtreasure.h \
     cgsearchingrobot.h \
-    cgfightingrobot.h
+    cgfightingrobot.h \
+    cbullet.h \
+    cgbullet.h
 
 FORMS +=

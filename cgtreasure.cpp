@@ -27,6 +27,6 @@ void CGTreasure::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWid
 
 void CGTreasure::advance()
 {
-    setPos(object->getx(), object->gety());
+    setPos(object->getX(), object->getY());
     update(boundingRect());
 }

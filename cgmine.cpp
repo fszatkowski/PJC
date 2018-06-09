@@ -27,6 +27,6 @@ void CGMine::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
 
 void CGMine::advance()
 {
-    setPos(object->getx(), object->gety());
+    setPos(object->getX(), object->getY());
     update(boundingRect());
 }
