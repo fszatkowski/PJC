@@ -1,0 +1,108 @@
+#include "gobjects.h"
+#include "cmap.h"
+#include <QPainter>
+#include <QGraphicsItem>
+#include <QGraphicsScene>
+#include <QPainter>
+//CGObject constructors
+
+CGObject::CGObject(CObject *o)
+{
+    object=o;
+    map=o->getmap();
+    setPos(o->getx(), o->gety());
+}
+
+CObject* CGObject::getCObject()
+{
+    return object;
+}
+
+//CGObstacle definitions
+
+CGObstacle::CGObstacle(CObject *o)
+    :CGObject(o)
+{
+}
+
+QRectF CGObstacle::boundingRect() const
+{
+    return QRect(-obstacle_width/2, -obstacle_height/2, obstacle_width, obstacle_height);
+}
+
+void CGObstacle::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+{
+    painter->drawRect(boundingRect());
+}
+
+void CGObstacle::advance()
+{
+    setPos(object->getx(), object->gety());
+}
+
+//CGCleaningRobot definitions
+
+CGCleaningRobot::CGCleaningRobot(CObject *o)
+    :CGObject(o)
+{
+}
+
+QRectF CGCleaningRobot::boundingRect() const
+{
+    return QRect(-(crobot_width/2+5), -(crobot_height/2+5), crobot_width+10, crobot_height+10);
+}
+
+//boundingRect is larger than actual object, so that the painting doesnt leave any artifacts while updating
+
+QPainterPath CGCleaningRobot::shape() const
+{
+    QPainterPath path;
+    path.addEllipse(QRect(-(crobot_width/2), -(crobot_height/2), crobot_width, crobot_height));
+    return path;
+}
+
+void CGCleaningRobot::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+{
+    painter->setBrush(Qt::red);
+    painter->rotate(object->getangle()*180/M_PI);
+    painter->drawEllipse(-crobot_width/2, -crobot_height/2, crobot_width, crobot_height);
+}
+
+void CGCleaningRobot::advance()
+{
+    setPos(object->getx(), object->gety());
+    update(boundingRect());
+}
+
+//CGDirt
+
+CGDirt::CGDirt(CObject *o)
+    :CGObject(o)
+{
+}
+
+QPainterPath CGDirt::shape() const
+{
+    QPainterPath path;
+    path.addEllipse(boundingRect());
+    return path;
+}
+
+QRectF CGDirt::boundingRect() const
+{
+    CNonMovable *nmobject = dynamic_cast<CNonMovable*>(object);
+    int diameter = nmobject->getvalue();
+    return QRect(-diameter/2, -diameter/2, diameter, diameter);
+}
+
+void CGDirt::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+{
+    painter->setBrush(Qt::darkGreen);
+    painter->drawEllipse(boundingRect());
+}
+
+void CGDirt::advance()
+{
+    setPos(object->getx(), object->gety());
+    update(boundingRect());
+}

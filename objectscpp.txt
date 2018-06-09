@@ -1,0 +1,339 @@
+#include "objects.h"
+#include "gobjects.h"
+#include <QGraphicsScene>
+#include <QPainter>
+#include <QRandomGenerator>
+#include <QStyleOption>
+#include <qmath.h>
+#include <vector>
+#include "math.h"
+
+//CObject constructor
+CObject::CObject(qreal xv, qreal yv, qreal anglev, qreal rangev, CMap *m)
+{
+    x=xv;
+    y=yv;
+    angle=anglev;
+    range=rangev;
+    map = m;
+}
+
+qreal CObject::getx()
+{
+    return x;
+}
+
+qreal CObject::gety()
+{
+    return  y;
+}
+
+qreal CObject::getangle()
+{
+    return angle;
+}
+
+qreal CObject::getrange()
+{
+    return range;
+}
+
+CMap *CObject::getmap()
+{
+    return map;
+}
+
+//CMovable and CNonMovable constructors
+CMovable::CMovable(qreal xv, qreal yv, qreal anglev, qreal rangev, CMap *m)
+    :CObject(xv, yv, anglev, rangev, m)
+{
+}
+
+CNonMovable::CNonMovable(qreal xv, qreal yv, qreal anglev, qreal rangev, qreal valuev, CMap *m)
+    :CObject(xv, yv, anglev, rangev, m)
+{
+    value=valuev;
+}
+
+qreal CNonMovable::getvalue()
+{
+    return value;
+}
+
+//CObstacle class constructors and other methods
+
+CObstacle::CObstacle(qreal xv, qreal yv, CMap *m)
+    :CMovable(xv, yv, 0, 0, m)
+{
+}
+
+CObstacle::CObstacle(CMap *m)
+    :CMovable(QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
+              QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
+              0,
+              50, m)
+{
+    angle=qrand()%4;
+    angle=angle*M_PI/2;
+}
+
+CObstacle::~CObstacle()
+{
+    map->deleteFromMap(this);
+}
+
+void CObstacle::move()
+{
+    //up/down or right/left movement
+
+    qreal dx=obstacle_speed*cos(angle);
+    qreal dy=obstacle_speed*sin(angle);
+
+    if(x+dx<=map_size/2 && x+dx>=-map_size/2 && y+dy<=map_size/2 && y+dy >= -map_size/2)
+    {
+        x+=dx;
+        y+=dy;
+    }
+    else
+    {
+        angle+=M_PI;
+        if(angle>=2*M_PI)
+            angle-=2*M_PI;
+        dx=obstacle_speed*cos(angle);
+        dy=obstacle_speed*sin(angle);
+        x+=dx;
+        y+=dy;
+    }
+}
+
+void CObstacle::update()
+{
+    move();
+}
+
+//CRobot class constructors
+
+CRobot::CRobot(CMap *m)
+    :CMovable(QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
+              QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
+              0,
+              100, m)
+{
+}
+
+CRobot::CRobot(qreal xv, qreal yv, CMap *m)
+    :CMovable(xv, yv, 0, 100, m)
+{
+}
+
+CRobot::CRobot(qreal xv, qreal yv, qreal anglev, qreal rangev, CMap *m)
+    :CMovable(xv, yv, anglev, rangev, m)
+{
+}
+
+//CleaningRobot implentation
+
+CCleaningRobot::CCleaningRobot(CMap *m)
+    :CRobot(QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
+              QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
+              QRandomGenerator::global()->bounded(0, 2*M_PI),
+              100, m)
+{
+}
+
+CCleaningRobot::CCleaningRobot(qreal xv, qreal yv, CMap *m)
+    :CRobot(xv, yv, 0, 100, m)
+{
+}
+
+CCleaningRobot::CCleaningRobot(qreal xv, qreal yv, qreal anglev, qreal rangev, CMap *m)
+    :CRobot(xv, yv, anglev, rangev, m)
+{
+}
+
+CCleaningRobot::~CCleaningRobot()
+{
+    map->deleteFromMap(this);
+}
+
+//movement - seeking dirts
+void CCleaningRobot::move()
+{
+    std::vector<CObject*> neighboors = map->getNeighboorsList(this);
+    std::vector<CDirt*> dirts;
+    for(unsigned int i=0; i<neighboors.size(); i++)
+    {
+        CNonMovable *nmobject = dynamic_cast<CNonMovable*>(neighboors.at(i));
+        CDirt *dirt = dynamic_cast<CDirt*>(nmobject);
+        if(dirt)
+        {
+            dirts.push_back(dirt);
+        }
+    }
+
+    if(!(x <= map_size/2 && x >= -map_size/2 && y <= map_size/2 && y >= -map_size/2))
+    {
+        qreal dangle = M_PI/18;
+        angle += dangle;
+
+        qreal dx = robot_speed*cos(angle);
+        qreal dy = robot_speed*sin(angle);
+
+        if(x+dx <= map_size/2 && x+dx >= -map_size/2 && y+dy <= map_size/2 && y+dy >= -map_size/2)
+        {
+            x+=dx;
+            y+=dy;
+        }
+    }
+
+    else if(dirts.size() != 0)
+    {
+        unsigned int closest = 0;
+        qreal closest_distance = range;
+        for(unsigned int i=0; i<dirts.size(); i++)
+        {
+            qreal distance = (dirts.at(i)->getx()-x)*(dirts.at(i)->getx()-x)+(dirts.at(i)->gety()-y)*(dirts.at(i)->gety()-y);
+            if(distance < closest_distance)
+            {
+                closest = i;
+                closest_distance = distance;
+            }
+        }
+        qreal dangle = atan((dirts.at(closest)->gety()-y)/(dirts.at(closest)->getx())-x);
+        if(dangle >= 0)
+        {
+            if((dirts.at(closest)->getx()-x)*(dirts.at(closest)->gety()-y)>0)
+                angle += M_PI/18;
+            else
+                angle -= M_PI/18;
+        }
+        else
+        {
+            if((dirts.at(closest)->getx()-x)*(dirts.at(closest)->gety()-y)<0)
+                angle -= M_PI/18;
+            else
+                angle +=M_PI/18;
+       }
+       x += robot_speed*cos(angle);
+       y += robot_speed*sin(angle);
+    }
+
+    else if(x <= map_size/2 && x >= -map_size/2 && y <= map_size/2 && y >= -map_size/2)
+    {
+        int change_angle = (QRandomGenerator::global()->bounded(5));
+        if(!change_angle)
+        {
+            qreal dangle;
+            if(rand()%2)
+                dangle = M_PI/18;
+            else
+                dangle = -M_PI/18;
+            angle += dangle;
+        }
+
+        x += robot_speed*cos(angle);
+        y += robot_speed*sin(angle);
+    }
+}
+
+void CCleaningRobot::clean(CDirt *dirt)
+{
+    dirt->getCleaned();
+}
+
+//if there are obstacles nearby - dont move
+//if colliding with a dirt - delete dirt
+//else seek dirts
+void CCleaningRobot::update()
+{
+    //check if there are dirts or obstacles nearby
+    std::vector<CObject*> neighboors = map->getNeighboorsList(this);
+    std::vector<CDirt*> dirts;
+    std::vector<CObstacle*> obstacles;
+    for(unsigned int i=0; i<neighboors.size(); i++)
+    {
+        CMovable *mobject = dynamic_cast<CMovable*>(neighboors.at(i));
+        if(mobject)
+        {
+            CObstacle *obstacle = dynamic_cast<CObstacle*>(mobject);
+            if(obstacle)
+            {
+                qreal distance = (obstacle->getx()-x)*(obstacle->getx()-x)+(obstacle->gety()-y)*(obstacle->gety()-y);
+                distance = sqrt(distance);
+                if(distance < (crobot_height+crobot_width)/4)
+                    obstacles.push_back(obstacle);
+            }
+        }
+        else
+        {
+            CNonMovable *nmobject = dynamic_cast<CNonMovable*>(neighboors.at(i));
+            CDirt *dirt = dynamic_cast<CDirt*>(nmobject);
+            if(dirt)
+            {
+                qreal distance = (dirt->getx()-x)*(dirt->getx()-x)+(dirt->gety()-y)*(dirt->gety()-y);
+                distance = sqrt(distance);
+                if(distance < (crobot_height+crobot_width)/4+dirt->getvalue()/2)
+                dirts.push_back(dirt);
+            }
+            else
+            {
+
+            }
+        }
+    }
+
+    //if there are any dirts nearby - delete them
+    if(dirts.size() != 0)
+    {
+        for(unsigned i=0; i<dirts.size(); i++)
+        {
+            //qreal distance = (dirts.at(i)->getx()-x)*(dirts.at(i)->getx()-x)+(dirts.at(i)->gety()-y)*(dirts.at(i)->gety()-y);
+            //distance = sqrt(distance);
+            //if(distance < (crobot_height+crobot_width)/4+dirts.at(i)->getvalue()/2)
+                clean(dirts.at(i));
+        }
+    }
+
+    //if there are obstacles - stay
+    if(obstacles.size() !=0)
+    {
+        return;
+    }
+
+    //if there are no obstacles - stay
+    else move();
+}
+
+//CDirt
+//value equals dirt's size
+
+CDirt::CDirt(CMap *m)
+    :CNonMovable(QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
+                        QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
+                        0,
+                        0,
+                        QRandomGenerator::global()->bounded(20, 50),
+                        m)
+{
+}
+
+CDirt::~CDirt()
+{
+    map->deleteFromMap(this);
+}
+
+void CDirt::update()
+{
+    int change_size = (QRandomGenerator::global()->bounded(4));
+    if(!change_size)
+    {
+        value+=(QRandomGenerator::global()->bounded(0, 4)-2);
+        if(value>50)value=50;
+        else if(value<20)value=20;
+    }
+}
+
+void CDirt::getCleaned()
+{
+    delete this;
+}

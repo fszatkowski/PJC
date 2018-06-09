@@ -1,0 +1,132 @@
+#ifndef OBJECTS_H
+#define OBJECTS_H
+
+#include <QGraphicsItem>
+
+const int map_size=1000;
+
+class CMap;
+
+class CObject
+{
+protected:
+    qreal x;
+    qreal y;
+    qreal angle;
+    qreal range;
+    CMap *map;
+public:
+    CObject(qreal xv, qreal yv, qreal anglev, qreal rangev, CMap *m);
+    qreal getx();
+    qreal gety();
+    qreal getangle();
+    qreal getrange();
+    CMap *getmap();
+    virtual void update()=0;
+
+    //friend class CMap;
+};
+
+//movable/nonmovable object classes inheriting from CObject
+
+class CMovable :public CObject
+{
+public:
+    CMovable(qreal xv, qreal yv, qreal anglev, qreal rangev, CMap *m);
+    virtual void update()=0;
+    virtual void move()=0;
+};
+
+
+class CNonMovable :public CObject
+{
+protected:
+    qreal value;
+public:
+    CNonMovable(qreal xv, qreal yv, qreal anglev, qreal rangev, qreal valuev, CMap *m);
+    qreal getvalue();
+    virtual void update()=0;
+};
+
+//classes inheriting from CMovable and CNonMovable
+//moving classes inheriting from CMovable
+
+const int obstacle_speed=5;
+
+class CObstacle :public CMovable
+{
+public:
+    CObstacle(qreal xv, qreal yv, CMap *m);
+    CObstacle(CMap *m);
+    ~CObstacle();
+    void update();
+    void move();
+};
+
+//robot class - parent for specified robots
+
+const int robot_speed=10;
+
+class CRobot :public CMovable
+{
+protected:
+    std::vector<CNonMovable*> items;
+public:
+    CRobot(CMap *m);
+    CRobot(qreal xv, qreal yv, CMap *m);
+    CRobot(qreal xv, qreal yv, qreal anglev, qreal rangev, CMap *m);
+    virtual void update()=0;
+    virtual void move()=0;
+};
+
+//classes inheriting from CRobot
+
+class CDirt;
+
+class CCleaningRobot :public CRobot
+{
+public:
+    CCleaningRobot(CMap *m);
+    CCleaningRobot(qreal xv, qreal yv, CMap *m);
+    CCleaningRobot(qreal xv, qreal yv, qreal anglev, qreal rangev, CMap *m);
+    ~CCleaningRobot();
+    void move();
+    void clean(CDirt *dirt);
+    void update();
+};
+
+/*
+class CSearchingRobot :public CRobot
+{
+public:
+    void move();
+    void update();
+};
+*/
+
+//static classes inheriting from CNonMovable
+
+class CDirt :public CNonMovable
+{
+public:
+    CDirt(CMap *m);
+    ~CDirt();
+    void update();
+    void getCleaned();
+};
+
+/*
+class CTreasure :public CNonMovable
+{
+public:
+    void update();
+};
+
+class CMine :public CNonMovable
+{
+public:
+    void update();
+};
+*/
+
+#endif // OBJECTS_H
