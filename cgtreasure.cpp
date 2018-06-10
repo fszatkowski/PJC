@@ -1,3 +1,4 @@
+
 #include "cgtreasure.h"
 
 CGTreasure::CGTreasure(CObject *o)

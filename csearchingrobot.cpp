@@ -32,7 +32,7 @@ void CSearchingRobot::move()
     std::vector<CTreasure*> treasures;
     for(unsigned int i=0; i<neighboors.size(); i++)
     {
-        CNonMovable *nmobject = dynamic_cast<CNonMovable*>(neighboors.at(i));
+        CNonMovable *nmobject = dynamic_cast<CNonMovable*>(neighboors[i]);
         CTreasure *treasure = dynamic_cast<CTreasure*>(nmobject);
         if(treasure)
         {
@@ -46,11 +46,10 @@ void CSearchingRobot::move()
         qreal closest_distance = range;
         for(unsigned int i=0; i<treasures.size(); i++)
         {
-            qreal distance = (treasures.at(i)->getX()-x)*(treasures.at(i)->getX()-x)+(treasures.at(i)->getY()-y)*(treasures.at(i)->getY()-y);
-            if(distance < closest_distance)
+            if(distance(treasures[i]) < closest_distance)
             {
                 closest = i;
-                closest_distance = distance;
+                closest_distance = distance(treasures[i]);
             }
         }
         goTo(treasures.at(closest));
@@ -75,7 +74,7 @@ void CSearchingRobot::update()
     std::vector<CRobot*> robots;
     for(unsigned int i=0; i<neighboors.size(); i++)
     {
-        CMovable *mobject = dynamic_cast<CMovable*>(neighboors.at(i));
+        CMovable *mobject = dynamic_cast<CMovable*>(neighboors[i]);
         if(mobject)
         {
             CObstacle *obstacle = dynamic_cast<CObstacle*>(mobject);
@@ -92,15 +91,13 @@ void CSearchingRobot::update()
         }
         else
         {
-            CNonMovable *nmobject = dynamic_cast<CNonMovable*>(neighboors.at(i));
+            CNonMovable *nmobject = dynamic_cast<CNonMovable*>(neighboors[i]);
             if(nmobject)
             {
                 CTreasure *treasure = dynamic_cast<CTreasure*>(nmobject);
                 if(treasure)
                 {
-                    qreal distance = (treasure->getX()-x)*(treasure->getX()-x)+(treasure->getY()-y)*(treasure->getY()-y);
-                    distance = sqrt(distance);
-                    if(distance < (robot_height+robot_width)/4+treasure_size/2)
+                    if(distance(treasure) < collisionDistance(treasure))
                     treasures.push_back(treasure);
                 }
                 else
@@ -115,7 +112,7 @@ void CSearchingRobot::update()
     {
         for(unsigned i=0; i<treasures.size(); i++)
         {
-            collect(treasures.at(i));
+            collect(treasures[i]);
         }
     }
 

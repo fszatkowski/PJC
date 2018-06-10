@@ -40,6 +40,8 @@ public:
     qreal getWidth();
     qreal getHeight();
     int getShape();
+    //calculate distance between two objects
+    qreal distance(CObject *o);
     //calculate maximum distance at which robots collide
     qreal collisionDistance(CObject *o);
     //check if two objects collide

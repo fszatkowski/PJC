@@ -59,6 +59,11 @@ int CObject::getShape()
     }
 }
 
+qreal CObject::distance(CObject *o)
+{
+    return sqrt((o->getX()-x)*(o->getX()-x)+(o->getY()-y)*(o->getY()-y));
+}
+
 qreal CObject::collisionDistance(CObject *o)
 {
     qreal thresh = 0;
@@ -92,9 +97,7 @@ qreal CObject::collisionDistance(CObject *o)
 
 bool CObject::collidesWith(CObject *o)
 {
-    qreal distance = (x-o->getX())*(x-o->getX())+(y-o->getY())*(y-o->getY());
-    distance = sqrt(distance);
-    if(distance < collisionDistance(o))
+    if(distance(o) < collisionDistance(o))
         return 1;
     else
         return 0;

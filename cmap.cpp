@@ -1,7 +1,6 @@
 #include "cmap.h"
 #include <QApplication>
 #include <QGraphicsView>
-#include <QRandomGenerator>
 #include "math.h"
 
 
@@ -11,11 +10,8 @@ CMap::CMap(QGraphicsScene *s)
 {
     scene = s;
 
-    int obstaclecount = 3;
+    int obstaclecount = 7;
     add<CObstacle, CGObstacle>(obstaclecount);
-
-    int dirtcount = 4;
-    add<CDirt, CGDirt>(dirtcount);
 
     int crobotcount = 4;
     add<CCleaningRobot, CGCleaningRobot>(crobotcount);
@@ -25,6 +21,9 @@ CMap::CMap(QGraphicsScene *s)
 
     int frobotcount = 8;
     add<CFightingRobot, CGFightingRobot>(frobotcount);
+
+    int dirtcount = 4;
+    add<CDirt, CGDirt>(dirtcount);
 
     int treasurecount = 4;
     add<CTreasure, CGTreasure>(treasurecount);
@@ -36,18 +35,6 @@ CMap::CMap(QGraphicsScene *s)
 QGraphicsScene* CMap::getScene()
 {
     return scene;
-}
-
-template <class object_type, class gobject_type> void CMap::add(int n)
-{
-    for(int i = 0; i<n; i++)
-    {
-        object_type *no = new object_type(this);
-        addObject(no);
-        gobject_type *ngo = new gobject_type(no);
-        addGObject(ngo);
-        scene->addItem(ngo);
-    }
 }
 
 std::vector<CObject*> CMap::getObjectList()

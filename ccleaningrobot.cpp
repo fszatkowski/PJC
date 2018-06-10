@@ -32,7 +32,7 @@ void CCleaningRobot::move()
     std::vector<CDirt*> dirts;
     for(unsigned int i=0; i<neighboors.size(); i++)
     {
-        CNonMovable *nmobject = dynamic_cast<CNonMovable*>(neighboors.at(i));
+        CNonMovable *nmobject = dynamic_cast<CNonMovable*>(neighboors[i]);
         CDirt *dirt = dynamic_cast<CDirt*>(nmobject);
         if(dirt)
         {
@@ -46,15 +46,14 @@ void CCleaningRobot::move()
         qreal closest_distance = range;
         for(unsigned int i=0; i<dirts.size(); i++)
         {
-            qreal distance = (dirts.at(i)->getX()-x)*(dirts.at(i)->getX()-x)+(dirts.at(i)->getY()-y)*(dirts.at(i)->getY()-y);
-            if(distance < closest_distance)
+            if(distance(dirts[i]) < closest_distance)
             {
                 closest = i;
-                closest_distance = distance;
+                closest_distance = distance(dirts[i]);
             }
         }
 
-        goTo(dirts.at(closest));
+        goTo(dirts[closest]);
     }
 
     else
@@ -103,9 +102,7 @@ void CCleaningRobot::update()
                 CDirt *dirt = dynamic_cast<CDirt*>(nmobject);
                 if(dirt)
                 {
-                    qreal distance = (dirt->getX()-x)*(dirt->getX()-x)+(dirt->getY()-y)*(dirt->getY()-y);
-                    distance = sqrt(distance);
-                    if(distance < (robot_height+robot_width)/4+dirt->getvalue()/2)
+                    if(distance(dirt) < collisionDistance(dirt))
                     dirts.push_back(dirt);
                 }
                 else

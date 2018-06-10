@@ -14,6 +14,7 @@ public:
     ~CObstacle();
     void update();
     void move();
+    void turn();
 };
 
 #endif // COBSTACLE_H

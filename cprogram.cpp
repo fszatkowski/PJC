@@ -42,26 +42,11 @@ void CProgram::step()
         map->getGObjectList()[i]->advance();
     }
 
-    //in every step, add with random chance objects
-    //if some robots get deleted, add new ones so that simulation keeps on going
-
-    int spawn = (QRandomGenerator::global()->bounded(0, 100));
-    if(!spawn)
-    {
-        map->add<CDirt, CGDirt>(1);
-        return;
-    }
-    spawn--;
-    if(!spawn)
-    {
-        map->add<CTreasure, CGTreasure>(1);
-        return;
-    }
-    spawn *= 5;
-    spawn--;
-    if(!spawn)
-    {
-        map->add<CMine, CGMine>(1);
-        return;
-    }
+    //in every step, randomly spawn objects
+    map->spawn<CTreasure, CGTreasure>(100);
+    map->spawn<CDirt, CGDirt>(100);
+    map->spawn<CMine, CGMine>(1000);
+    map->spawn<CCleaningRobot, CGCleaningRobot>(500);
+    map->spawn<CSearchingRobot, CGSearchingRobot>(500);
+    map->spawn<CFightingRobot, CGFightingRobot>(500);
 }

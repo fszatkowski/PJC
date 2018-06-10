@@ -29,7 +29,7 @@ void CMine::update()
     std::vector<CObject*> neighboors = map->getNeighboorsList(this);
     for(unsigned int i=0; i<neighboors.size(); i++)
     {
-        CMovable *mobject = dynamic_cast<CMovable*>(neighboors.at(i));
+        CMovable *mobject = dynamic_cast<CMovable*>(neighboors[i]);
         CRobot *robot = dynamic_cast<CRobot*>(mobject);
         //if object is a robot, push it back
         if(robot)
@@ -47,9 +47,7 @@ void CMine::destroy(std::vector<CRobot*> robots)
 {
     for(unsigned int i=0; i<robots.size(); i++)
     {
-        qreal distance = (robots.at(i)->getX()-x)*(robots.at(i)->getX()-x)+(robots.at(i)->getY()-y)*(robots.at(i)->getY()-y);
-        distance = sqrt(distance);
-        if(distance<(value+((robot_height+robot_width)/2))/2)
+        if(distance(robots[i]) < collisionDistance(robots[i]))
         {
             CCleaningRobot *crobot = dynamic_cast<CCleaningRobot*>(robots.at(i));
             if(crobot)

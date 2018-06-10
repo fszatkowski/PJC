@@ -30,28 +30,24 @@ CObstacle::~CObstacle()
 
 void CObstacle::move()
 {
-    qreal dx=obstacle_speed*cos(angle);
-    qreal dy=obstacle_speed*sin(angle);
+    x += obstacle_speed*cos(angle);
+    y += obstacle_speed*sin(angle);
+}
 
-    if(x+dx<=map_size/2 && x+dx>=-map_size/2 && y+dy<=map_size/2 && y+dy >= -map_size/2)
-    {
-        x+=dx;
-        y+=dy;
-    }
-    else
-    {
-        angle+=M_PI;
-        if(angle>=2*M_PI)
-            angle-=2*M_PI;
-        dx=obstacle_speed*cos(angle);
-        dy=obstacle_speed*sin(angle);
-        x+=dx;
-        y+=dy;
-    }
+void CObstacle::turn()
+{
+    angle+=M_PI;
+    if(angle>=2*M_PI)
+        angle-=2*M_PI;
 }
 
 void CObstacle::update()
 {
+
+    std::vector<CObstacle*> obstacles;
+    //check neigboorhood
+    //if colliding with nonmovable object, delete it
+    //if there are any other obstacles nearby, get them into vector
     for(unsigned int i = 0; i<map->getNeighboorsList(this).size(); i++)
     {
         CNonMovable *toErase = dynamic_cast<CNonMovable*>(map->getNeighboorsList(this)[i]);
@@ -63,6 +59,41 @@ void CObstacle::update()
                 delete toErase;
             }
         }
+        else
+        {
+            CMovable *mobject = dynamic_cast<CMovable*>(map->getNeighboorsList(this)[i]);
+            if(mobject)
+            {
+                CObstacle *obstacle = dynamic_cast<CObstacle*>(mobject);
+                if(obstacle)
+                    obstacles.push_back(obstacle);
+            }
+        }
     }
-    move();    
+
+    //check if there are any obstacles that may cause collision
+    bool stay = 0;
+    if(obstacles.size() != 0)
+    {
+        for(unsigned int i = 0; i<obstacles.size(); i++)
+        {
+            if(willCollide(obstacles[i], obstacle_speed, obstacle_speed))
+            {
+                if(std::abs(obstacles[i]->getAngle()-angle) != M_PI)
+                    if(obstacles[i]->getAngle() >= angle)
+                        stay = true;
+            }
+        }
+    }
+    if(stay)
+        return;
+
+    //check if object will not go outside the map
+    else if((x+obstacle_speed*cos(angle) <= map_size/2)
+            && (x+obstacle_speed*cos(angle) >= -map_size/2)
+            && (y+obstacle_speed*sin(angle) <= map_size/2)
+            && (y+obstacle_speed*sin(angle) >= -map_size/2))
+        move();
+    else
+        turn();
 }

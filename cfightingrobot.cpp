@@ -49,11 +49,10 @@ void CFightingRobot::move()
         qreal closest_distance = range;
         for(unsigned int i=0; i<robots.size(); i++)
         {
-            qreal distance = (robots.at(i)->getX()-x)*(robots.at(i)->getX()-x)+(robots.at(i)->getY()-y)*(robots.at(i)->getY()-y);
-            if(distance < closest_distance)
+            if(distance(robots[i]) < closest_distance)
             {
                 closest = i;
-                closest_distance = distance;
+                closest_distance = distance(robots[i]);
             }
         }
         goTo(robots[closest]);
@@ -107,12 +106,10 @@ void CFightingRobot::update()
         qreal closest_distance = range;
         for(unsigned int i=0; i<robots.size(); i++)
         {
-            qreal distance = (robots.at(i)->getX()-x)*(robots.at(i)->getX()-x)+(robots.at(i)->getY()-y)*(robots.at(i)->getY()-y);
-            distance = sqrt(distance);
-            if(distance < closest_distance)
+            if(distance(robots[i]) < closest_distance)
             {
                 closest = i;
-                closest_distance = distance;
+                closest_distance = distance(robots[i]);
             }
         }
         attack(robots[closest]);
