@@ -75,7 +75,7 @@ public:
     void addObject(CObject *object);
     /**
      * @brief Dodaje wskazany obiekt graficzny do listy obiektów znajdujących się na mapie
-     * @param object Obiekt, który należy dodać do mapy
+     * @param gobject Obiekt, który należy dodać do mapy
      */
     void addGObject(CGObject *gobject);
     //method for releasing object from the vector containers

@@ -31,8 +31,8 @@ private:
 public:
     /**
      * @brief Poza dodatkowym wskaźnikiem do robota, konstruktor analogiczny do reszty ruchomych obiektów
-     *
-     *  @param r wskaźnik na robota, który wystrzelił dany pocisk
+     * @param m Wskaźnik na mapę(tak jak w przypadku wszystkich innych obiektów)
+     *  @param r Wskaźnik na robota, który wystrzelił dany pocisk
      */
     CBullet(CMap *m, CFightingRobot *r);
     virtual ~CBullet();

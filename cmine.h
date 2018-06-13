@@ -3,7 +3,7 @@
 #include "cnonmovable.h"
 #include "crobot.h"
 
-/// \breif Mina niszcząca roboty, które na nią wpadną
+/// \brief Mina niszcząca roboty, które na nią wpadną
 class CMine :public CNonMovable
 {
 public:

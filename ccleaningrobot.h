@@ -27,7 +27,7 @@ public:
     void update();
     /**
      * @brief Funkcja usuwa podany obiekt
-     * @param Brud, który chcemy usunąć
+     * @param dirt Brud, który chcemy usunąć
      */
     void clean(CDirt *dirt);
 };
