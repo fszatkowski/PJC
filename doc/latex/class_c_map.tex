@@ -1,0 +1,188 @@
+\hypertarget{class_c_map}{}\section{C\+Map Class Reference}
+\label{class_c_map}\index{C\+Map@{C\+Map}}
+
+
+Mapa, na której poruszają się wszystkie obiekty.  
+
+
+
+
+{\ttfamily \#include $<$cmap.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_map_a23632998cdecdd0b9c77c799e5d5d51b}{C\+Map}} (Q\+Graphics\+Scene $\ast$scene)
+\begin{DoxyCompactList}\small\item\em Konstruktor wymaga podania wskaźnika do sceny oraz tworzy określoną ilość obiektów różnego typu na mapie. \end{DoxyCompactList}\item 
+Q\+Graphics\+Scene $\ast$ \mbox{\hyperlink{class_c_map_ac2282caabd7d3830bd1c731177883e50}{get\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja zwracająca wskaźnik do sceny. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$ $>$ \mbox{\hyperlink{class_c_map_ae6b5f2e5ca9db035092b730ad92a4aaf}{get\+Object\+List}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja zwracająca wskaźnik na wszystkie obiekty logiczne przypisane do mapy. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_c_g_object}{C\+G\+Object}} $\ast$ $>$ \mbox{\hyperlink{class_c_map_ab37b3b5bf85c57a891ed2fd591a01ea9}{get\+G\+Object\+List}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja zwracająca wskaźnik na wszystkie obiekty graficzne przypisane do mapy. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$ $>$ \mbox{\hyperlink{class_c_map_aee9422cd38e050f52fb42bf2e7f4e8ed}{get\+Neighboors\+List}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$o)
+\begin{DoxyCompactList}\small\item\em Funkcja zwracająca wektor innych obiektów znajdujących się w zasięgu wskazanego obiektu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_map_a4b22b964e9d16e428c0a56b15b235c82}{add\+Object}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$object)
+\begin{DoxyCompactList}\small\item\em Dodaje wskazany obiekt logiczny do listy obiektów znajdujących się na mapie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_map_adfb0980e5f2153cd6b287a010795c6b4}{add\+G\+Object}} (\mbox{\hyperlink{class_c_g_object}{C\+G\+Object}} $\ast$gobject)
+\begin{DoxyCompactList}\small\item\em Dodaje wskazany obiekt graficzny do listy obiektów znajdujących się na mapie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_map_a55bccb7dd240a21de6e5d12df054d0cb}{delete\+From\+Map}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$o)
+\begin{DoxyCompactList}\small\item\em Usuwa z listy obiektów na mapie obiekt graficzny oraz odpowiadający mu obiekt logiczny. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class object\+\_\+type , class gobject\+\_\+type $>$ }\\void \mbox{\hyperlink{class_c_map_a448bdffc8a0a0fcbd39e1e7661b5d6ab}{add}} (int n)
+\begin{DoxyCompactList}\small\item\em Szablon służący do tworzenia na mapie nowych obiektów o podanym typie param n Ilość obiektów danego typu, które chcemy utworzyć \end{DoxyCompactList}\item 
+{\footnotesize template$<$class object\+\_\+type , class gobject\+\_\+type $>$ }\\void \mbox{\hyperlink{class_c_map_a194d39490529731472920eac44df1548}{spawn}} (int x)
+\begin{DoxyCompactList}\small\item\em Szablon służący do tworzenia obiektu danego typu z prawdopodobieństwem 1/x, wywoływany przy każdym kroku programu param x Określa prawdopodobieństwo, z jakim dodany zostanie obiekt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Mapa, na której poruszają się wszystkie obiekty. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_map_a23632998cdecdd0b9c77c799e5d5d51b}\label{class_c_map_a23632998cdecdd0b9c77c799e5d5d51b}} 
+\index{C\+Map@{C\+Map}!C\+Map@{C\+Map}}
+\index{C\+Map@{C\+Map}!C\+Map@{C\+Map}}
+\subsubsection{\texorpdfstring{C\+Map()}{CMap()}}
+{\footnotesize\ttfamily C\+Map\+::\+C\+Map (\begin{DoxyParamCaption}\item[{Q\+Graphics\+Scene $\ast$}]{scene }\end{DoxyParamCaption})}
+
+
+
+Konstruktor wymaga podania wskaźnika do sceny oraz tworzy określoną ilość obiektów różnego typu na mapie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & Scena, na której umieszczone zostaną wszystkie obiekty \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_map_a448bdffc8a0a0fcbd39e1e7661b5d6ab}\label{class_c_map_a448bdffc8a0a0fcbd39e1e7661b5d6ab}} 
+\index{C\+Map@{C\+Map}!add@{add}}
+\index{add@{add}!C\+Map@{C\+Map}}
+\subsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily template$<$class object\+\_\+type , class gobject\+\_\+type $>$ \\
+void C\+Map\+::add (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Szablon służący do tworzenia na mapie nowych obiektów o podanym typie param n Ilość obiektów danego typu, które chcemy utworzyć 
+
+\mbox{\Hypertarget{class_c_map_adfb0980e5f2153cd6b287a010795c6b4}\label{class_c_map_adfb0980e5f2153cd6b287a010795c6b4}} 
+\index{C\+Map@{C\+Map}!add\+G\+Object@{add\+G\+Object}}
+\index{add\+G\+Object@{add\+G\+Object}!C\+Map@{C\+Map}}
+\subsubsection{\texorpdfstring{add\+G\+Object()}{addGObject()}}
+{\footnotesize\ttfamily void C\+Map\+::add\+G\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_g_object}{C\+G\+Object}} $\ast$}]{gobject }\end{DoxyParamCaption})}
+
+
+
+Dodaje wskazany obiekt graficzny do listy obiektów znajdujących się na mapie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Obiekt, który należy dodać do mapy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_map_a4b22b964e9d16e428c0a56b15b235c82}\label{class_c_map_a4b22b964e9d16e428c0a56b15b235c82}} 
+\index{C\+Map@{C\+Map}!add\+Object@{add\+Object}}
+\index{add\+Object@{add\+Object}!C\+Map@{C\+Map}}
+\subsubsection{\texorpdfstring{add\+Object()}{addObject()}}
+{\footnotesize\ttfamily void C\+Map\+::add\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{object }\end{DoxyParamCaption})}
+
+
+
+Dodaje wskazany obiekt logiczny do listy obiektów znajdujących się na mapie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Obiekt, który należy dodać do mapy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_map_a55bccb7dd240a21de6e5d12df054d0cb}\label{class_c_map_a55bccb7dd240a21de6e5d12df054d0cb}} 
+\index{C\+Map@{C\+Map}!delete\+From\+Map@{delete\+From\+Map}}
+\index{delete\+From\+Map@{delete\+From\+Map}!C\+Map@{C\+Map}}
+\subsubsection{\texorpdfstring{delete\+From\+Map()}{deleteFromMap()}}
+{\footnotesize\ttfamily void C\+Map\+::delete\+From\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{o }\end{DoxyParamCaption})}
+
+
+
+Usuwa z listy obiektów na mapie obiekt graficzny oraz odpowiadający mu obiekt logiczny. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & Obiekt, który chcemy usunąc z mapy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_map_ab37b3b5bf85c57a891ed2fd591a01ea9}\label{class_c_map_ab37b3b5bf85c57a891ed2fd591a01ea9}} 
+\index{C\+Map@{C\+Map}!get\+G\+Object\+List@{get\+G\+Object\+List}}
+\index{get\+G\+Object\+List@{get\+G\+Object\+List}!C\+Map@{C\+Map}}
+\subsubsection{\texorpdfstring{get\+G\+Object\+List()}{getGObjectList()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_c_g_object}{C\+G\+Object}} $\ast$ $>$ C\+Map\+::get\+G\+Object\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funkcja zwracająca wskaźnik na wszystkie obiekty graficzne przypisane do mapy. 
+
+\begin{DoxyReturn}{Returns}
+G\+Object\+List 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_map_aee9422cd38e050f52fb42bf2e7f4e8ed}\label{class_c_map_aee9422cd38e050f52fb42bf2e7f4e8ed}} 
+\index{C\+Map@{C\+Map}!get\+Neighboors\+List@{get\+Neighboors\+List}}
+\index{get\+Neighboors\+List@{get\+Neighboors\+List}!C\+Map@{C\+Map}}
+\subsubsection{\texorpdfstring{get\+Neighboors\+List()}{getNeighboorsList()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$ $>$ C\+Map\+::get\+Neighboors\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{o }\end{DoxyParamCaption})}
+
+
+
+Funkcja zwracająca wektor innych obiektów znajdujących się w zasięgu wskazanego obiektu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & Obiekt, dla którego sprawdzane jest otoczenie \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Wektor obiektów, dla których odległość od o jest mniejsza od o.\+range 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_map_ae6b5f2e5ca9db035092b730ad92a4aaf}\label{class_c_map_ae6b5f2e5ca9db035092b730ad92a4aaf}} 
+\index{C\+Map@{C\+Map}!get\+Object\+List@{get\+Object\+List}}
+\index{get\+Object\+List@{get\+Object\+List}!C\+Map@{C\+Map}}
+\subsubsection{\texorpdfstring{get\+Object\+List()}{getObjectList()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$ $>$ C\+Map\+::get\+Object\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funkcja zwracająca wskaźnik na wszystkie obiekty logiczne przypisane do mapy. 
+
+\begin{DoxyReturn}{Returns}
+Object\+List 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_map_ac2282caabd7d3830bd1c731177883e50}\label{class_c_map_ac2282caabd7d3830bd1c731177883e50}} 
+\index{C\+Map@{C\+Map}!get\+Scene@{get\+Scene}}
+\index{get\+Scene@{get\+Scene}!C\+Map@{C\+Map}}
+\subsubsection{\texorpdfstring{get\+Scene()}{getScene()}}
+{\footnotesize\ttfamily Q\+Graphics\+Scene $\ast$ C\+Map\+::get\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funkcja zwracająca wskaźnik do sceny. 
+
+\begin{DoxyReturn}{Returns}
+scene 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_map_a194d39490529731472920eac44df1548}\label{class_c_map_a194d39490529731472920eac44df1548}} 
+\index{C\+Map@{C\+Map}!spawn@{spawn}}
+\index{spawn@{spawn}!C\+Map@{C\+Map}}
+\subsubsection{\texorpdfstring{spawn()}{spawn()}}
+{\footnotesize\ttfamily template$<$class object\+\_\+type , class gobject\+\_\+type $>$ \\
+void C\+Map\+::spawn (\begin{DoxyParamCaption}\item[{int}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Szablon służący do tworzenia obiektu danego typu z prawdopodobieństwem 1/x, wywoływany przy każdym kroku programu param x Określa prawdopodobieństwo, z jakim dodany zostanie obiekt. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cmap_8h}{cmap.\+h}}\item 
+\mbox{\hyperlink{cmap_8cpp}{cmap.\+cpp}}\end{DoxyCompactItemize}

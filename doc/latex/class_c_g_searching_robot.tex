@@ -1,0 +1,112 @@
+\hypertarget{class_c_g_searching_robot}{}\section{C\+G\+Searching\+Robot Class Reference}
+\label{class_c_g_searching_robot}\index{C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}}
+
+
+Graficzna reprezentacja robota szukającego.  
+
+
+
+
+{\ttfamily \#include $<$cgsearchingrobot.\+h$>$}
+
+Inheritance diagram for C\+G\+Searching\+Robot\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_g_searching_robot}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_g_searching_robot_a6d8b0f84b870aa6af83323d72d0bf010}{C\+G\+Searching\+Robot}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$o)
+\item 
+void \mbox{\hyperlink{class_c_g_searching_robot_ad6e9d94604256cb9f0fe6e708c4391ad}{paint}} (Q\+Painter $\ast$painter, const Q\+Style\+Option\+Graphics\+Item $\ast$option, Q\+Widget $\ast$widget) override
+\begin{DoxyCompactList}\small\item\em Funkcja określająca kształt obiektu, jej implementacja zależy od rodzaju klasy pochodnej. \end{DoxyCompactList}\item 
+Q\+RectF \mbox{\hyperlink{class_c_g_searching_robot_aa0cf51f6acdfa865c130f0cd16860625}{bounding\+Rect}} () const override
+\begin{DoxyCompactList}\small\item\em Zwraca prostokąt reprezentujący obrys obiektu; potrzebne do prawidłowego odświeżania obiektu na mapie; implementacja różna dla klas pochodnych. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_g_searching_robot_adcc4b3096e11c25287806428119acb22}{advance}} () override
+\begin{DoxyCompactList}\small\item\em Funkcja rysująca obiekt na mapie na podstawie parametrów obiektu logicznego. \end{DoxyCompactList}\item 
+Q\+Painter\+Path \mbox{\hyperlink{class_c_g_searching_robot_acd63b054e31c88aaf2070a829e1f897a}{shape}} () const override
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Graficzna reprezentacja robota szukającego. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_g_searching_robot_a6d8b0f84b870aa6af83323d72d0bf010}\label{class_c_g_searching_robot_a6d8b0f84b870aa6af83323d72d0bf010}} 
+\index{C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}!C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}}
+\index{C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}!C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}}
+\subsubsection{\texorpdfstring{C\+G\+Searching\+Robot()}{CGSearchingRobot()}}
+{\footnotesize\ttfamily C\+G\+Searching\+Robot\+::\+C\+G\+Searching\+Robot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{o }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_g_searching_robot_adcc4b3096e11c25287806428119acb22}\label{class_c_g_searching_robot_adcc4b3096e11c25287806428119acb22}} 
+\index{C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}!advance@{advance}}
+\index{advance@{advance}!C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}}
+\subsubsection{\texorpdfstring{advance()}{advance()}}
+{\footnotesize\ttfamily void C\+G\+Searching\+Robot\+::advance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Funkcja rysująca obiekt na mapie na podstawie parametrów obiektu logicznego. 
+
+
+
+Implements \mbox{\hyperlink{class_c_g_object_a859e765fbb3ab0d6ad73ca58e5e49779}{C\+G\+Object}}.
+
+\mbox{\Hypertarget{class_c_g_searching_robot_aa0cf51f6acdfa865c130f0cd16860625}\label{class_c_g_searching_robot_aa0cf51f6acdfa865c130f0cd16860625}} 
+\index{C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}!bounding\+Rect@{bounding\+Rect}}
+\index{bounding\+Rect@{bounding\+Rect}!C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}}
+\subsubsection{\texorpdfstring{bounding\+Rect()}{boundingRect()}}
+{\footnotesize\ttfamily Q\+RectF C\+G\+Searching\+Robot\+::bounding\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Zwraca prostokąt reprezentujący obrys obiektu; potrzebne do prawidłowego odświeżania obiektu na mapie; implementacja różna dla klas pochodnych. 
+
+\begin{DoxyReturn}{Returns}
+Q\+RecF reprezentujący obrys obiektu 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_c_g_object_ab9edf3d10a53c254cdb5d3d8de930207}{C\+G\+Object}}.
+
+\mbox{\Hypertarget{class_c_g_searching_robot_ad6e9d94604256cb9f0fe6e708c4391ad}\label{class_c_g_searching_robot_ad6e9d94604256cb9f0fe6e708c4391ad}} 
+\index{C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}!paint@{paint}}
+\index{paint@{paint}!C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void C\+G\+Searching\+Robot\+::paint (\begin{DoxyParamCaption}\item[{Q\+Painter $\ast$}]{painter,  }\item[{const Q\+Style\+Option\+Graphics\+Item $\ast$}]{option,  }\item[{Q\+Widget $\ast$}]{widget }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Funkcja określająca kształt obiektu, jej implementacja zależy od rodzaju klasy pochodnej. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & \\
+\hline
+{\em option} & \\
+\hline
+{\em widget} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_c_g_object_a9622c313eb09ca5fc0e34f5d2aaac910}{C\+G\+Object}}.
+
+\mbox{\Hypertarget{class_c_g_searching_robot_acd63b054e31c88aaf2070a829e1f897a}\label{class_c_g_searching_robot_acd63b054e31c88aaf2070a829e1f897a}} 
+\index{C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}!shape@{shape}}
+\index{shape@{shape}!C\+G\+Searching\+Robot@{C\+G\+Searching\+Robot}}
+\subsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily Q\+Painter\+Path C\+G\+Searching\+Robot\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cgsearchingrobot_8h}{cgsearchingrobot.\+h}}\item 
+\mbox{\hyperlink{cgsearchingrobot_8cpp}{cgsearchingrobot.\+cpp}}\end{DoxyCompactItemize}

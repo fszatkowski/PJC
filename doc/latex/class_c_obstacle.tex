@@ -1,0 +1,104 @@
+\hypertarget{class_c_obstacle}{}\section{C\+Obstacle Class Reference}
+\label{class_c_obstacle}\index{C\+Obstacle@{C\+Obstacle}}
+
+
+Przeszkody poruszające się po mapie po linii prostej.  
+
+
+
+
+{\ttfamily \#include $<$cobstacle.\+h$>$}
+
+Inheritance diagram for C\+Obstacle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_obstacle}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_obstacle_a3e105dc417eb5657e7cb1837259c235f}{C\+Obstacle}} (qreal xv, qreal yv, \mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\item 
+\mbox{\hyperlink{class_c_obstacle_ab1e0b16a38505ad38f085f7d87953c07}{C\+Obstacle}} (\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\item 
+virtual \mbox{\hyperlink{class_c_obstacle_a10d5f9ec49321980b3cf46f868bc5f34}{$\sim$\+C\+Obstacle}} ()
+\item 
+void \mbox{\hyperlink{class_c_obstacle_a9aeb124d28bdef3430954f5e2b5ae0f0}{update}} ()
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy zajdzie kolizja z inną przeszkodą, jeśli tak, próbuje uniknąć kolizji(jedna z przeszkód zatrzymuje się); jeśli nastąpi kolizja z nieruchomym obiektem, obiekt ten jest niszczony; jeśli przeszkoda wyjdzie poza mapę, wywoływana jest funkcja \mbox{\hyperlink{class_c_obstacle_ae3aded0a2ac060a2124250a42ddacee4}{turn()}}; jeśli nie nastąpi kolizja z inną przeszkodą lub wyjście poza mapę, \mbox{\hyperlink{class_c_obstacle_a4b2e4989c993dd7f79cd66fd485c3c88}{move()}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_obstacle_a4b2e4989c993dd7f79cd66fd485c3c88}{move}} ()
+\begin{DoxyCompactList}\small\item\em Zmienia współrzędne obiektu o odpowiednią prędkość w kierunku określonym przez jego orientację \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_obstacle_ae3aded0a2ac060a2124250a42ddacee4}{turn}} ()
+\begin{DoxyCompactList}\small\item\em Odwraca obiekt o 180$\ast$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Przeszkody poruszające się po mapie po linii prostej. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_obstacle_a3e105dc417eb5657e7cb1837259c235f}\label{class_c_obstacle_a3e105dc417eb5657e7cb1837259c235f}} 
+\index{C\+Obstacle@{C\+Obstacle}!C\+Obstacle@{C\+Obstacle}}
+\index{C\+Obstacle@{C\+Obstacle}!C\+Obstacle@{C\+Obstacle}}
+\subsubsection{\texorpdfstring{C\+Obstacle()}{CObstacle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily C\+Obstacle\+::\+C\+Obstacle (\begin{DoxyParamCaption}\item[{qreal}]{xv,  }\item[{qreal}]{yv,  }\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_obstacle_ab1e0b16a38505ad38f085f7d87953c07}\label{class_c_obstacle_ab1e0b16a38505ad38f085f7d87953c07}} 
+\index{C\+Obstacle@{C\+Obstacle}!C\+Obstacle@{C\+Obstacle}}
+\index{C\+Obstacle@{C\+Obstacle}!C\+Obstacle@{C\+Obstacle}}
+\subsubsection{\texorpdfstring{C\+Obstacle()}{CObstacle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily C\+Obstacle\+::\+C\+Obstacle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_obstacle_a10d5f9ec49321980b3cf46f868bc5f34}\label{class_c_obstacle_a10d5f9ec49321980b3cf46f868bc5f34}} 
+\index{C\+Obstacle@{C\+Obstacle}!````~C\+Obstacle@{$\sim$\+C\+Obstacle}}
+\index{````~C\+Obstacle@{$\sim$\+C\+Obstacle}!C\+Obstacle@{C\+Obstacle}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Obstacle()}{~CObstacle()}}
+{\footnotesize\ttfamily C\+Obstacle\+::$\sim$\+C\+Obstacle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_obstacle_a4b2e4989c993dd7f79cd66fd485c3c88}\label{class_c_obstacle_a4b2e4989c993dd7f79cd66fd485c3c88}} 
+\index{C\+Obstacle@{C\+Obstacle}!move@{move}}
+\index{move@{move}!C\+Obstacle@{C\+Obstacle}}
+\subsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void C\+Obstacle\+::move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Zmienia współrzędne obiektu o odpowiednią prędkość w kierunku określonym przez jego orientację 
+
+
+
+Implements \mbox{\hyperlink{class_c_movable_a8e66e106f13362d24462ce0c9d0431af}{C\+Movable}}.
+
+\mbox{\Hypertarget{class_c_obstacle_ae3aded0a2ac060a2124250a42ddacee4}\label{class_c_obstacle_ae3aded0a2ac060a2124250a42ddacee4}} 
+\index{C\+Obstacle@{C\+Obstacle}!turn@{turn}}
+\index{turn@{turn}!C\+Obstacle@{C\+Obstacle}}
+\subsubsection{\texorpdfstring{turn()}{turn()}}
+{\footnotesize\ttfamily void C\+Obstacle\+::turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Odwraca obiekt o 180$\ast$. 
+
+\mbox{\Hypertarget{class_c_obstacle_a9aeb124d28bdef3430954f5e2b5ae0f0}\label{class_c_obstacle_a9aeb124d28bdef3430954f5e2b5ae0f0}} 
+\index{C\+Obstacle@{C\+Obstacle}!update@{update}}
+\index{update@{update}!C\+Obstacle@{C\+Obstacle}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void C\+Obstacle\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sprawdza, czy zajdzie kolizja z inną przeszkodą, jeśli tak, próbuje uniknąć kolizji(jedna z przeszkód zatrzymuje się); jeśli nastąpi kolizja z nieruchomym obiektem, obiekt ten jest niszczony; jeśli przeszkoda wyjdzie poza mapę, wywoływana jest funkcja \mbox{\hyperlink{class_c_obstacle_ae3aded0a2ac060a2124250a42ddacee4}{turn()}}; jeśli nie nastąpi kolizja z inną przeszkodą lub wyjście poza mapę, \mbox{\hyperlink{class_c_obstacle_a4b2e4989c993dd7f79cd66fd485c3c88}{move()}} 
+
+
+
+Implements \mbox{\hyperlink{class_c_movable_af45fc62960d86ef62949d078141e9d62}{C\+Movable}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cobstacle_8h}{cobstacle.\+h}}\item 
+\mbox{\hyperlink{cobstacle_8cpp}{cobstacle.\+cpp}}\end{DoxyCompactItemize}

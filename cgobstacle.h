@@ -3,6 +3,7 @@
 #include "cgobject.h"
 #include "cobstacle.h"
 
+/// \brief Graficzna reprezentacja przeszkody
 class CGObstacle :public CGObject
 {
 public:

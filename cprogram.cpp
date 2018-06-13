@@ -46,7 +46,7 @@ void CProgram::step()
     map->spawn<CTreasure, CGTreasure>(100);
     map->spawn<CDirt, CGDirt>(100);
     map->spawn<CMine, CGMine>(1000);
-    map->spawn<CCleaningRobot, CGCleaningRobot>(500);
-    map->spawn<CSearchingRobot, CGSearchingRobot>(500);
+    map->spawn<CCleaningRobot, CGCleaningRobot>(200);
+    map->spawn<CSearchingRobot, CGSearchingRobot>(200);
     map->spawn<CFightingRobot, CGFightingRobot>(500);
 }

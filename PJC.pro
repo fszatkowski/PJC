@@ -52,7 +52,6 @@ SOURCES += \
 HEADERS += \
     cmap.h \
     cprogram.h \
-    cuser.h \
     cobject.h \
     cmovable.h \
     cnonmovable.h \

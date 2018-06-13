@@ -1,0 +1,112 @@
+\hypertarget{class_c_g_dirt}{}\section{C\+G\+Dirt Class Reference}
+\label{class_c_g_dirt}\index{C\+G\+Dirt@{C\+G\+Dirt}}
+
+
+Graficzna reprezentacja brudu.  
+
+
+
+
+{\ttfamily \#include $<$cgdirt.\+h$>$}
+
+Inheritance diagram for C\+G\+Dirt\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_g_dirt}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_g_dirt_ad57eda78ac27258e3c951434bdbabcbb}{C\+G\+Dirt}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$o)
+\item 
+void \mbox{\hyperlink{class_c_g_dirt_a46b019eb8693b85447149170178f8643}{paint}} (Q\+Painter $\ast$painter, const Q\+Style\+Option\+Graphics\+Item $\ast$option, Q\+Widget $\ast$widget) override
+\begin{DoxyCompactList}\small\item\em Funkcja określająca kształt obiektu, jej implementacja zależy od rodzaju klasy pochodnej. \end{DoxyCompactList}\item 
+Q\+RectF \mbox{\hyperlink{class_c_g_dirt_aa7ff4b489e4fdbdaa456b40394b635f1}{bounding\+Rect}} () const override
+\begin{DoxyCompactList}\small\item\em Zwraca prostokąt reprezentujący obrys obiektu; potrzebne do prawidłowego odświeżania obiektu na mapie; implementacja różna dla klas pochodnych. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_g_dirt_a871068d11fec47d09635b8992b11f7c9}{advance}} () override
+\begin{DoxyCompactList}\small\item\em Funkcja rysująca obiekt na mapie na podstawie parametrów obiektu logicznego. \end{DoxyCompactList}\item 
+Q\+Painter\+Path \mbox{\hyperlink{class_c_g_dirt_abb94f12edfcd4b6ff07b02ed1dea98f9}{shape}} () const override
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Graficzna reprezentacja brudu. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_g_dirt_ad57eda78ac27258e3c951434bdbabcbb}\label{class_c_g_dirt_ad57eda78ac27258e3c951434bdbabcbb}} 
+\index{C\+G\+Dirt@{C\+G\+Dirt}!C\+G\+Dirt@{C\+G\+Dirt}}
+\index{C\+G\+Dirt@{C\+G\+Dirt}!C\+G\+Dirt@{C\+G\+Dirt}}
+\subsubsection{\texorpdfstring{C\+G\+Dirt()}{CGDirt()}}
+{\footnotesize\ttfamily C\+G\+Dirt\+::\+C\+G\+Dirt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{o }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_g_dirt_a871068d11fec47d09635b8992b11f7c9}\label{class_c_g_dirt_a871068d11fec47d09635b8992b11f7c9}} 
+\index{C\+G\+Dirt@{C\+G\+Dirt}!advance@{advance}}
+\index{advance@{advance}!C\+G\+Dirt@{C\+G\+Dirt}}
+\subsubsection{\texorpdfstring{advance()}{advance()}}
+{\footnotesize\ttfamily void C\+G\+Dirt\+::advance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Funkcja rysująca obiekt na mapie na podstawie parametrów obiektu logicznego. 
+
+
+
+Implements \mbox{\hyperlink{class_c_g_object_a859e765fbb3ab0d6ad73ca58e5e49779}{C\+G\+Object}}.
+
+\mbox{\Hypertarget{class_c_g_dirt_aa7ff4b489e4fdbdaa456b40394b635f1}\label{class_c_g_dirt_aa7ff4b489e4fdbdaa456b40394b635f1}} 
+\index{C\+G\+Dirt@{C\+G\+Dirt}!bounding\+Rect@{bounding\+Rect}}
+\index{bounding\+Rect@{bounding\+Rect}!C\+G\+Dirt@{C\+G\+Dirt}}
+\subsubsection{\texorpdfstring{bounding\+Rect()}{boundingRect()}}
+{\footnotesize\ttfamily Q\+RectF C\+G\+Dirt\+::bounding\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Zwraca prostokąt reprezentujący obrys obiektu; potrzebne do prawidłowego odświeżania obiektu na mapie; implementacja różna dla klas pochodnych. 
+
+\begin{DoxyReturn}{Returns}
+Q\+RecF reprezentujący obrys obiektu 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_c_g_object_ab9edf3d10a53c254cdb5d3d8de930207}{C\+G\+Object}}.
+
+\mbox{\Hypertarget{class_c_g_dirt_a46b019eb8693b85447149170178f8643}\label{class_c_g_dirt_a46b019eb8693b85447149170178f8643}} 
+\index{C\+G\+Dirt@{C\+G\+Dirt}!paint@{paint}}
+\index{paint@{paint}!C\+G\+Dirt@{C\+G\+Dirt}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void C\+G\+Dirt\+::paint (\begin{DoxyParamCaption}\item[{Q\+Painter $\ast$}]{painter,  }\item[{const Q\+Style\+Option\+Graphics\+Item $\ast$}]{option,  }\item[{Q\+Widget $\ast$}]{widget }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Funkcja określająca kształt obiektu, jej implementacja zależy od rodzaju klasy pochodnej. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & \\
+\hline
+{\em option} & \\
+\hline
+{\em widget} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_c_g_object_a9622c313eb09ca5fc0e34f5d2aaac910}{C\+G\+Object}}.
+
+\mbox{\Hypertarget{class_c_g_dirt_abb94f12edfcd4b6ff07b02ed1dea98f9}\label{class_c_g_dirt_abb94f12edfcd4b6ff07b02ed1dea98f9}} 
+\index{C\+G\+Dirt@{C\+G\+Dirt}!shape@{shape}}
+\index{shape@{shape}!C\+G\+Dirt@{C\+G\+Dirt}}
+\subsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily Q\+Painter\+Path C\+G\+Dirt\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cgdirt_8h}{cgdirt.\+h}}\item 
+\mbox{\hyperlink{cgdirt_8cpp}{cgdirt.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,10 @@
+<map id="CGObject" name="CGObject">
+<area shape="rect" id="node3" href="$class_c_g_bullet.html" title="CGBullet" alt="" coords="319,5,393,32"/>
+<area shape="rect" id="node4" href="$class_c_g_cleaning_robot.html" title="CGCleaningRobot" alt="" coords="293,56,419,83"/>
+<area shape="rect" id="node5" href="$class_c_g_dirt.html" title="CGDirt" alt="" coords="325,107,387,133"/>
+<area shape="rect" id="node6" href="$class_c_g_fighting_robot.html" title="CGFightingRobot" alt="" coords="295,157,417,184"/>
+<area shape="rect" id="node7" href="$class_c_g_mine.html" title="CGMine" alt="" coords="321,208,391,235"/>
+<area shape="rect" id="node8" href="$class_c_g_obstacle.html" title="CGObstacle" alt="" coords="309,259,403,285"/>
+<area shape="rect" id="node9" href="$class_c_g_searching_robot.html" title="CGSearchingRobot" alt="" coords="289,309,423,336"/>
+<area shape="rect" id="node10" href="$class_c_g_treasure.html" title="CGTreasure" alt="" coords="311,360,401,387"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="CNonMovable" name="CNonMovable">
+<area shape="rect" id="node3" href="$class_c_dirt.html" title="CDirt" alt="" coords="5,155,56,181"/>
+<area shape="rect" id="node4" href="$class_c_mine.html" title="CMine" alt="" coords="80,155,139,181"/>
+<area shape="rect" id="node5" href="$class_c_treasure.html" title="CTreasure" alt="" coords="163,155,245,181"/>
+<area shape="rect" id="node2" href="$class_c_object.html" title="CObject" alt="" coords="75,5,144,32"/>
+</map>

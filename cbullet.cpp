@@ -8,7 +8,6 @@ CBullet::CBullet(CMap *m, CFightingRobot *r)
               50, m)
 {
     creator = r;
-    size = bulletSize;
     life = bulletLifetime;
     objectShape = Circle;
     width = bulletSize;
@@ -29,7 +28,6 @@ void CBullet::move()
 
 void CBullet::update()
 {
-    move();
     std::vector<CObject*> neighboors = map->getNeighboorsList(this);
     for(unsigned int i = 0; i<neighboors.size(); i++)
     {
@@ -68,14 +66,16 @@ void CBullet::update()
                 }
             }
         }
-
     }
-    life --;
-    size -= bulletSize / 5;
-    width = size;
-    height = size;
     if(!life)
     {
         delete this;
+    }
+    else
+    {
+        move();
+        life --;
+        width -= bulletSize / 5;
+        height -= bulletSize / 5;
     }
 }

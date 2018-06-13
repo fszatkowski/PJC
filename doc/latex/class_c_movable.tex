@@ -1,0 +1,80 @@
+\hypertarget{class_c_movable}{}\section{C\+Movable Class Reference}
+\label{class_c_movable}\index{C\+Movable@{C\+Movable}}
+
+
+Klasa reprezentująca obiekty z możliwością poruszania się po mapie.  
+
+
+
+
+{\ttfamily \#include $<$cmovable.\+h$>$}
+
+Inheritance diagram for C\+Movable\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_c_movable}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_movable_a5f049731afad44da86ff6e3684c258e9}{C\+Movable}} (qreal xv, qreal yv, qreal anglev, qreal rangev, \mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\item 
+virtual void \mbox{\hyperlink{class_c_movable_af45fc62960d86ef62949d078141e9d62}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em Funkcja wywoływana przy każdym kroku programu dla wszystkich obiektów, oddziaływuje na otoczenie oraz podejmuje decyzje na podstawie tego otoczenia, implementacja jest różna dla każdej z podklas na najniższym szczeblu hierarchii dziedziczenia. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_movable_a8e66e106f13362d24462ce0c9d0431af}{move}} ()=0
+\begin{DoxyCompactList}\small\item\em Funkcja zmieniająca położenie obiektu przy każdym kroku; implementacja zależy od typu obieku. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Klasa reprezentująca obiekty z możliwością poruszania się po mapie. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_movable_a5f049731afad44da86ff6e3684c258e9}\label{class_c_movable_a5f049731afad44da86ff6e3684c258e9}} 
+\index{C\+Movable@{C\+Movable}!C\+Movable@{C\+Movable}}
+\index{C\+Movable@{C\+Movable}!C\+Movable@{C\+Movable}}
+\subsubsection{\texorpdfstring{C\+Movable()}{CMovable()}}
+{\footnotesize\ttfamily C\+Movable\+::\+C\+Movable (\begin{DoxyParamCaption}\item[{qreal}]{xv,  }\item[{qreal}]{yv,  }\item[{qreal}]{anglev,  }\item[{qreal}]{rangev,  }\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_movable_a8e66e106f13362d24462ce0c9d0431af}\label{class_c_movable_a8e66e106f13362d24462ce0c9d0431af}} 
+\index{C\+Movable@{C\+Movable}!move@{move}}
+\index{move@{move}!C\+Movable@{C\+Movable}}
+\subsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily virtual void C\+Movable\+::move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Funkcja zmieniająca położenie obiektu przy każdym kroku; implementacja zależy od typu obieku. 
+
+
+
+Implemented in \mbox{\hyperlink{class_c_bullet_a693e95f219a9a642e3977bb48be0cf5d}{C\+Bullet}}, \mbox{\hyperlink{class_c_robot_a1de9be879213eadf7ded27caedb84598}{C\+Robot}}, \mbox{\hyperlink{class_c_obstacle_a4b2e4989c993dd7f79cd66fd485c3c88}{C\+Obstacle}}, \mbox{\hyperlink{class_c_cleaning_robot_a1ad227a5f3508a8e78fcecae7d3de53b}{C\+Cleaning\+Robot}}, \mbox{\hyperlink{class_c_searching_robot_a2c2150e7fd1cefbb5851e039cd76572f}{C\+Searching\+Robot}}, and \mbox{\hyperlink{class_c_fighting_robot_af644acbba178e256566e9dbd230aa4db}{C\+Fighting\+Robot}}.
+
+\mbox{\Hypertarget{class_c_movable_af45fc62960d86ef62949d078141e9d62}\label{class_c_movable_af45fc62960d86ef62949d078141e9d62}} 
+\index{C\+Movable@{C\+Movable}!update@{update}}
+\index{update@{update}!C\+Movable@{C\+Movable}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void C\+Movable\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Funkcja wywoływana przy każdym kroku programu dla wszystkich obiektów, oddziaływuje na otoczenie oraz podejmuje decyzje na podstawie tego otoczenia, implementacja jest różna dla każdej z podklas na najniższym szczeblu hierarchii dziedziczenia. 
+
+
+
+Implements \mbox{\hyperlink{class_c_object_acb42ca516e836d0267ddb9a0556916a9}{C\+Object}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_c_bullet_a9685917f7fc76d417e03744223b1b2c6}{C\+Bullet}}, \mbox{\hyperlink{class_c_robot_a8ad8d55a840ced20f85a2a045e9e24ef}{C\+Robot}}, \mbox{\hyperlink{class_c_cleaning_robot_afd8b3a58abfc91ebdce32af3686c5e9f}{C\+Cleaning\+Robot}}, \mbox{\hyperlink{class_c_searching_robot_a6e9cdc9eccd32a470d8953f1a3cccd46}{C\+Searching\+Robot}}, \mbox{\hyperlink{class_c_fighting_robot_a3ae0ea383f809766e53c81348a07daaa}{C\+Fighting\+Robot}}, and \mbox{\hyperlink{class_c_obstacle_a9aeb124d28bdef3430954f5e2b5ae0f0}{C\+Obstacle}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cmovable_8h}{cmovable.\+h}}\item 
+\mbox{\hyperlink{cmovable_8cpp}{cmovable.\+cpp}}\end{DoxyCompactItemize}

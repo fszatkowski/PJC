@@ -1,0 +1,157 @@
+\hypertarget{class_c_g_object}{}\section{C\+G\+Object Class Reference}
+\label{class_c_g_object}\index{C\+G\+Object@{C\+G\+Object}}
+
+
+Klasa służąca do wyświetlania na mapie obiektów logicznych.  
+
+
+
+
+{\ttfamily \#include $<$cgobject.\+h$>$}
+
+Inheritance diagram for C\+G\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=10.000000cm]{class_c_g_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_g_object_a40a7f41342b3b791a8854b3397378d5d}{C\+G\+Object}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$o)
+\begin{DoxyCompactList}\small\item\em Obiekt graficzny zawsze inicjalizowany jest wskaźnikiem na obiekt logiczny, który reprezentuje; wskaźnik na mapę pobierany jest z obiektu logicznego. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$ \mbox{\hyperlink{class_c_g_object_a6e749272ebf5a43d43927cdfed21c46c}{get\+C\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca wskaźnik do obiektu logicznego reprezentowanego przez dany obiekt graficzny. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_g_object_a859e765fbb3ab0d6ad73ca58e5e49779}{advance}} ()=0
+\begin{DoxyCompactList}\small\item\em Funkcja rysująca obiekt na mapie na podstawie parametrów obiektu logicznego. \end{DoxyCompactList}\item 
+virtual Q\+RectF \mbox{\hyperlink{class_c_g_object_ab9edf3d10a53c254cdb5d3d8de930207}{bounding\+Rect}} () const =0
+\begin{DoxyCompactList}\small\item\em Zwraca prostokąt reprezentujący obrys obiektu; potrzebne do prawidłowego odświeżania obiektu na mapie; implementacja różna dla klas pochodnych. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_g_object_a9622c313eb09ca5fc0e34f5d2aaac910}{paint}} (Q\+Painter $\ast$painter, const Q\+Style\+Option\+Graphics\+Item $\ast$option, Q\+Widget $\ast$widget)=0
+\begin{DoxyCompactList}\small\item\em Funkcja określająca kształt obiektu, jej implementacja zależy od rodzaju klasy pochodnej. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$ \mbox{\hyperlink{class_c_g_object_a8955574357e33ce28957c4ff42154cfb}{object}}
+\begin{DoxyCompactList}\small\item\em Obiekt logiczny, którego reprezentacją jest dany obiekt graficzny. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$ \mbox{\hyperlink{class_c_g_object_a8cfd8e7d917cd445ea8f5284f709452d}{map}}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na mapę, na której znajduje się obiekt graficzny. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa służąca do wyświetlania na mapie obiektów logicznych. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_g_object_a40a7f41342b3b791a8854b3397378d5d}\label{class_c_g_object_a40a7f41342b3b791a8854b3397378d5d}} 
+\index{C\+G\+Object@{C\+G\+Object}!C\+G\+Object@{C\+G\+Object}}
+\index{C\+G\+Object@{C\+G\+Object}!C\+G\+Object@{C\+G\+Object}}
+\subsubsection{\texorpdfstring{C\+G\+Object()}{CGObject()}}
+{\footnotesize\ttfamily C\+G\+Object\+::\+C\+G\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{o }\end{DoxyParamCaption})}
+
+
+
+Obiekt graficzny zawsze inicjalizowany jest wskaźnikiem na obiekt logiczny, który reprezentuje; wskaźnik na mapę pobierany jest z obiektu logicznego. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & Obiekt logiczny, który ma być reprezentowany \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_g_object_a859e765fbb3ab0d6ad73ca58e5e49779}\label{class_c_g_object_a859e765fbb3ab0d6ad73ca58e5e49779}} 
+\index{C\+G\+Object@{C\+G\+Object}!advance@{advance}}
+\index{advance@{advance}!C\+G\+Object@{C\+G\+Object}}
+\subsubsection{\texorpdfstring{advance()}{advance()}}
+{\footnotesize\ttfamily virtual void C\+G\+Object\+::advance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Funkcja rysująca obiekt na mapie na podstawie parametrów obiektu logicznego. 
+
+
+
+Implemented in \mbox{\hyperlink{class_c_g_bullet_a3f1f31f6225a94b09ea8493e5b2040a8}{C\+G\+Bullet}}, \mbox{\hyperlink{class_c_g_cleaning_robot_a96511d40b48a6ac5a2fa31f2ed1f24e7}{C\+G\+Cleaning\+Robot}}, \mbox{\hyperlink{class_c_g_dirt_a871068d11fec47d09635b8992b11f7c9}{C\+G\+Dirt}}, \mbox{\hyperlink{class_c_g_fighting_robot_aee1cbe4ebdf24953ff3a9def4338c283}{C\+G\+Fighting\+Robot}}, \mbox{\hyperlink{class_c_g_mine_a6dbd841b39f421054cd8db54c3c84b74}{C\+G\+Mine}}, \mbox{\hyperlink{class_c_g_obstacle_adeb38e94e73f2c3d5d84afbb5e5e0fe7}{C\+G\+Obstacle}}, \mbox{\hyperlink{class_c_g_searching_robot_adcc4b3096e11c25287806428119acb22}{C\+G\+Searching\+Robot}}, and \mbox{\hyperlink{class_c_g_treasure_a4b8a13bcae320e63a87a32a804606190}{C\+G\+Treasure}}.
+
+\mbox{\Hypertarget{class_c_g_object_ab9edf3d10a53c254cdb5d3d8de930207}\label{class_c_g_object_ab9edf3d10a53c254cdb5d3d8de930207}} 
+\index{C\+G\+Object@{C\+G\+Object}!bounding\+Rect@{bounding\+Rect}}
+\index{bounding\+Rect@{bounding\+Rect}!C\+G\+Object@{C\+G\+Object}}
+\subsubsection{\texorpdfstring{bounding\+Rect()}{boundingRect()}}
+{\footnotesize\ttfamily virtual Q\+RectF C\+G\+Object\+::bounding\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Zwraca prostokąt reprezentujący obrys obiektu; potrzebne do prawidłowego odświeżania obiektu na mapie; implementacja różna dla klas pochodnych. 
+
+\begin{DoxyReturn}{Returns}
+Q\+RecF reprezentujący obrys obiektu 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_c_g_bullet_a7be9c986a5c21d0a27dd5d64b209a82d}{C\+G\+Bullet}}, \mbox{\hyperlink{class_c_g_cleaning_robot_a6fe8401e3b604cf5c3e449a56bb5655c}{C\+G\+Cleaning\+Robot}}, \mbox{\hyperlink{class_c_g_dirt_aa7ff4b489e4fdbdaa456b40394b635f1}{C\+G\+Dirt}}, \mbox{\hyperlink{class_c_g_fighting_robot_a945d974c6e61507a9f671ab7288df85a}{C\+G\+Fighting\+Robot}}, \mbox{\hyperlink{class_c_g_mine_ad11ed34f5cd02b51fd2baeaf700daba2}{C\+G\+Mine}}, \mbox{\hyperlink{class_c_g_obstacle_a88a124737ae6f96c6b07316591ecdb34}{C\+G\+Obstacle}}, \mbox{\hyperlink{class_c_g_searching_robot_aa0cf51f6acdfa865c130f0cd16860625}{C\+G\+Searching\+Robot}}, and \mbox{\hyperlink{class_c_g_treasure_a103be7d49202d07d9260917a7d6e8429}{C\+G\+Treasure}}.
+
+\mbox{\Hypertarget{class_c_g_object_a6e749272ebf5a43d43927cdfed21c46c}\label{class_c_g_object_a6e749272ebf5a43d43927cdfed21c46c}} 
+\index{C\+G\+Object@{C\+G\+Object}!get\+C\+Object@{get\+C\+Object}}
+\index{get\+C\+Object@{get\+C\+Object}!C\+G\+Object@{C\+G\+Object}}
+\subsubsection{\texorpdfstring{get\+C\+Object()}{getCObject()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$ C\+G\+Object\+::get\+C\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca wskaźnik do obiektu logicznego reprezentowanego przez dany obiekt graficzny. 
+
+\begin{DoxyReturn}{Returns}
+object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_g_object_a9622c313eb09ca5fc0e34f5d2aaac910}\label{class_c_g_object_a9622c313eb09ca5fc0e34f5d2aaac910}} 
+\index{C\+G\+Object@{C\+G\+Object}!paint@{paint}}
+\index{paint@{paint}!C\+G\+Object@{C\+G\+Object}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily virtual void C\+G\+Object\+::paint (\begin{DoxyParamCaption}\item[{Q\+Painter $\ast$}]{painter,  }\item[{const Q\+Style\+Option\+Graphics\+Item $\ast$}]{option,  }\item[{Q\+Widget $\ast$}]{widget }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Funkcja określająca kształt obiektu, jej implementacja zależy od rodzaju klasy pochodnej. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & \\
+\hline
+{\em option} & \\
+\hline
+{\em widget} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_c_g_bullet_ad64e0666c42b0d65bb90ad37998252d0}{C\+G\+Bullet}}, \mbox{\hyperlink{class_c_g_cleaning_robot_ad5c738dfd5633e0a4165309dd26033f5}{C\+G\+Cleaning\+Robot}}, \mbox{\hyperlink{class_c_g_dirt_a46b019eb8693b85447149170178f8643}{C\+G\+Dirt}}, \mbox{\hyperlink{class_c_g_fighting_robot_ad269a29840cb25ecb91f5a3c609ff4dd}{C\+G\+Fighting\+Robot}}, \mbox{\hyperlink{class_c_g_mine_a2a48415eeb9f9e662a068abd09f30b00}{C\+G\+Mine}}, \mbox{\hyperlink{class_c_g_obstacle_a4ae41138f5fa9f7929c71f1999df7793}{C\+G\+Obstacle}}, \mbox{\hyperlink{class_c_g_searching_robot_ad6e9d94604256cb9f0fe6e708c4391ad}{C\+G\+Searching\+Robot}}, and \mbox{\hyperlink{class_c_g_treasure_aeab69a95590acb46aa4d20422be96560}{C\+G\+Treasure}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_c_g_object_a8cfd8e7d917cd445ea8f5284f709452d}\label{class_c_g_object_a8cfd8e7d917cd445ea8f5284f709452d}} 
+\index{C\+G\+Object@{C\+G\+Object}!map@{map}}
+\index{map@{map}!C\+G\+Object@{C\+G\+Object}}
+\subsubsection{\texorpdfstring{map}{map}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_c_map}{C\+Map}}$\ast$ C\+G\+Object\+::map\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wskaźnik na mapę, na której znajduje się obiekt graficzny. 
+
+\mbox{\Hypertarget{class_c_g_object_a8955574357e33ce28957c4ff42154cfb}\label{class_c_g_object_a8955574357e33ce28957c4ff42154cfb}} 
+\index{C\+G\+Object@{C\+G\+Object}!object@{object}}
+\index{object@{object}!C\+G\+Object@{C\+G\+Object}}
+\subsubsection{\texorpdfstring{object}{object}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_c_object}{C\+Object}}$\ast$ C\+G\+Object\+::object\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Obiekt logiczny, którego reprezentacją jest dany obiekt graficzny. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cgobject_8h}{cgobject.\+h}}\item 
+\mbox{\hyperlink{cgobject_8cpp}{cgobject.\+cpp}}\end{DoxyCompactItemize}

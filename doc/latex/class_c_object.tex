@@ -1,0 +1,382 @@
+\hypertarget{class_c_object}{}\section{C\+Object Class Reference}
+\label{class_c_object}\index{C\+Object@{C\+Object}}
+
+
+Klasa reprezentująca każdy obiekt na mapie.  
+
+
+
+
+{\ttfamily \#include $<$cobject.\+h$>$}
+
+Inheritance diagram for C\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.137255cm]{class_c_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_object_ab8bac765156b93002423cd43e853611f}{C\+Object}} (qreal xv, qreal yv, qreal anglev, qreal rangev, \mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\begin{DoxyCompactList}\small\item\em Konstruktor pozwala tylko na stworzenie obiektu o konkretnych parametrach; kształt obiektu określany jest przez konstruktory klas dziedziczących w zależności od rodzaju obiektu. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_object_acb42ca516e836d0267ddb9a0556916a9}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em Funkcja wywoływana przy każdym kroku programu dla wszystkich obiektów, oddziaływuje na otoczenie oraz podejmuje decyzje na podstawie tego otoczenia, implementacja jest różna dla każdej z podklas na najniższym szczeblu hierarchii dziedziczenia. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_a9199c97746518fd8eb029033d7539fbb}{getX}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca wartość współrzędnej x obiektu. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_ac9ce72541d4420b65ec5abf7478f6e62}{getY}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca wartość współrzędnej y obiektu. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_af1c8e71b2974e222f4b164f70dd7ffc4}{get\+Angle}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca kąt, pod jakim znajduje się obiekt(w radianach) \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_a8d0881ca2211266500a3d4af11cf8824}{get\+Range}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca zasięg obiektu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$ \mbox{\hyperlink{class_c_object_a57ea53dbd6d12a6da554f24d7b6c0d5d}{get\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca wskaźnik do mapy, na której znajduje się obiekt. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_ad8e89183e35939476e2c6e0afb832f89}{get\+Width}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca szerokość obiektu. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_ab1f242475368097db1eea253b9cc77e1}{get\+Height}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca wysokość obiektu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{cobject_8h_a45cde9abb508c62d67c3bb2b9bf566a5}{shape}} \mbox{\hyperlink{class_c_object_aca839368d91bd68f3d46288316a86807}{get\+Shape}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca kształt obiektu. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_a451ca4149ae1de4dfe39370c3abbe919}{distance}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$o)
+\begin{DoxyCompactList}\small\item\em Zwraca odległość między obiektem, dla którego wywoływana jest metoda oraz obiektem, do którego przyjmuje wskaźnik. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_aabaf82a62b691b0666a0bbe9431d3b22}{collision\+Distance}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$o)
+\begin{DoxyCompactList}\small\item\em Na podstawie kształtu obiektów oblicza maksymalną odległość, przy której nie kolidują one ze sobą \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_c_object_ad744a67920a169209f631f9e34f1d891}{collides\+With}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$o)
+\begin{DoxyCompactList}\small\item\em Zwraca informację o tym, czy dany obiekt koliduje z obiektem, dla którego wywoływana jest metoda. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_c_object_a24bf5bc6cf7e76478ac7ccc7c79cdd72}{will\+Collide}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$o, qreal this\+Speed, qreal o\+Speed)
+\begin{DoxyCompactList}\small\item\em Zwraca informację o tym, czy dwa obiekty o różnych prędkościach po wykonaniu ruchu będą ze sobą kolidować \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+qreal \mbox{\hyperlink{class_c_object_acb23178c7b65e6cf37f9ab95128cd8d2}{x}}
+\begin{DoxyCompactList}\small\item\em Współrzędna x. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_a22fd03bdf2bc5c7058e4c2a9c9237c64}{y}}
+\begin{DoxyCompactList}\small\item\em Współrzędna y. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_a9ac381be23878447d48800b16d773efa}{angle}}
+\begin{DoxyCompactList}\small\item\em Orientacja obiektu. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_a0d3f8546df4d7620602646e7661d905e}{range}}
+\begin{DoxyCompactList}\small\item\em Promień, w jakim obiekt może zauważać inne obiekty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$ \mbox{\hyperlink{class_c_object_a958cfe5f141fdab246af5da849f98d07}{map}}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na mapę, na której znajduje się obiekt. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{cobject_8h_a45cde9abb508c62d67c3bb2b9bf566a5}{shape}} \mbox{\hyperlink{class_c_object_a97a0d16c78ba0afc53f6df41055e6d94}{object\+Shape}}
+\begin{DoxyCompactList}\small\item\em Kształt obiektu używany przy obliczaniu kolizji. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_a6fceaa9b662c540109880306373fef4a}{width}}
+\begin{DoxyCompactList}\small\item\em Szerokość obiektu. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{class_c_object_a80f942a5fb6676096b7ab105842a6bd3}{height}}
+\begin{DoxyCompactList}\small\item\em Wysokość obiektu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa reprezentująca każdy obiekt na mapie. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_object_ab8bac765156b93002423cd43e853611f}\label{class_c_object_ab8bac765156b93002423cd43e853611f}} 
+\index{C\+Object@{C\+Object}!C\+Object@{C\+Object}}
+\index{C\+Object@{C\+Object}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{C\+Object()}{CObject()}}
+{\footnotesize\ttfamily C\+Object\+::\+C\+Object (\begin{DoxyParamCaption}\item[{qreal}]{xv,  }\item[{qreal}]{yv,  }\item[{qreal}]{anglev,  }\item[{qreal}]{rangev,  }\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+
+
+Konstruktor pozwala tylko na stworzenie obiektu o konkretnych parametrach; kształt obiektu określany jest przez konstruktory klas dziedziczących w zależności od rodzaju obiektu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xv} & Współrzędna x \\
+\hline
+{\em yv} & Współrzędna y \\
+\hline
+{\em anglev} & Orientacja obiektu \\
+\hline
+{\em rangev} & Zasięg obiektu \\
+\hline
+{\em m} & Wskaźnik na mapę, na której znajduje się obiekt \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_object_ad744a67920a169209f631f9e34f1d891}\label{class_c_object_ad744a67920a169209f631f9e34f1d891}} 
+\index{C\+Object@{C\+Object}!collides\+With@{collides\+With}}
+\index{collides\+With@{collides\+With}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{collides\+With()}{collidesWith()}}
+{\footnotesize\ttfamily bool C\+Object\+::collides\+With (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{o }\end{DoxyParamCaption})}
+
+
+
+Zwraca informację o tym, czy dany obiekt koliduje z obiektem, dla którego wywoływana jest metoda. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & Obiekt, dla którego sprawdzana jest kolizja \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 oznacza kolizję, 0 brak kolizji 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_object_aabaf82a62b691b0666a0bbe9431d3b22}\label{class_c_object_aabaf82a62b691b0666a0bbe9431d3b22}} 
+\index{C\+Object@{C\+Object}!collision\+Distance@{collision\+Distance}}
+\index{collision\+Distance@{collision\+Distance}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{collision\+Distance()}{collisionDistance()}}
+{\footnotesize\ttfamily qreal C\+Object\+::collision\+Distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{o }\end{DoxyParamCaption})}
+
+
+
+Na podstawie kształtu obiektów oblicza maksymalną odległość, przy której nie kolidują one ze sobą 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & Obiekt, dla którego liczona jest odległość \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dystans w metryce euklidesowej 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_object_a451ca4149ae1de4dfe39370c3abbe919}\label{class_c_object_a451ca4149ae1de4dfe39370c3abbe919}} 
+\index{C\+Object@{C\+Object}!distance@{distance}}
+\index{distance@{distance}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{distance()}{distance()}}
+{\footnotesize\ttfamily qreal C\+Object\+::distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{o }\end{DoxyParamCaption})}
+
+
+
+Zwraca odległość między obiektem, dla którego wywoływana jest metoda oraz obiektem, do którego przyjmuje wskaźnik. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & Obiekt, dla którego liczona jest odległość \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dystans między obiektami w metryce euklidesowej 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_object_af1c8e71b2974e222f4b164f70dd7ffc4}\label{class_c_object_af1c8e71b2974e222f4b164f70dd7ffc4}} 
+\index{C\+Object@{C\+Object}!get\+Angle@{get\+Angle}}
+\index{get\+Angle@{get\+Angle}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{get\+Angle()}{getAngle()}}
+{\footnotesize\ttfamily qreal C\+Object\+::get\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca kąt, pod jakim znajduje się obiekt(w radianach) 
+
+\begin{DoxyReturn}{Returns}
+angle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_object_ab1f242475368097db1eea253b9cc77e1}\label{class_c_object_ab1f242475368097db1eea253b9cc77e1}} 
+\index{C\+Object@{C\+Object}!get\+Height@{get\+Height}}
+\index{get\+Height@{get\+Height}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{get\+Height()}{getHeight()}}
+{\footnotesize\ttfamily qreal C\+Object\+::get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca wysokość obiektu. 
+
+\begin{DoxyReturn}{Returns}
+height 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_object_a57ea53dbd6d12a6da554f24d7b6c0d5d}\label{class_c_object_a57ea53dbd6d12a6da554f24d7b6c0d5d}} 
+\index{C\+Object@{C\+Object}!get\+Map@{get\+Map}}
+\index{get\+Map@{get\+Map}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{get\+Map()}{getMap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$ C\+Object\+::get\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca wskaźnik do mapy, na której znajduje się obiekt. 
+
+\begin{DoxyReturn}{Returns}
+map 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_object_a8d0881ca2211266500a3d4af11cf8824}\label{class_c_object_a8d0881ca2211266500a3d4af11cf8824}} 
+\index{C\+Object@{C\+Object}!get\+Range@{get\+Range}}
+\index{get\+Range@{get\+Range}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{get\+Range()}{getRange()}}
+{\footnotesize\ttfamily qreal C\+Object\+::get\+Range (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca zasięg obiektu. 
+
+\begin{DoxyReturn}{Returns}
+range 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_object_aca839368d91bd68f3d46288316a86807}\label{class_c_object_aca839368d91bd68f3d46288316a86807}} 
+\index{C\+Object@{C\+Object}!get\+Shape@{get\+Shape}}
+\index{get\+Shape@{get\+Shape}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{get\+Shape()}{getShape()}}
+{\footnotesize\ttfamily int C\+Object\+::get\+Shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca kształt obiektu. 
+
+\begin{DoxyReturn}{Returns}
+shape 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_object_ad8e89183e35939476e2c6e0afb832f89}\label{class_c_object_ad8e89183e35939476e2c6e0afb832f89}} 
+\index{C\+Object@{C\+Object}!get\+Width@{get\+Width}}
+\index{get\+Width@{get\+Width}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{get\+Width()}{getWidth()}}
+{\footnotesize\ttfamily qreal C\+Object\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca szerokość obiektu. 
+
+\begin{DoxyReturn}{Returns}
+width 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_object_a9199c97746518fd8eb029033d7539fbb}\label{class_c_object_a9199c97746518fd8eb029033d7539fbb}} 
+\index{C\+Object@{C\+Object}!getX@{getX}}
+\index{getX@{getX}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{get\+X()}{getX()}}
+{\footnotesize\ttfamily qreal C\+Object\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca wartość współrzędnej x obiektu. 
+
+\begin{DoxyReturn}{Returns}
+x 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_object_ac9ce72541d4420b65ec5abf7478f6e62}\label{class_c_object_ac9ce72541d4420b65ec5abf7478f6e62}} 
+\index{C\+Object@{C\+Object}!getY@{getY}}
+\index{getY@{getY}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{get\+Y()}{getY()}}
+{\footnotesize\ttfamily qreal C\+Object\+::getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca wartość współrzędnej y obiektu. 
+
+\begin{DoxyReturn}{Returns}
+y 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_object_acb42ca516e836d0267ddb9a0556916a9}\label{class_c_object_acb42ca516e836d0267ddb9a0556916a9}} 
+\index{C\+Object@{C\+Object}!update@{update}}
+\index{update@{update}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void C\+Object\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Funkcja wywoływana przy każdym kroku programu dla wszystkich obiektów, oddziaływuje na otoczenie oraz podejmuje decyzje na podstawie tego otoczenia, implementacja jest różna dla każdej z podklas na najniższym szczeblu hierarchii dziedziczenia. 
+
+
+
+Implemented in \mbox{\hyperlink{class_c_bullet_a9685917f7fc76d417e03744223b1b2c6}{C\+Bullet}}, \mbox{\hyperlink{class_c_robot_a8ad8d55a840ced20f85a2a045e9e24ef}{C\+Robot}}, \mbox{\hyperlink{class_c_cleaning_robot_afd8b3a58abfc91ebdce32af3686c5e9f}{C\+Cleaning\+Robot}}, \mbox{\hyperlink{class_c_searching_robot_a6e9cdc9eccd32a470d8953f1a3cccd46}{C\+Searching\+Robot}}, \mbox{\hyperlink{class_c_fighting_robot_a3ae0ea383f809766e53c81348a07daaa}{C\+Fighting\+Robot}}, \mbox{\hyperlink{class_c_obstacle_a9aeb124d28bdef3430954f5e2b5ae0f0}{C\+Obstacle}}, \mbox{\hyperlink{class_c_non_movable_ace03bea0246940c6c5c0b26ffa1ef165}{C\+Non\+Movable}}, \mbox{\hyperlink{class_c_mine_aef4825eff1e61d284d3da7a2d630acb5}{C\+Mine}}, \mbox{\hyperlink{class_c_dirt_a0f077e7fde1b397f08659f65d28cf573}{C\+Dirt}}, \mbox{\hyperlink{class_c_treasure_a5030f2a7279aa608c40741f9e7040a90}{C\+Treasure}}, and \mbox{\hyperlink{class_c_movable_af45fc62960d86ef62949d078141e9d62}{C\+Movable}}.
+
+\mbox{\Hypertarget{class_c_object_a24bf5bc6cf7e76478ac7ccc7c79cdd72}\label{class_c_object_a24bf5bc6cf7e76478ac7ccc7c79cdd72}} 
+\index{C\+Object@{C\+Object}!will\+Collide@{will\+Collide}}
+\index{will\+Collide@{will\+Collide}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{will\+Collide()}{willCollide()}}
+{\footnotesize\ttfamily bool C\+Object\+::will\+Collide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{o,  }\item[{qreal}]{this\+Speed,  }\item[{qreal}]{o\+Speed }\end{DoxyParamCaption})}
+
+
+
+Zwraca informację o tym, czy dwa obiekty o różnych prędkościach po wykonaniu ruchu będą ze sobą kolidować 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & Obiekt, dla którego sprawdzana jest ewentualna kolizja \\
+\hline
+{\em this\+Speed} & Prędkość, z jaką porusza się obiekt, dla którego wywoływana jest metoda \\
+\hline
+{\em o\+Speed} & Prędkość obiektu, dla którego sprawdazana jest kolizja \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 oznacza kolizję w następnej turze, 0 oznacza jej brak 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_c_object_a9ac381be23878447d48800b16d773efa}\label{class_c_object_a9ac381be23878447d48800b16d773efa}} 
+\index{C\+Object@{C\+Object}!angle@{angle}}
+\index{angle@{angle}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{angle}{angle}}
+{\footnotesize\ttfamily qreal C\+Object\+::angle\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Orientacja obiektu. 
+
+\mbox{\Hypertarget{class_c_object_a80f942a5fb6676096b7ab105842a6bd3}\label{class_c_object_a80f942a5fb6676096b7ab105842a6bd3}} 
+\index{C\+Object@{C\+Object}!height@{height}}
+\index{height@{height}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily qreal C\+Object\+::height\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wysokość obiektu. 
+
+\mbox{\Hypertarget{class_c_object_a958cfe5f141fdab246af5da849f98d07}\label{class_c_object_a958cfe5f141fdab246af5da849f98d07}} 
+\index{C\+Object@{C\+Object}!map@{map}}
+\index{map@{map}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{map}{map}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_c_map}{C\+Map}}$\ast$ C\+Object\+::map\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wskaźnik na mapę, na której znajduje się obiekt. 
+
+\mbox{\Hypertarget{class_c_object_a97a0d16c78ba0afc53f6df41055e6d94}\label{class_c_object_a97a0d16c78ba0afc53f6df41055e6d94}} 
+\index{C\+Object@{C\+Object}!object\+Shape@{object\+Shape}}
+\index{object\+Shape@{object\+Shape}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{object\+Shape}{objectShape}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cobject_8h_a45cde9abb508c62d67c3bb2b9bf566a5}{shape}} C\+Object\+::object\+Shape\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Kształt obiektu używany przy obliczaniu kolizji. 
+
+\mbox{\Hypertarget{class_c_object_a0d3f8546df4d7620602646e7661d905e}\label{class_c_object_a0d3f8546df4d7620602646e7661d905e}} 
+\index{C\+Object@{C\+Object}!range@{range}}
+\index{range@{range}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{range}{range}}
+{\footnotesize\ttfamily qreal C\+Object\+::range\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Promień, w jakim obiekt może zauważać inne obiekty. 
+
+\mbox{\Hypertarget{class_c_object_a6fceaa9b662c540109880306373fef4a}\label{class_c_object_a6fceaa9b662c540109880306373fef4a}} 
+\index{C\+Object@{C\+Object}!width@{width}}
+\index{width@{width}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily qreal C\+Object\+::width\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Szerokość obiektu. 
+
+\mbox{\Hypertarget{class_c_object_acb23178c7b65e6cf37f9ab95128cd8d2}\label{class_c_object_acb23178c7b65e6cf37f9ab95128cd8d2}} 
+\index{C\+Object@{C\+Object}!x@{x}}
+\index{x@{x}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily qreal C\+Object\+::x\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Współrzędna x. 
+
+\mbox{\Hypertarget{class_c_object_a22fd03bdf2bc5c7058e4c2a9c9237c64}\label{class_c_object_a22fd03bdf2bc5c7058e4c2a9c9237c64}} 
+\index{C\+Object@{C\+Object}!y@{y}}
+\index{y@{y}!C\+Object@{C\+Object}}
+\subsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily qreal C\+Object\+::y\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Współrzędna y. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cobject_8h}{cobject.\+h}}\item 
+\mbox{\hyperlink{cobject_8cpp}{cobject.\+cpp}}\end{DoxyCompactItemize}

@@ -3,6 +3,7 @@
 #include "cgobject.h"
 #include "cbullet.h"
 
+/// \brief Graficzna reprezentacja pocisku
 class CGBullet :public CGObject
 {
 public:

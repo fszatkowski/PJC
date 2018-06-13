@@ -1,0 +1,14 @@
+<map id="Graficzna hierarchia klas" name="Graficzna hierarchia klas">
+<area shape="rect" id="node1" href="$class_c_object.html" title="CObject" alt="" coords="5,120,75,147"/>
+<area shape="rect" id="node2" href="$class_c_movable.html" title="CMovable" alt="" coords="134,81,213,108"/>
+<area shape="rect" id="node9" href="$class_c_non_movable.html" title="CNonMovable" alt="" coords="123,183,224,209"/>
+<area shape="rect" id="node3" href="$class_c_bullet.html" title="Pociski wystrzeliwane przez roboty walczące. " alt="" coords="281,5,345,32"/>
+<area shape="rect" id="node4" href="$class_c_obstacle.html" title="CObstacle" alt="" coords="272,56,355,83"/>
+<area shape="rect" id="node5" href="$class_c_robot.html" title="CRobot" alt="" coords="281,107,346,133"/>
+<area shape="rect" id="node6" href="$class_c_cleaning_robot.html" title="CCleaningRobot" alt="" coords="407,56,521,83"/>
+<area shape="rect" id="node7" href="$class_c_fighting_robot.html" title="CFightingRobot" alt="" coords="409,107,519,133"/>
+<area shape="rect" id="node8" href="$class_c_searching_robot.html" title="CSearchingRobot" alt="" coords="403,157,525,184"/>
+<area shape="rect" id="node10" href="$class_c_dirt.html" title="CDirt" alt="" coords="288,157,339,184"/>
+<area shape="rect" id="node11" href="$class_c_mine.html" title="CMine" alt="" coords="284,208,343,235"/>
+<area shape="rect" id="node12" href="$class_c_treasure.html" title="CTreasure" alt="" coords="273,259,354,285"/>
+</map>

@@ -1,0 +1,226 @@
+\hypertarget{class_c_robot}{}\section{C\+Robot Class Reference}
+\label{class_c_robot}\index{C\+Robot@{C\+Robot}}
+
+
+Klasa reprezentująca robota.  
+
+
+
+
+{\ttfamily \#include $<$crobot.\+h$>$}
+
+Inheritance diagram for C\+Robot\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_c_robot}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_robot_a9769daad02498cf1d6c7f91b9ed27ff5}{C\+Robot}} (\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\begin{DoxyCompactList}\small\item\em Umieszcza robota na mapie w losowym miejscu z losowymi parametrami. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_robot_a9efdb5f31b4380e2aff141e6c55f8515}{C\+Robot}} (qreal xv, qreal yv, \mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\begin{DoxyCompactList}\small\item\em Umieszcza robota w konrektnym miejscu z losowymi parametrami. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_robot_a39050adcb2119ac8b3bd7042704b487a}{C\+Robot}} (qreal xv, qreal yv, qreal anglev, qreal rangev, \mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\begin{DoxyCompactList}\small\item\em Umieszcza robota w konkretnym miejscu z konkretnymi parametrami. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_robot_a8ad8d55a840ced20f85a2a045e9e24ef}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em Funkcja wywoływana przy każdym kroku programu dla wszystkich obiektów, oddziaływuje na otoczenie oraz podejmuje decyzje na podstawie tego otoczenia, implementacja jest różna dla każdej z podklas na najniższym szczeblu hierarchii dziedziczenia. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_robot_a1de9be879213eadf7ded27caedb84598}{move}} ()=0
+\begin{DoxyCompactList}\small\item\em Funkcja zmieniająca położenie obiektu przy każdym kroku; implementacja zależy od typu obieku. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_robot_a5d173b8f2c8fae09df01a8f1fc9211fb}{add\+Item}} (\mbox{\hyperlink{class_c_non_movable}{C\+Non\+Movable}} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Funkcja dodająca nieruchomy obiekt do listy obiektów przechowywanych przez robota. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_robot_a9a819529f710ae6d9dc376c78e6c5657}{move\+Randomly}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja zmieniająca położenie robota o jego prędkość w kierunku określonym przez orientację; losowo zmienia kąt o niewielką wartość, aby roboty nie jeździły cały czas po prostej. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_robot_adc5f5ff12284e09613bae149ed8ded2c}{return\+To\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja, która obraca robota tak, aby wrócił on na planszę \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_robot_a9bab21d24d736824d37283811abfb5fd}{go\+To}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$o)
+\begin{DoxyCompactList}\small\item\em Robot porusza się tak, aby zbliżyć się do podanego obiektu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_robot_ae667593c574d4ec859de15d5ae7e7c22}{avoid}} (std\+::vector$<$ \mbox{\hyperlink{class_c_non_movable}{C\+Non\+Movable}} $\ast$$>$ o, std\+::vector$<$ \mbox{\hyperlink{class_c_robot}{C\+Robot}} $\ast$$>$ r, std\+::vector$<$ \mbox{\hyperlink{class_c_obstacle}{C\+Obstacle}} $\ast$$>$ ob)
+\begin{DoxyCompactList}\small\item\em Robot porusza się tak, aby oddalić się od podanych obiektów i uniknąć zderzeń z nimi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_c_non_movable}{C\+Non\+Movable}} $\ast$ $>$ \mbox{\hyperlink{class_c_robot_a8f676285c6d121ae209047b467c48947}{items}}
+\begin{DoxyCompactList}\small\item\em Lista nieruchomych obiektów zebranych przez robota. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa reprezentująca robota. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_robot_a9769daad02498cf1d6c7f91b9ed27ff5}\label{class_c_robot_a9769daad02498cf1d6c7f91b9ed27ff5}} 
+\index{C\+Robot@{C\+Robot}!C\+Robot@{C\+Robot}}
+\index{C\+Robot@{C\+Robot}!C\+Robot@{C\+Robot}}
+\subsubsection{\texorpdfstring{C\+Robot()}{CRobot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily C\+Robot\+::\+C\+Robot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+
+
+Umieszcza robota na mapie w losowym miejscu z losowymi parametrami. 
+
+\mbox{\Hypertarget{class_c_robot_a9efdb5f31b4380e2aff141e6c55f8515}\label{class_c_robot_a9efdb5f31b4380e2aff141e6c55f8515}} 
+\index{C\+Robot@{C\+Robot}!C\+Robot@{C\+Robot}}
+\index{C\+Robot@{C\+Robot}!C\+Robot@{C\+Robot}}
+\subsubsection{\texorpdfstring{C\+Robot()}{CRobot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily C\+Robot\+::\+C\+Robot (\begin{DoxyParamCaption}\item[{qreal}]{xv,  }\item[{qreal}]{yv,  }\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+
+
+Umieszcza robota w konrektnym miejscu z losowymi parametrami. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xv} & Współrzędna x \\
+\hline
+{\em yv} & Współrzędna y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_robot_a39050adcb2119ac8b3bd7042704b487a}\label{class_c_robot_a39050adcb2119ac8b3bd7042704b487a}} 
+\index{C\+Robot@{C\+Robot}!C\+Robot@{C\+Robot}}
+\index{C\+Robot@{C\+Robot}!C\+Robot@{C\+Robot}}
+\subsubsection{\texorpdfstring{C\+Robot()}{CRobot()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily C\+Robot\+::\+C\+Robot (\begin{DoxyParamCaption}\item[{qreal}]{xv,  }\item[{qreal}]{yv,  }\item[{qreal}]{anglev,  }\item[{qreal}]{rangev,  }\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+
+
+Umieszcza robota w konkretnym miejscu z konkretnymi parametrami. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xv} & Współrzędna x \\
+\hline
+{\em yv} & Współrzędna y \\
+\hline
+{\em anglev} & Orientacja \\
+\hline
+{\em rangev} & Zasięg \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_robot_a5d173b8f2c8fae09df01a8f1fc9211fb}\label{class_c_robot_a5d173b8f2c8fae09df01a8f1fc9211fb}} 
+\index{C\+Robot@{C\+Robot}!add\+Item@{add\+Item}}
+\index{add\+Item@{add\+Item}!C\+Robot@{C\+Robot}}
+\subsubsection{\texorpdfstring{add\+Item()}{addItem()}}
+{\footnotesize\ttfamily void C\+Robot\+::add\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_non_movable}{C\+Non\+Movable}} $\ast$}]{item }\end{DoxyParamCaption})}
+
+
+
+Funkcja dodająca nieruchomy obiekt do listy obiektów przechowywanych przez robota. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & Obiekt, który jest dodawany \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_robot_ae667593c574d4ec859de15d5ae7e7c22}\label{class_c_robot_ae667593c574d4ec859de15d5ae7e7c22}} 
+\index{C\+Robot@{C\+Robot}!avoid@{avoid}}
+\index{avoid@{avoid}!C\+Robot@{C\+Robot}}
+\subsubsection{\texorpdfstring{avoid()}{avoid()}}
+{\footnotesize\ttfamily void C\+Robot\+::avoid (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_c_non_movable}{C\+Non\+Movable}} $\ast$$>$}]{o,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_c_robot}{C\+Robot}} $\ast$$>$}]{r,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_c_obstacle}{C\+Obstacle}} $\ast$$>$}]{ob }\end{DoxyParamCaption})}
+
+
+
+Robot porusza się tak, aby oddalić się od podanych obiektów i uniknąć zderzeń z nimi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & Nieruchome obiekty, które należy omijać \\
+\hline
+{\em r} & Roboty, które należy omijać lub przepuszczać \\
+\hline
+{\em ob} & Przeszkody, które należy omijać lub przepuszczać \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_robot_a9bab21d24d736824d37283811abfb5fd}\label{class_c_robot_a9bab21d24d736824d37283811abfb5fd}} 
+\index{C\+Robot@{C\+Robot}!go\+To@{go\+To}}
+\index{go\+To@{go\+To}!C\+Robot@{C\+Robot}}
+\subsubsection{\texorpdfstring{go\+To()}{goTo()}}
+{\footnotesize\ttfamily void C\+Robot\+::go\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{o }\end{DoxyParamCaption})}
+
+
+
+Robot porusza się tak, aby zbliżyć się do podanego obiektu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & Obiekt, w którego kierunku robot ma się poruszać \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_robot_a1de9be879213eadf7ded27caedb84598}\label{class_c_robot_a1de9be879213eadf7ded27caedb84598}} 
+\index{C\+Robot@{C\+Robot}!move@{move}}
+\index{move@{move}!C\+Robot@{C\+Robot}}
+\subsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily virtual void C\+Robot\+::move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Funkcja zmieniająca położenie obiektu przy każdym kroku; implementacja zależy od typu obieku. 
+
+
+
+Implements \mbox{\hyperlink{class_c_movable_a8e66e106f13362d24462ce0c9d0431af}{C\+Movable}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_c_cleaning_robot_a1ad227a5f3508a8e78fcecae7d3de53b}{C\+Cleaning\+Robot}}, \mbox{\hyperlink{class_c_searching_robot_a2c2150e7fd1cefbb5851e039cd76572f}{C\+Searching\+Robot}}, and \mbox{\hyperlink{class_c_fighting_robot_af644acbba178e256566e9dbd230aa4db}{C\+Fighting\+Robot}}.
+
+\mbox{\Hypertarget{class_c_robot_a9a819529f710ae6d9dc376c78e6c5657}\label{class_c_robot_a9a819529f710ae6d9dc376c78e6c5657}} 
+\index{C\+Robot@{C\+Robot}!move\+Randomly@{move\+Randomly}}
+\index{move\+Randomly@{move\+Randomly}!C\+Robot@{C\+Robot}}
+\subsubsection{\texorpdfstring{move\+Randomly()}{moveRandomly()}}
+{\footnotesize\ttfamily void C\+Robot\+::move\+Randomly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funkcja zmieniająca położenie robota o jego prędkość w kierunku określonym przez orientację; losowo zmienia kąt o niewielką wartość, aby roboty nie jeździły cały czas po prostej. 
+
+\mbox{\Hypertarget{class_c_robot_adc5f5ff12284e09613bae149ed8ded2c}\label{class_c_robot_adc5f5ff12284e09613bae149ed8ded2c}} 
+\index{C\+Robot@{C\+Robot}!return\+To\+Map@{return\+To\+Map}}
+\index{return\+To\+Map@{return\+To\+Map}!C\+Robot@{C\+Robot}}
+\subsubsection{\texorpdfstring{return\+To\+Map()}{returnToMap()}}
+{\footnotesize\ttfamily void C\+Robot\+::return\+To\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funkcja, która obraca robota tak, aby wrócił on na planszę 
+
+\mbox{\Hypertarget{class_c_robot_a8ad8d55a840ced20f85a2a045e9e24ef}\label{class_c_robot_a8ad8d55a840ced20f85a2a045e9e24ef}} 
+\index{C\+Robot@{C\+Robot}!update@{update}}
+\index{update@{update}!C\+Robot@{C\+Robot}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void C\+Robot\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Funkcja wywoływana przy każdym kroku programu dla wszystkich obiektów, oddziaływuje na otoczenie oraz podejmuje decyzje na podstawie tego otoczenia, implementacja jest różna dla każdej z podklas na najniższym szczeblu hierarchii dziedziczenia. 
+
+
+
+Implements \mbox{\hyperlink{class_c_movable_af45fc62960d86ef62949d078141e9d62}{C\+Movable}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_c_cleaning_robot_afd8b3a58abfc91ebdce32af3686c5e9f}{C\+Cleaning\+Robot}}, \mbox{\hyperlink{class_c_searching_robot_a6e9cdc9eccd32a470d8953f1a3cccd46}{C\+Searching\+Robot}}, and \mbox{\hyperlink{class_c_fighting_robot_a3ae0ea383f809766e53c81348a07daaa}{C\+Fighting\+Robot}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_c_robot_a8f676285c6d121ae209047b467c48947}\label{class_c_robot_a8f676285c6d121ae209047b467c48947}} 
+\index{C\+Robot@{C\+Robot}!items@{items}}
+\index{items@{items}!C\+Robot@{C\+Robot}}
+\subsubsection{\texorpdfstring{items}{items}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_c_non_movable}{C\+Non\+Movable}}$\ast$$>$ C\+Robot\+::items\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Lista nieruchomych obiektów zebranych przez robota. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{crobot_8h}{crobot.\+h}}\item 
+\mbox{\hyperlink{crobot_8cpp}{crobot.\+cpp}}\end{DoxyCompactItemize}

@@ -2,14 +2,19 @@
 #define CTREASURE_H
 #include "cnonmovable.h"
 
-const int treasure_size = 20;
-
+/// \brief Obiekty zbierane przez roboty zajmujące się ich szukaniem
 class CTreasure :public CNonMovable
 {
 public:
     CTreasure(CMap *m);
-    ~CTreasure();
+    virtual ~CTreasure();
+    /**
+     * @brief Wartość skarbu wraz z upływem czasu maleje
+     */
     void update();
+    /**
+     * @brief Funkcja usuwająca obiekt z mapy
+     */
     void getCollected();
 };
 

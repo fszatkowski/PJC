@@ -3,6 +3,7 @@
 #include "cgobject.h"
 #include "ctreasure.h"
 
+/// \brief Graficzna reprezentacja skarbu
 class CGTreasure :public CGObject
 {
 public:

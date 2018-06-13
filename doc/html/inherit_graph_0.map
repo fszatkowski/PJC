@@ -1,0 +1,11 @@
+<map id="Graficzna hierarchia klas" name="Graficzna hierarchia klas">
+<area shape="rect" id="node1" href="$class_c_g_dirt.html" title="CGDirt" alt="" coords="5,157,67,184"/>
+<area shape="rect" id="node2" href="$class_c_g_object.html" title="CGObject" alt="" coords="115,157,193,184"/>
+<area shape="rect" id="node3" href="$class_c_g_bullet.html" title="CGBullet" alt="" coords="271,5,345,32"/>
+<area shape="rect" id="node4" href="$class_c_g_cleaning_robot.html" title="CGCleaningRobot" alt="" coords="245,56,371,83"/>
+<area shape="rect" id="node5" href="$class_c_g_fighting_robot.html" title="CGFightingRobot" alt="" coords="247,107,369,133"/>
+<area shape="rect" id="node6" href="$class_c_g_mine.html" title="CGMine" alt="" coords="273,157,343,184"/>
+<area shape="rect" id="node7" href="$class_c_g_obstacle.html" title="CGObstacle" alt="" coords="261,208,355,235"/>
+<area shape="rect" id="node8" href="$class_c_g_searching_robot.html" title="CGSearchingRobot" alt="" coords="241,259,375,285"/>
+<area shape="rect" id="node9" href="$class_c_g_treasure.html" title="CGTreasure" alt="" coords="263,309,353,336"/>
+</map>

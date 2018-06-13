@@ -5,7 +5,7 @@
 CCleaningRobot::CCleaningRobot(CMap *m)
     :CRobot(QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
               QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
-              QRandomGenerator::global()->bounded(0, 2*M_PI),
+              (QRandomGenerator::global()->bounded(0, 36)*M_PI/18),
               100, m)
 {
 }
@@ -28,50 +28,7 @@ CCleaningRobot::~CCleaningRobot()
 //movement - seeking dirts
 void CCleaningRobot::move()
 {
-    std::vector<CObject*> neighboors = map->getNeighboorsList(this);
-    std::vector<CDirt*> dirts;
-    for(unsigned int i=0; i<neighboors.size(); i++)
-    {
-        CNonMovable *nmobject = dynamic_cast<CNonMovable*>(neighboors[i]);
-        CDirt *dirt = dynamic_cast<CDirt*>(nmobject);
-        if(dirt)
-        {
-            dirts.push_back(dirt);
-        }
-    }
-
-    if(dirts.size() != 0)
-    {
-        unsigned int closest = 0;
-        qreal closest_distance = range;
-        for(unsigned int i=0; i<dirts.size(); i++)
-        {
-            if(distance(dirts[i]) < closest_distance)
-            {
-                closest = i;
-                closest_distance = distance(dirts[i]);
-            }
-        }
-
-        goTo(dirts[closest]);
-    }
-
-    else
-    {
-        moveRandomly();
-    }
-}
-
-//check your neighboorhood
-//if colliding with dirt - clean it
-//if obstacle on path - wait
-//if there is possible collision with other things - move to avoid it
-//if out of the map - come back
-//else move randomly
-
-void CCleaningRobot::update()
-{
-    //check if there are dirts or obstacles nearby
+    //check objects nearby
     std::vector<CObject*> neighboors = map->getNeighboorsList(this);
     std::vector<CDirt*> dirts;
     std::vector<CObstacle*> obstacles;
@@ -102,7 +59,6 @@ void CCleaningRobot::update()
                 CDirt *dirt = dynamic_cast<CDirt*>(nmobject);
                 if(dirt)
                 {
-                    if(distance(dirt) < collisionDistance(dirt))
                     dirts.push_back(dirt);
                 }
                 else
@@ -113,6 +69,68 @@ void CCleaningRobot::update()
         }
     }
 
+    //if there are objects nearby - try to avoid collisions with them
+    unsigned int n_objects = others.size() + obstacles.size() + robots.size();
+    if(n_objects!=0)
+    {
+        avoid(others, robots, obstacles);
+        return;
+    }
+
+    else if(!(x <= map_size/2 && x >= -map_size/2 && y <= map_size/2 && y >= -map_size/2))
+    {
+        returnToMap();
+        return;
+    }
+
+    //if there are dirts nearby - go to the closest one
+    if(dirts.size() != 0)
+    {
+        unsigned int closest = 0;
+        qreal closest_distance = range;
+        for(unsigned int i=0; i<dirts.size(); i++)
+        {
+            if(distance(dirts[i]) < closest_distance)
+            {
+                closest = i;
+                closest_distance = distance(dirts[i]);
+            }
+        }
+
+        goTo(dirts[closest]);
+    }
+
+    //if there are none - move at random
+
+    else
+    {
+        moveRandomly();
+    }
+}
+
+//check your neighboorhood
+//if colliding with dirt - clean it
+//then move
+void CCleaningRobot::update()
+{
+    //check if there are dirts
+    std::vector<CObject*> neighboors = map->getNeighboorsList(this);
+    std::vector<CDirt*> dirts;
+    for(unsigned int i=0; i<neighboors.size(); i++)
+    {
+        CNonMovable *nmobject = dynamic_cast<CNonMovable*>(neighboors.at(i));
+        if(nmobject)
+        {
+            CDirt *dirt = dynamic_cast<CDirt*>(nmobject);
+            if(dirt)
+            {
+                if(distance(dirt) < collisionDistance(dirt))
+                dirts.push_back(dirt);
+            }
+        }
+    }
+
+    //delete nearby dirts
     if(dirts.size() != 0)
     {
         for(unsigned i=0; i<dirts.size(); i++)
@@ -120,25 +138,7 @@ void CCleaningRobot::update()
             clean(dirts.at(i));
         }
     }
-
-    if(obstacles.size() !=0)
-    {
-        return;
-    }
-
-    unsigned int n_objects = others.size() + obstacles.size() + robots.size();
-    if(n_objects!=0)
-        avoid(others, robots, obstacles);
-
-    else if(!(x <= map_size/2 && x >= -map_size/2 && y <= map_size/2 && y >= -map_size/2))
-    {
-        returnToMap();
-    }
-
-    else
-    {
-        move();
-    }
+    move();
 }
 
 

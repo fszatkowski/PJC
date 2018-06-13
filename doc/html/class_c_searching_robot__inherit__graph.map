@@ -1,0 +1,5 @@
+<map id="CSearchingRobot" name="CSearchingRobot">
+<area shape="rect" id="node2" href="$class_c_robot.html" title="CRobot" alt="" coords="34,155,99,181"/>
+<area shape="rect" id="node3" href="$class_c_movable.html" title="CMovable" alt="" coords="27,80,106,107"/>
+<area shape="rect" id="node4" href="$class_c_object.html" title="CObject" alt="" coords="32,5,101,32"/>
+</map>

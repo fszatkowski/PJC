@@ -83,10 +83,10 @@ qreal CObject::collisionDistance(CObject *o)
     switch(o->getShape())
     {
     case Rect:
-        thresh += 1.5*((o->getWidth()+o->getHeight())/2);
+        thresh += 1.5*((o->getWidth()+o->getHeight())/4);
         break;
     case Square:
-        thresh += 1.4*((o->getWidth()+o->getHeight())/2);
+        thresh += 1.4*((o->getWidth()+o->getHeight())/4);
         break;
     case Circle:
         thresh += (o->getWidth()+o->getHeight())/4;

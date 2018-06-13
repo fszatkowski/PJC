@@ -10,16 +10,16 @@ CMap::CMap(QGraphicsScene *s)
 {
     scene = s;
 
-    int obstaclecount = 7;
+    int obstaclecount = 3;
     add<CObstacle, CGObstacle>(obstaclecount);
 
-    int crobotcount = 4;
+    int crobotcount = 20;
     add<CCleaningRobot, CGCleaningRobot>(crobotcount);
 
-    int srobotcount = 4;
+    int srobotcount = 8;
     add<CSearchingRobot, CGSearchingRobot>(srobotcount);
 
-    int frobotcount = 8;
+    int frobotcount = 6;
     add<CFightingRobot, CGFightingRobot>(frobotcount);
 
     int dirtcount = 4;
@@ -28,7 +28,7 @@ CMap::CMap(QGraphicsScene *s)
     int treasurecount = 4;
     add<CTreasure, CGTreasure>(treasurecount);
 
-    int minecount = 4;
+    int minecount = 20;
     add<CMine, CGMine>(minecount);
 }
 

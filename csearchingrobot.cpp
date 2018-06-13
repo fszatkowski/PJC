@@ -5,7 +5,7 @@
 CSearchingRobot::CSearchingRobot(CMap *m)
     :CRobot(QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
               QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
-              QRandomGenerator::global()->bounded(0, 2*M_PI),
+              (QRandomGenerator::global()->bounded(0, 36)*M_PI/18),
               100, m)
 {
 }
@@ -27,44 +27,6 @@ CSearchingRobot::~CSearchingRobot()
 
 //seek treasures
 void CSearchingRobot::move()
-{
-    std::vector<CObject*> neighboors = map->getNeighboorsList(this);
-    std::vector<CTreasure*> treasures;
-    for(unsigned int i=0; i<neighboors.size(); i++)
-    {
-        CNonMovable *nmobject = dynamic_cast<CNonMovable*>(neighboors[i]);
-        CTreasure *treasure = dynamic_cast<CTreasure*>(nmobject);
-        if(treasure)
-        {
-            treasures.push_back(treasure);
-        }
-    }
-
-    if(treasures.size() != 0)
-    {
-        unsigned int closest = 0;
-        qreal closest_distance = range;
-        for(unsigned int i=0; i<treasures.size(); i++)
-        {
-            if(distance(treasures[i]) < closest_distance)
-            {
-                closest = i;
-                closest_distance = distance(treasures[i]);
-            }
-        }
-        goTo(treasures.at(closest));
-    }
-
-    else if(x <= map_size/2 && x >= -map_size/2 && y <= map_size/2 && y >= -map_size/2)
-    {
-        moveRandomly();
-    }
-}
-
-//stay if colliding with obstacle
-//collect treasures if colliding with treasure
-//seek treasures moving randomly else
-void CSearchingRobot::update()
 {
     //check if there are treasures or obstacles nearby
     std::vector<CObject*> neighboors = map->getNeighboorsList(this);
@@ -108,6 +70,63 @@ void CSearchingRobot::update()
         }
     }
 
+    //check if there are any objects that might cause collisions
+    unsigned int n_objects = others.size() + obstacles.size() + robots.size();
+    if(n_objects!=0)
+    {
+        avoid(others, robots, obstacles);
+        return;
+    }
+
+    else if(!(x <= map_size/2 && x >= -map_size/2 && y <= map_size/2 && y >= -map_size/2))
+    {
+        returnToMap();
+        return;
+    }
+
+    if(treasures.size() != 0)
+    {
+        unsigned int closest = 0;
+        qreal closest_distance = range;
+        for(unsigned int i=0; i<treasures.size(); i++)
+        {
+            if(distance(treasures[i]) < closest_distance)
+            {
+                closest = i;
+                closest_distance = distance(treasures[i]);
+            }
+        }
+        goTo(treasures.at(closest));
+    }
+
+    else if(x <= map_size/2 && x >= -map_size/2 && y <= map_size/2 && y >= -map_size/2)
+    {
+        moveRandomly();
+    }
+}
+
+//check objects nearby
+//collect colliding treasures than move
+void CSearchingRobot::update()
+{
+    //check if there are treasures nearby
+    std::vector<CObject*> neighboors = map->getNeighboorsList(this);
+    std::vector<CTreasure*> treasures;
+    for(unsigned int i=0; i<neighboors.size(); i++)
+    {
+        CNonMovable *nmobject = dynamic_cast<CNonMovable*>(neighboors[i]);
+        if(nmobject)
+        {
+            CTreasure *treasure = dynamic_cast<CTreasure*>(nmobject);
+            if(treasure)
+            {
+                if(distance(treasure) < collisionDistance(treasure))
+                treasures.push_back(treasure);
+            }
+        }
+    }
+
+    //if there are treasures collect them
     if(treasures.size() != 0)
     {
         for(unsigned i=0; i<treasures.size(); i++)
@@ -116,17 +135,7 @@ void CSearchingRobot::update()
         }
     }
 
-    unsigned int n_objects = others.size() + obstacles.size() + robots.size();
-    if(n_objects!=0)
-        avoid(others, robots, obstacles);
-
-    else if(!(x <= map_size/2 && x >= -map_size/2 && y <= map_size/2 && y >= -map_size/2))
-    {
-        returnToMap();
-    }
-
-    else
-        move();
+    move();
 }
 
 void CSearchingRobot::collect(CTreasure *treasure)

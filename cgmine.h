@@ -3,6 +3,7 @@
 #include "cgobject.h"
 #include "cmine.h"
 
+/// \brief Graficzna reprezentacja miny
 class CGMine :public CGObject
 {
 public:

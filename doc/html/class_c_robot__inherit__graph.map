@@ -1,0 +1,7 @@
+<map id="CRobot" name="CRobot">
+<area shape="rect" id="node4" href="$class_c_cleaning_robot.html" title="CCleaningRobot" alt="" coords="5,229,120,256"/>
+<area shape="rect" id="node5" href="$class_c_fighting_robot.html" title="CFightingRobot" alt="" coords="145,229,255,256"/>
+<area shape="rect" id="node6" href="$class_c_searching_robot.html" title="CSearchingRobot" alt="" coords="280,229,403,256"/>
+<area shape="rect" id="node2" href="$class_c_movable.html" title="CMovable" alt="" coords="161,80,239,107"/>
+<area shape="rect" id="node3" href="$class_c_object.html" title="CObject" alt="" coords="165,5,235,32"/>
+</map>

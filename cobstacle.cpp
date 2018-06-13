@@ -79,9 +79,13 @@ void CObstacle::update()
         {
             if(willCollide(obstacles[i], obstacle_speed, obstacle_speed))
             {
-                if(std::abs(obstacles[i]->getAngle()-angle) != M_PI)
+                if(std::abs(obstacles[i]->getAngle()-angle) == M_PI/2 || std::abs(obstacles[i]->getAngle()-angle) == 3*M_PI/2)
+                {
                     if(obstacles[i]->getAngle() >= angle)
                         stay = true;
+                }
+                else if(collidesWith(obstacles[i]))
+                        delete obstacles[i];
             }
         }
     }

@@ -1,0 +1,96 @@
+\hypertarget{class_c_non_movable}{}\section{C\+Non\+Movable Class Reference}
+\label{class_c_non_movable}\index{C\+Non\+Movable@{C\+Non\+Movable}}
+
+
+Klasa reprezentująca nieruchome obiekty na mapie.  
+
+
+
+
+{\ttfamily \#include $<$cnonmovable.\+h$>$}
+
+Inheritance diagram for C\+Non\+Movable\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_non_movable}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_non_movable_abe455ba26ac2d5b3eb5e99e7a282b9b7}{C\+Non\+Movable}} (qreal xv, qreal yv, qreal anglev, qreal rangev, qreal valuev, \mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\item 
+qreal \mbox{\hyperlink{class_c_non_movable_a34204726d749b5eb66ed763119a46163}{getvalue}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja zwracająca wartość value. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_non_movable_ace03bea0246940c6c5c0b26ffa1ef165}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em Funkcja wywoływana przy każdym kroku programu dla wszystkich obiektów, oddziaływuje na otoczenie oraz podejmuje decyzje na podstawie tego otoczenia, implementacja jest różna dla każdej z podklas na najniższym szczeblu hierarchii dziedziczenia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+qreal \mbox{\hyperlink{class_c_non_movable_aaa6f737556a51a132b8cc89255b8c096}{value}}
+\begin{DoxyCompactList}\small\item\em Zmienna reprezentująca wielkość danego obiektu lub jego wartość \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa reprezentująca nieruchome obiekty na mapie. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_non_movable_abe455ba26ac2d5b3eb5e99e7a282b9b7}\label{class_c_non_movable_abe455ba26ac2d5b3eb5e99e7a282b9b7}} 
+\index{C\+Non\+Movable@{C\+Non\+Movable}!C\+Non\+Movable@{C\+Non\+Movable}}
+\index{C\+Non\+Movable@{C\+Non\+Movable}!C\+Non\+Movable@{C\+Non\+Movable}}
+\subsubsection{\texorpdfstring{C\+Non\+Movable()}{CNonMovable()}}
+{\footnotesize\ttfamily C\+Non\+Movable\+::\+C\+Non\+Movable (\begin{DoxyParamCaption}\item[{qreal}]{xv,  }\item[{qreal}]{yv,  }\item[{qreal}]{anglev,  }\item[{qreal}]{rangev,  }\item[{qreal}]{valuev,  }\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_non_movable_a34204726d749b5eb66ed763119a46163}\label{class_c_non_movable_a34204726d749b5eb66ed763119a46163}} 
+\index{C\+Non\+Movable@{C\+Non\+Movable}!getvalue@{getvalue}}
+\index{getvalue@{getvalue}!C\+Non\+Movable@{C\+Non\+Movable}}
+\subsubsection{\texorpdfstring{getvalue()}{getvalue()}}
+{\footnotesize\ttfamily qreal C\+Non\+Movable\+::getvalue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funkcja zwracająca wartość value. 
+
+\begin{DoxyReturn}{Returns}
+value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_non_movable_ace03bea0246940c6c5c0b26ffa1ef165}\label{class_c_non_movable_ace03bea0246940c6c5c0b26ffa1ef165}} 
+\index{C\+Non\+Movable@{C\+Non\+Movable}!update@{update}}
+\index{update@{update}!C\+Non\+Movable@{C\+Non\+Movable}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void C\+Non\+Movable\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Funkcja wywoływana przy każdym kroku programu dla wszystkich obiektów, oddziaływuje na otoczenie oraz podejmuje decyzje na podstawie tego otoczenia, implementacja jest różna dla każdej z podklas na najniższym szczeblu hierarchii dziedziczenia. 
+
+
+
+Implements \mbox{\hyperlink{class_c_object_acb42ca516e836d0267ddb9a0556916a9}{C\+Object}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_c_mine_aef4825eff1e61d284d3da7a2d630acb5}{C\+Mine}}, \mbox{\hyperlink{class_c_dirt_a0f077e7fde1b397f08659f65d28cf573}{C\+Dirt}}, and \mbox{\hyperlink{class_c_treasure_a5030f2a7279aa608c40741f9e7040a90}{C\+Treasure}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_c_non_movable_aaa6f737556a51a132b8cc89255b8c096}\label{class_c_non_movable_aaa6f737556a51a132b8cc89255b8c096}} 
+\index{C\+Non\+Movable@{C\+Non\+Movable}!value@{value}}
+\index{value@{value}!C\+Non\+Movable@{C\+Non\+Movable}}
+\subsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily qreal C\+Non\+Movable\+::value\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Zmienna reprezentująca wielkość danego obiektu lub jego wartość 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cnonmovable_8h}{cnonmovable.\+h}}\item 
+\mbox{\hyperlink{cnonmovable_8cpp}{cnonmovable.\+cpp}}\end{DoxyCompactItemize}

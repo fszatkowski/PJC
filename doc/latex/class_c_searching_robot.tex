@@ -1,0 +1,117 @@
+\hypertarget{class_c_searching_robot}{}\section{C\+Searching\+Robot Class Reference}
+\label{class_c_searching_robot}\index{C\+Searching\+Robot@{C\+Searching\+Robot}}
+
+
+Robot zajmujący się szukaniem skarbów.  
+
+
+
+
+{\ttfamily \#include $<$csearchingrobot.\+h$>$}
+
+Inheritance diagram for C\+Searching\+Robot\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_c_searching_robot}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_searching_robot_a94c25b4cc475f118b8d6521b169a3b09}{C\+Searching\+Robot}} (\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\item 
+\mbox{\hyperlink{class_c_searching_robot_a4b9874d7d35fabecc7953bf31ab18fc1}{C\+Searching\+Robot}} (qreal xv, qreal yv, \mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\item 
+\mbox{\hyperlink{class_c_searching_robot_a89fb6d088efb21dfa85395c587f0e12d}{C\+Searching\+Robot}} (qreal xv, qreal yv, qreal anglev, qreal rangev, \mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\item 
+virtual \mbox{\hyperlink{class_c_searching_robot_aaa18ea94f4bd833465f9801faef6bd75}{$\sim$\+C\+Searching\+Robot}} ()
+\item 
+void \mbox{\hyperlink{class_c_searching_robot_a2c2150e7fd1cefbb5851e039cd76572f}{move}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja stara się w pierwszej kolejności uniknąć kolizji z innymi obiektami; jeśli nie wystąpi kolizja, sprawdzane jest, czy robot jest na mapie; jeśli nie jest na mapie, próbuje wrócić i kończy ruch; w przeciwnym wypadku kieruje się w stronę najbliższego skarbu, o ile jakieś są w zasięgu; jeśli w pobliżu nie ma żadnych brudów, robot porusza się losowo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_searching_robot_a6e9cdc9eccd32a470d8953f1a3cccd46}{update}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja sprawdza, czy występują kolizje z jakimiś skarbami i zbiera ewentualne kolidujące skarby; następnie wywoływana jest funkcja \mbox{\hyperlink{class_c_searching_robot_a2c2150e7fd1cefbb5851e039cd76572f}{move()}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_searching_robot_a1f09a0003c1c7c309895745a2dbad885}{collect}} (\mbox{\hyperlink{class_c_treasure}{C\+Treasure}} $\ast$treasure)
+\begin{DoxyCompactList}\small\item\em Funkcja dodająca do listy zebranych obiektów podany skarb. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Robot zajmujący się szukaniem skarbów. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_searching_robot_a94c25b4cc475f118b8d6521b169a3b09}\label{class_c_searching_robot_a94c25b4cc475f118b8d6521b169a3b09}} 
+\index{C\+Searching\+Robot@{C\+Searching\+Robot}!C\+Searching\+Robot@{C\+Searching\+Robot}}
+\index{C\+Searching\+Robot@{C\+Searching\+Robot}!C\+Searching\+Robot@{C\+Searching\+Robot}}
+\subsubsection{\texorpdfstring{C\+Searching\+Robot()}{CSearchingRobot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily C\+Searching\+Robot\+::\+C\+Searching\+Robot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_searching_robot_a4b9874d7d35fabecc7953bf31ab18fc1}\label{class_c_searching_robot_a4b9874d7d35fabecc7953bf31ab18fc1}} 
+\index{C\+Searching\+Robot@{C\+Searching\+Robot}!C\+Searching\+Robot@{C\+Searching\+Robot}}
+\index{C\+Searching\+Robot@{C\+Searching\+Robot}!C\+Searching\+Robot@{C\+Searching\+Robot}}
+\subsubsection{\texorpdfstring{C\+Searching\+Robot()}{CSearchingRobot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily C\+Searching\+Robot\+::\+C\+Searching\+Robot (\begin{DoxyParamCaption}\item[{qreal}]{xv,  }\item[{qreal}]{yv,  }\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_searching_robot_a89fb6d088efb21dfa85395c587f0e12d}\label{class_c_searching_robot_a89fb6d088efb21dfa85395c587f0e12d}} 
+\index{C\+Searching\+Robot@{C\+Searching\+Robot}!C\+Searching\+Robot@{C\+Searching\+Robot}}
+\index{C\+Searching\+Robot@{C\+Searching\+Robot}!C\+Searching\+Robot@{C\+Searching\+Robot}}
+\subsubsection{\texorpdfstring{C\+Searching\+Robot()}{CSearchingRobot()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily C\+Searching\+Robot\+::\+C\+Searching\+Robot (\begin{DoxyParamCaption}\item[{qreal}]{xv,  }\item[{qreal}]{yv,  }\item[{qreal}]{anglev,  }\item[{qreal}]{rangev,  }\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_searching_robot_aaa18ea94f4bd833465f9801faef6bd75}\label{class_c_searching_robot_aaa18ea94f4bd833465f9801faef6bd75}} 
+\index{C\+Searching\+Robot@{C\+Searching\+Robot}!````~C\+Searching\+Robot@{$\sim$\+C\+Searching\+Robot}}
+\index{````~C\+Searching\+Robot@{$\sim$\+C\+Searching\+Robot}!C\+Searching\+Robot@{C\+Searching\+Robot}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Searching\+Robot()}{~CSearchingRobot()}}
+{\footnotesize\ttfamily C\+Searching\+Robot\+::$\sim$\+C\+Searching\+Robot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_searching_robot_a1f09a0003c1c7c309895745a2dbad885}\label{class_c_searching_robot_a1f09a0003c1c7c309895745a2dbad885}} 
+\index{C\+Searching\+Robot@{C\+Searching\+Robot}!collect@{collect}}
+\index{collect@{collect}!C\+Searching\+Robot@{C\+Searching\+Robot}}
+\subsubsection{\texorpdfstring{collect()}{collect()}}
+{\footnotesize\ttfamily void C\+Searching\+Robot\+::collect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_treasure}{C\+Treasure}} $\ast$}]{treasure }\end{DoxyParamCaption})}
+
+
+
+Funkcja dodająca do listy zebranych obiektów podany skarb. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em treasure} & Skarb, który należy zebrać \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_searching_robot_a2c2150e7fd1cefbb5851e039cd76572f}\label{class_c_searching_robot_a2c2150e7fd1cefbb5851e039cd76572f}} 
+\index{C\+Searching\+Robot@{C\+Searching\+Robot}!move@{move}}
+\index{move@{move}!C\+Searching\+Robot@{C\+Searching\+Robot}}
+\subsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void C\+Searching\+Robot\+::move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Funkcja stara się w pierwszej kolejności uniknąć kolizji z innymi obiektami; jeśli nie wystąpi kolizja, sprawdzane jest, czy robot jest na mapie; jeśli nie jest na mapie, próbuje wrócić i kończy ruch; w przeciwnym wypadku kieruje się w stronę najbliższego skarbu, o ile jakieś są w zasięgu; jeśli w pobliżu nie ma żadnych brudów, robot porusza się losowo. 
+
+
+
+Implements \mbox{\hyperlink{class_c_robot_a1de9be879213eadf7ded27caedb84598}{C\+Robot}}.
+
+\mbox{\Hypertarget{class_c_searching_robot_a6e9cdc9eccd32a470d8953f1a3cccd46}\label{class_c_searching_robot_a6e9cdc9eccd32a470d8953f1a3cccd46}} 
+\index{C\+Searching\+Robot@{C\+Searching\+Robot}!update@{update}}
+\index{update@{update}!C\+Searching\+Robot@{C\+Searching\+Robot}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void C\+Searching\+Robot\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Funkcja sprawdza, czy występują kolizje z jakimiś skarbami i zbiera ewentualne kolidujące skarby; następnie wywoływana jest funkcja \mbox{\hyperlink{class_c_searching_robot_a2c2150e7fd1cefbb5851e039cd76572f}{move()}} 
+
+
+
+Implements \mbox{\hyperlink{class_c_robot_a8ad8d55a840ced20f85a2a045e9e24ef}{C\+Robot}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{csearchingrobot_8h}{csearchingrobot.\+h}}\item 
+\mbox{\hyperlink{csearchingrobot_8cpp}{csearchingrobot.\+cpp}}\end{DoxyCompactItemize}

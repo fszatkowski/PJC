@@ -47,7 +47,7 @@ void CMine::destroy(std::vector<CRobot*> robots)
 {
     for(unsigned int i=0; i<robots.size(); i++)
     {
-        if(distance(robots[i]) < collisionDistance(robots[i]))
+        if(distance(robots[i]) < 0.5*collisionDistance(robots[i]))
         {
             CCleaningRobot *crobot = dynamic_cast<CCleaningRobot*>(robots.at(i));
             if(crobot)

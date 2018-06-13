@@ -9,8 +9,8 @@
 CFightingRobot::CFightingRobot(CMap *m)
     :CRobot(QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
               QRandomGenerator::global()->bounded(-map_size/2, map_size/2),
-              QRandomGenerator::global()->bounded(0, 2*M_PI),
-              150, m)
+              (QRandomGenerator::global()->bounded(0, 36)*M_PI/18),
+              100, m)
 {
 }
 
@@ -30,43 +30,6 @@ CFightingRobot::~CFightingRobot()
 }
 
 void CFightingRobot::move()
-{
-    std::vector<CObject*> neighboors = map->getNeighboorsList(this);
-    std::vector<CRobot*> robots;
-    for(unsigned int i=0; i<neighboors.size(); i++)
-    {
-        CMovable *mobject = dynamic_cast<CMovable*>(neighboors.at(i));
-        CRobot *robot = dynamic_cast<CRobot*>(mobject);
-        if(robot)
-        {
-            robots.push_back(robot);
-        }
-    }
-
-    if(robots.size() != 0)
-    {
-        unsigned int closest = 0;
-        qreal closest_distance = range;
-        for(unsigned int i=0; i<robots.size(); i++)
-        {
-            if(distance(robots[i]) < closest_distance)
-            {
-                closest = i;
-                closest_distance = distance(robots[i]);
-            }
-        }
-        goTo(robots[closest]);
-    }
-
-    else
-        moveRandomly();
-}
-
-//attack if colliding with robot
-//stay if obstacle is nearby
-//move randomly if there are none
-void CFightingRobot::update()
-
 {
     std::vector<CObject*> neighboors = map->getNeighboorsList(this);
     std::vector<CRobot*> robots;
@@ -99,7 +62,62 @@ void CFightingRobot::update()
         }
     }
 
-    //if there are any robots attack
+    //else if there are any objects nearby, try to avoid them
+    unsigned int n_objects = others.size() + obstacles.size();
+    if(n_objects!=0)
+    {
+        avoid(others, empty, obstacles);
+        return;
+    }
+
+    //if object out of the map - come back
+    else if(!(x <= map_size/2 && x >= -map_size/2 && y <= map_size/2 && y >= -map_size/2))
+    {
+        returnToMap();
+        return;
+    }
+
+    //if there are robots nearby - go after them
+    if(robots.size() != 0)
+    {
+        unsigned int closest = 0;
+        qreal closest_distance = range;
+        for(unsigned int i=0; i<robots.size(); i++)
+        {
+            if(distance(robots[i]) < closest_distance)
+            {
+                closest = i;
+                closest_distance = distance(robots[i]);
+            }
+        }
+        goTo(robots[closest]);
+    }
+
+    else
+        moveRandomly();
+}
+
+//attack if colliding with robot
+//stay if obstacle is nearby
+//move randomly if there are none
+void CFightingRobot::update()
+{
+    std::vector<CObject*> neighboors = map->getNeighboorsList(this);
+    std::vector<CRobot*> robots;
+    for(unsigned int i=0; i<neighboors.size(); i++)
+    {
+        CMovable *mobject = dynamic_cast<CMovable*>(neighboors.at(i));
+        if(mobject)
+        {
+            CRobot *robot = dynamic_cast<CRobot*>(mobject);
+            if(robot)
+            {
+                robots.push_back(robot);
+            }
+        }
+    }
+
+    //if there are any robots, attack
     if(robots.size() != 0)
     {
         unsigned int closest = 0;
@@ -114,22 +132,12 @@ void CFightingRobot::update()
         }
         attack(robots[closest]);
     }
-    unsigned int n_objects = others.size() + obstacles.size();
-    if(n_objects!=0)
-        avoid(others, empty, obstacles);
 
-    else if(!(x <= map_size/2 && x >= -map_size/2 && y <= map_size/2 && y >= -map_size/2))
-    {
-        returnToMap();
-    }
-
-    else
-        move();
+    move();
 }
 
 void CFightingRobot::attack(CRobot *robot)
 {
-
     qreal x1 = cos(angle);
     qreal y1 = sin(angle);
     qreal x2 = (robot->getX()-x);
@@ -139,7 +147,7 @@ void CFightingRobot::attack(CRobot *robot)
 
     qreal diff = atan2(det, dot);
 
-    if((abs(diff) <= M_PI/18) && !QRandomGenerator::global()->bounded(0,5))
+    if((std::abs(diff) <= M_PI/18) && !QRandomGenerator::global()->bounded(0,5))
     {
         CBullet *bullet = new CBullet(map, this);
         map->addObject(bullet);

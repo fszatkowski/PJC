@@ -1,0 +1,112 @@
+\hypertarget{class_c_g_bullet}{}\section{C\+G\+Bullet Class Reference}
+\label{class_c_g_bullet}\index{C\+G\+Bullet@{C\+G\+Bullet}}
+
+
+Graficzna reprezentacja pocisku.  
+
+
+
+
+{\ttfamily \#include $<$cgbullet.\+h$>$}
+
+Inheritance diagram for C\+G\+Bullet\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_g_bullet}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_g_bullet_adb7c1130f83ecdbf16586a5e4adbca0b}{C\+G\+Bullet}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$o)
+\item 
+void \mbox{\hyperlink{class_c_g_bullet_ad64e0666c42b0d65bb90ad37998252d0}{paint}} (Q\+Painter $\ast$painter, const Q\+Style\+Option\+Graphics\+Item $\ast$option, Q\+Widget $\ast$widget) override
+\begin{DoxyCompactList}\small\item\em Funkcja określająca kształt obiektu, jej implementacja zależy od rodzaju klasy pochodnej. \end{DoxyCompactList}\item 
+Q\+RectF \mbox{\hyperlink{class_c_g_bullet_a7be9c986a5c21d0a27dd5d64b209a82d}{bounding\+Rect}} () const override
+\begin{DoxyCompactList}\small\item\em Zwraca prostokąt reprezentujący obrys obiektu; potrzebne do prawidłowego odświeżania obiektu na mapie; implementacja różna dla klas pochodnych. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_g_bullet_a3f1f31f6225a94b09ea8493e5b2040a8}{advance}} () override
+\begin{DoxyCompactList}\small\item\em Funkcja rysująca obiekt na mapie na podstawie parametrów obiektu logicznego. \end{DoxyCompactList}\item 
+Q\+Painter\+Path \mbox{\hyperlink{class_c_g_bullet_a6e202930dce8f614c5acb55de035bda2}{shape}} () const override
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Graficzna reprezentacja pocisku. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_g_bullet_adb7c1130f83ecdbf16586a5e4adbca0b}\label{class_c_g_bullet_adb7c1130f83ecdbf16586a5e4adbca0b}} 
+\index{C\+G\+Bullet@{C\+G\+Bullet}!C\+G\+Bullet@{C\+G\+Bullet}}
+\index{C\+G\+Bullet@{C\+G\+Bullet}!C\+G\+Bullet@{C\+G\+Bullet}}
+\subsubsection{\texorpdfstring{C\+G\+Bullet()}{CGBullet()}}
+{\footnotesize\ttfamily C\+G\+Bullet\+::\+C\+G\+Bullet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{o }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_g_bullet_a3f1f31f6225a94b09ea8493e5b2040a8}\label{class_c_g_bullet_a3f1f31f6225a94b09ea8493e5b2040a8}} 
+\index{C\+G\+Bullet@{C\+G\+Bullet}!advance@{advance}}
+\index{advance@{advance}!C\+G\+Bullet@{C\+G\+Bullet}}
+\subsubsection{\texorpdfstring{advance()}{advance()}}
+{\footnotesize\ttfamily void C\+G\+Bullet\+::advance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Funkcja rysująca obiekt na mapie na podstawie parametrów obiektu logicznego. 
+
+
+
+Implements \mbox{\hyperlink{class_c_g_object_a859e765fbb3ab0d6ad73ca58e5e49779}{C\+G\+Object}}.
+
+\mbox{\Hypertarget{class_c_g_bullet_a7be9c986a5c21d0a27dd5d64b209a82d}\label{class_c_g_bullet_a7be9c986a5c21d0a27dd5d64b209a82d}} 
+\index{C\+G\+Bullet@{C\+G\+Bullet}!bounding\+Rect@{bounding\+Rect}}
+\index{bounding\+Rect@{bounding\+Rect}!C\+G\+Bullet@{C\+G\+Bullet}}
+\subsubsection{\texorpdfstring{bounding\+Rect()}{boundingRect()}}
+{\footnotesize\ttfamily Q\+RectF C\+G\+Bullet\+::bounding\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Zwraca prostokąt reprezentujący obrys obiektu; potrzebne do prawidłowego odświeżania obiektu na mapie; implementacja różna dla klas pochodnych. 
+
+\begin{DoxyReturn}{Returns}
+Q\+RecF reprezentujący obrys obiektu 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_c_g_object_ab9edf3d10a53c254cdb5d3d8de930207}{C\+G\+Object}}.
+
+\mbox{\Hypertarget{class_c_g_bullet_ad64e0666c42b0d65bb90ad37998252d0}\label{class_c_g_bullet_ad64e0666c42b0d65bb90ad37998252d0}} 
+\index{C\+G\+Bullet@{C\+G\+Bullet}!paint@{paint}}
+\index{paint@{paint}!C\+G\+Bullet@{C\+G\+Bullet}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void C\+G\+Bullet\+::paint (\begin{DoxyParamCaption}\item[{Q\+Painter $\ast$}]{painter,  }\item[{const Q\+Style\+Option\+Graphics\+Item $\ast$}]{option,  }\item[{Q\+Widget $\ast$}]{widget }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Funkcja określająca kształt obiektu, jej implementacja zależy od rodzaju klasy pochodnej. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & \\
+\hline
+{\em option} & \\
+\hline
+{\em widget} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_c_g_object_a9622c313eb09ca5fc0e34f5d2aaac910}{C\+G\+Object}}.
+
+\mbox{\Hypertarget{class_c_g_bullet_a6e202930dce8f614c5acb55de035bda2}\label{class_c_g_bullet_a6e202930dce8f614c5acb55de035bda2}} 
+\index{C\+G\+Bullet@{C\+G\+Bullet}!shape@{shape}}
+\index{shape@{shape}!C\+G\+Bullet@{C\+G\+Bullet}}
+\subsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily Q\+Painter\+Path C\+G\+Bullet\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cgbullet_8h}{cgbullet.\+h}}\item 
+\mbox{\hyperlink{cgbullet_8cpp}{cgbullet.\+cpp}}\end{DoxyCompactItemize}

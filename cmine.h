@@ -3,12 +3,20 @@
 #include "cnonmovable.h"
 #include "crobot.h"
 
+/// \breif Mina niszcząca roboty, które na nią wpadną
 class CMine :public CNonMovable
 {
 public:
     CMine(CMap *m);
-    ~CMine();
+    virtual ~CMine();
+    /**
+     * @brief Sprawdza, czy z miną kolidują jakieś roboty
+     */
     void update();
+    /**
+     * @brief Niszczy robota kolidującego z miną
+     * @param robots Robot, którego należy usunąć
+     */
     void destroy(std::vector<CRobot*> robots);
 };
 

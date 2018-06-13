@@ -1,0 +1,62 @@
+\hypertarget{class_c_program}{}\section{C\+Program Class Reference}
+\label{class_c_program}\index{C\+Program@{C\+Program}}
+
+
+Klasa zarządzająca działaniem programu.  
+
+
+
+
+{\ttfamily \#include $<$cprogram.\+h$>$}
+
+Inheritance diagram for C\+Program\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_program}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_c_program_a643bd73f256632b72a7d6182e8e7d807}{step}} ()
+\begin{DoxyCompactList}\small\item\em W każdym kroku wywoływana jest funkcja update() dla wszystkich obiektów logicznych na mapie, następnie dla wszystkich obiektów graficznych wywoływana jest funkcja advance(), na koniec każdego kroku losowo dodawane są do mapy obiekty różnego typu aby w programie cały czas coś się działo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_program_a74d3ca01d5e8b892f37684254ae546ed}{C\+Program}} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor programu tworzy scenę oraz widok, ustawia ich paramtery oraz tworzy mapę, a następnie inicjalizuje timer wywołujący co pewien okres czasu funkcję \mbox{\hyperlink{class_c_program_a643bd73f256632b72a7d6182e8e7d807}{step()}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa zarządzająca działaniem programu. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_program_a74d3ca01d5e8b892f37684254ae546ed}\label{class_c_program_a74d3ca01d5e8b892f37684254ae546ed}} 
+\index{C\+Program@{C\+Program}!C\+Program@{C\+Program}}
+\index{C\+Program@{C\+Program}!C\+Program@{C\+Program}}
+\subsubsection{\texorpdfstring{C\+Program()}{CProgram()}}
+{\footnotesize\ttfamily C\+Program\+::\+C\+Program (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Konstruktor programu tworzy scenę oraz widok, ustawia ich paramtery oraz tworzy mapę, a następnie inicjalizuje timer wywołujący co pewien okres czasu funkcję \mbox{\hyperlink{class_c_program_a643bd73f256632b72a7d6182e8e7d807}{step()}} 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_program_a643bd73f256632b72a7d6182e8e7d807}\label{class_c_program_a643bd73f256632b72a7d6182e8e7d807}} 
+\index{C\+Program@{C\+Program}!step@{step}}
+\index{step@{step}!C\+Program@{C\+Program}}
+\subsubsection{\texorpdfstring{step}{step}}
+{\footnotesize\ttfamily void C\+Program\+::step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+W każdym kroku wywoływana jest funkcja update() dla wszystkich obiektów logicznych na mapie, następnie dla wszystkich obiektów graficznych wywoływana jest funkcja advance(), na koniec każdego kroku losowo dodawane są do mapy obiekty różnego typu aby w programie cały czas coś się działo. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cprogram_8h}{cprogram.\+h}}\item 
+\mbox{\hyperlink{cprogram_8cpp}{cprogram.\+cpp}}\end{DoxyCompactItemize}

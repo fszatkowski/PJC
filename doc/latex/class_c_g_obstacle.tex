@@ -1,0 +1,112 @@
+\hypertarget{class_c_g_obstacle}{}\section{C\+G\+Obstacle Class Reference}
+\label{class_c_g_obstacle}\index{C\+G\+Obstacle@{C\+G\+Obstacle}}
+
+
+Graficzna reprezentacja przeszkody.  
+
+
+
+
+{\ttfamily \#include $<$cgobstacle.\+h$>$}
+
+Inheritance diagram for C\+G\+Obstacle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_g_obstacle}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_g_obstacle_af085e19a335a0e9c232f3b6766af79cd}{C\+G\+Obstacle}} (\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$o)
+\item 
+void \mbox{\hyperlink{class_c_g_obstacle_a4ae41138f5fa9f7929c71f1999df7793}{paint}} (Q\+Painter $\ast$painter, const Q\+Style\+Option\+Graphics\+Item $\ast$option, Q\+Widget $\ast$widget) override
+\begin{DoxyCompactList}\small\item\em Funkcja określająca kształt obiektu, jej implementacja zależy od rodzaju klasy pochodnej. \end{DoxyCompactList}\item 
+Q\+RectF \mbox{\hyperlink{class_c_g_obstacle_a88a124737ae6f96c6b07316591ecdb34}{bounding\+Rect}} () const override
+\begin{DoxyCompactList}\small\item\em Zwraca prostokąt reprezentujący obrys obiektu; potrzebne do prawidłowego odświeżania obiektu na mapie; implementacja różna dla klas pochodnych. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_g_obstacle_adeb38e94e73f2c3d5d84afbb5e5e0fe7}{advance}} () override
+\begin{DoxyCompactList}\small\item\em Funkcja rysująca obiekt na mapie na podstawie parametrów obiektu logicznego. \end{DoxyCompactList}\item 
+Q\+Painter\+Path \mbox{\hyperlink{class_c_g_obstacle_a850f592630a96855bc6fb7b8e4eece40}{shape}} () const override
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Graficzna reprezentacja przeszkody. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_g_obstacle_af085e19a335a0e9c232f3b6766af79cd}\label{class_c_g_obstacle_af085e19a335a0e9c232f3b6766af79cd}} 
+\index{C\+G\+Obstacle@{C\+G\+Obstacle}!C\+G\+Obstacle@{C\+G\+Obstacle}}
+\index{C\+G\+Obstacle@{C\+G\+Obstacle}!C\+G\+Obstacle@{C\+G\+Obstacle}}
+\subsubsection{\texorpdfstring{C\+G\+Obstacle()}{CGObstacle()}}
+{\footnotesize\ttfamily C\+G\+Obstacle\+::\+C\+G\+Obstacle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_object}{C\+Object}} $\ast$}]{o }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_g_obstacle_adeb38e94e73f2c3d5d84afbb5e5e0fe7}\label{class_c_g_obstacle_adeb38e94e73f2c3d5d84afbb5e5e0fe7}} 
+\index{C\+G\+Obstacle@{C\+G\+Obstacle}!advance@{advance}}
+\index{advance@{advance}!C\+G\+Obstacle@{C\+G\+Obstacle}}
+\subsubsection{\texorpdfstring{advance()}{advance()}}
+{\footnotesize\ttfamily void C\+G\+Obstacle\+::advance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Funkcja rysująca obiekt na mapie na podstawie parametrów obiektu logicznego. 
+
+
+
+Implements \mbox{\hyperlink{class_c_g_object_a859e765fbb3ab0d6ad73ca58e5e49779}{C\+G\+Object}}.
+
+\mbox{\Hypertarget{class_c_g_obstacle_a88a124737ae6f96c6b07316591ecdb34}\label{class_c_g_obstacle_a88a124737ae6f96c6b07316591ecdb34}} 
+\index{C\+G\+Obstacle@{C\+G\+Obstacle}!bounding\+Rect@{bounding\+Rect}}
+\index{bounding\+Rect@{bounding\+Rect}!C\+G\+Obstacle@{C\+G\+Obstacle}}
+\subsubsection{\texorpdfstring{bounding\+Rect()}{boundingRect()}}
+{\footnotesize\ttfamily Q\+RectF C\+G\+Obstacle\+::bounding\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Zwraca prostokąt reprezentujący obrys obiektu; potrzebne do prawidłowego odświeżania obiektu na mapie; implementacja różna dla klas pochodnych. 
+
+\begin{DoxyReturn}{Returns}
+Q\+RecF reprezentujący obrys obiektu 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_c_g_object_ab9edf3d10a53c254cdb5d3d8de930207}{C\+G\+Object}}.
+
+\mbox{\Hypertarget{class_c_g_obstacle_a4ae41138f5fa9f7929c71f1999df7793}\label{class_c_g_obstacle_a4ae41138f5fa9f7929c71f1999df7793}} 
+\index{C\+G\+Obstacle@{C\+G\+Obstacle}!paint@{paint}}
+\index{paint@{paint}!C\+G\+Obstacle@{C\+G\+Obstacle}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void C\+G\+Obstacle\+::paint (\begin{DoxyParamCaption}\item[{Q\+Painter $\ast$}]{painter,  }\item[{const Q\+Style\+Option\+Graphics\+Item $\ast$}]{option,  }\item[{Q\+Widget $\ast$}]{widget }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Funkcja określająca kształt obiektu, jej implementacja zależy od rodzaju klasy pochodnej. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & \\
+\hline
+{\em option} & \\
+\hline
+{\em widget} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_c_g_object_a9622c313eb09ca5fc0e34f5d2aaac910}{C\+G\+Object}}.
+
+\mbox{\Hypertarget{class_c_g_obstacle_a850f592630a96855bc6fb7b8e4eece40}\label{class_c_g_obstacle_a850f592630a96855bc6fb7b8e4eece40}} 
+\index{C\+G\+Obstacle@{C\+G\+Obstacle}!shape@{shape}}
+\index{shape@{shape}!C\+G\+Obstacle@{C\+G\+Obstacle}}
+\subsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily Q\+Painter\+Path C\+G\+Obstacle\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cgobstacle_8h}{cgobstacle.\+h}}\item 
+\mbox{\hyperlink{cgobstacle_8cpp}{cgobstacle.\+cpp}}\end{DoxyCompactItemize}

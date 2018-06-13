@@ -3,6 +3,7 @@
 #include "cgobject.h"
 #include "ccleaningrobot.h"
 
+/// \brief Graficzna reprezentacja robota czyszczącego
 class CGCleaningRobot :public CGObject
 {
 public:

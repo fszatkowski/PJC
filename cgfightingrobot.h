@@ -3,6 +3,7 @@
 #include "cgobject.h"
 #include "cfightingrobot.h"
 
+/// \brief Graficzna reprezentacja robota walczącego
 class CGFightingRobot :public CGObject
 {
 public:

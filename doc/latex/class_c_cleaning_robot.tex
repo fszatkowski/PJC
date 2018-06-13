@@ -1,0 +1,117 @@
+\hypertarget{class_c_cleaning_robot}{}\section{C\+Cleaning\+Robot Class Reference}
+\label{class_c_cleaning_robot}\index{C\+Cleaning\+Robot@{C\+Cleaning\+Robot}}
+
+
+Robot zajmujący się sprzątaniem brudów z mapy.  
+
+
+
+
+{\ttfamily \#include $<$ccleaningrobot.\+h$>$}
+
+Inheritance diagram for C\+Cleaning\+Robot\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_c_cleaning_robot}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_cleaning_robot_a0d304b4d201832056a946d6ee0a1141c}{C\+Cleaning\+Robot}} (\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\item 
+\mbox{\hyperlink{class_c_cleaning_robot_ae22783fb4dd66322b3d63e2ac6beb4a6}{C\+Cleaning\+Robot}} (qreal xv, qreal yv, \mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\item 
+\mbox{\hyperlink{class_c_cleaning_robot_af00faa2e7ae3c1b62a026abe39df0a44}{C\+Cleaning\+Robot}} (qreal xv, qreal yv, qreal anglev, qreal rangev, \mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m)
+\item 
+virtual \mbox{\hyperlink{class_c_cleaning_robot_a8622a44357356261e13c30de8915381b}{$\sim$\+C\+Cleaning\+Robot}} ()
+\item 
+void \mbox{\hyperlink{class_c_cleaning_robot_a1ad227a5f3508a8e78fcecae7d3de53b}{move}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja stara się w pierwszej kolejności uniknąć kolizji z innymi obiektami; jeśli nie wystąpi kolizja, sprawdzane jest, czy robot jest na mapie; jeśli nie jest na mapie, próbuje wrócić i kończy ruch; w przeciwnym wypadku kieruje się w stronę najbliższego brudu, o ile jakieś są w zasięgu; jeśli w pobliżu nie ma żadnych brudów, robot porusza się losowo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_cleaning_robot_afd8b3a58abfc91ebdce32af3686c5e9f}{update}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja sprawdza, czy występują kolizje z jakimiś brudami i usuwa ewentualne kolidujące brudy; następnie wywoływana jest funkcja \mbox{\hyperlink{class_c_cleaning_robot_a1ad227a5f3508a8e78fcecae7d3de53b}{move()}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_cleaning_robot_a1c106e1736653d8c0f24fbb9f1820f79}{clean}} (\mbox{\hyperlink{class_c_dirt}{C\+Dirt}} $\ast$dirt)
+\begin{DoxyCompactList}\small\item\em Funkcja usuwa podany obiekt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Robot zajmujący się sprzątaniem brudów z mapy. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_cleaning_robot_a0d304b4d201832056a946d6ee0a1141c}\label{class_c_cleaning_robot_a0d304b4d201832056a946d6ee0a1141c}} 
+\index{C\+Cleaning\+Robot@{C\+Cleaning\+Robot}!C\+Cleaning\+Robot@{C\+Cleaning\+Robot}}
+\index{C\+Cleaning\+Robot@{C\+Cleaning\+Robot}!C\+Cleaning\+Robot@{C\+Cleaning\+Robot}}
+\subsubsection{\texorpdfstring{C\+Cleaning\+Robot()}{CCleaningRobot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily C\+Cleaning\+Robot\+::\+C\+Cleaning\+Robot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_cleaning_robot_ae22783fb4dd66322b3d63e2ac6beb4a6}\label{class_c_cleaning_robot_ae22783fb4dd66322b3d63e2ac6beb4a6}} 
+\index{C\+Cleaning\+Robot@{C\+Cleaning\+Robot}!C\+Cleaning\+Robot@{C\+Cleaning\+Robot}}
+\index{C\+Cleaning\+Robot@{C\+Cleaning\+Robot}!C\+Cleaning\+Robot@{C\+Cleaning\+Robot}}
+\subsubsection{\texorpdfstring{C\+Cleaning\+Robot()}{CCleaningRobot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily C\+Cleaning\+Robot\+::\+C\+Cleaning\+Robot (\begin{DoxyParamCaption}\item[{qreal}]{xv,  }\item[{qreal}]{yv,  }\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_cleaning_robot_af00faa2e7ae3c1b62a026abe39df0a44}\label{class_c_cleaning_robot_af00faa2e7ae3c1b62a026abe39df0a44}} 
+\index{C\+Cleaning\+Robot@{C\+Cleaning\+Robot}!C\+Cleaning\+Robot@{C\+Cleaning\+Robot}}
+\index{C\+Cleaning\+Robot@{C\+Cleaning\+Robot}!C\+Cleaning\+Robot@{C\+Cleaning\+Robot}}
+\subsubsection{\texorpdfstring{C\+Cleaning\+Robot()}{CCleaningRobot()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily C\+Cleaning\+Robot\+::\+C\+Cleaning\+Robot (\begin{DoxyParamCaption}\item[{qreal}]{xv,  }\item[{qreal}]{yv,  }\item[{qreal}]{anglev,  }\item[{qreal}]{rangev,  }\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_cleaning_robot_a8622a44357356261e13c30de8915381b}\label{class_c_cleaning_robot_a8622a44357356261e13c30de8915381b}} 
+\index{C\+Cleaning\+Robot@{C\+Cleaning\+Robot}!````~C\+Cleaning\+Robot@{$\sim$\+C\+Cleaning\+Robot}}
+\index{````~C\+Cleaning\+Robot@{$\sim$\+C\+Cleaning\+Robot}!C\+Cleaning\+Robot@{C\+Cleaning\+Robot}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Cleaning\+Robot()}{~CCleaningRobot()}}
+{\footnotesize\ttfamily C\+Cleaning\+Robot\+::$\sim$\+C\+Cleaning\+Robot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_cleaning_robot_a1c106e1736653d8c0f24fbb9f1820f79}\label{class_c_cleaning_robot_a1c106e1736653d8c0f24fbb9f1820f79}} 
+\index{C\+Cleaning\+Robot@{C\+Cleaning\+Robot}!clean@{clean}}
+\index{clean@{clean}!C\+Cleaning\+Robot@{C\+Cleaning\+Robot}}
+\subsubsection{\texorpdfstring{clean()}{clean()}}
+{\footnotesize\ttfamily void C\+Cleaning\+Robot\+::clean (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_dirt}{C\+Dirt}} $\ast$}]{dirt }\end{DoxyParamCaption})}
+
+
+
+Funkcja usuwa podany obiekt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Brud,który} & chcemy usunąć \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_cleaning_robot_a1ad227a5f3508a8e78fcecae7d3de53b}\label{class_c_cleaning_robot_a1ad227a5f3508a8e78fcecae7d3de53b}} 
+\index{C\+Cleaning\+Robot@{C\+Cleaning\+Robot}!move@{move}}
+\index{move@{move}!C\+Cleaning\+Robot@{C\+Cleaning\+Robot}}
+\subsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void C\+Cleaning\+Robot\+::move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Funkcja stara się w pierwszej kolejności uniknąć kolizji z innymi obiektami; jeśli nie wystąpi kolizja, sprawdzane jest, czy robot jest na mapie; jeśli nie jest na mapie, próbuje wrócić i kończy ruch; w przeciwnym wypadku kieruje się w stronę najbliższego brudu, o ile jakieś są w zasięgu; jeśli w pobliżu nie ma żadnych brudów, robot porusza się losowo. 
+
+
+
+Implements \mbox{\hyperlink{class_c_robot_a1de9be879213eadf7ded27caedb84598}{C\+Robot}}.
+
+\mbox{\Hypertarget{class_c_cleaning_robot_afd8b3a58abfc91ebdce32af3686c5e9f}\label{class_c_cleaning_robot_afd8b3a58abfc91ebdce32af3686c5e9f}} 
+\index{C\+Cleaning\+Robot@{C\+Cleaning\+Robot}!update@{update}}
+\index{update@{update}!C\+Cleaning\+Robot@{C\+Cleaning\+Robot}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void C\+Cleaning\+Robot\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Funkcja sprawdza, czy występują kolizje z jakimiś brudami i usuwa ewentualne kolidujące brudy; następnie wywoływana jest funkcja \mbox{\hyperlink{class_c_cleaning_robot_a1ad227a5f3508a8e78fcecae7d3de53b}{move()}} 
+
+
+
+Implements \mbox{\hyperlink{class_c_robot_a8ad8d55a840ced20f85a2a045e9e24ef}{C\+Robot}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ccleaningrobot_8h}{ccleaningrobot.\+h}}\item 
+\mbox{\hyperlink{ccleaningrobot_8cpp}{ccleaningrobot.\+cpp}}\end{DoxyCompactItemize}

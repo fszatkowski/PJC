@@ -3,6 +3,7 @@
 #include "cgobject.h"
 #include "csearchingrobot.h"
 
+/// \brief Graficzna reprezentacja robota szukającego
 class CGSearchingRobot :public CGObject
 {
 public:

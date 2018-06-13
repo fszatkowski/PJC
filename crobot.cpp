@@ -32,7 +32,7 @@ CRobot::CRobot(qreal xv, qreal yv, qreal anglev, qreal rangev, CMap *m)
 
 void CRobot::moveRandomly()
 {
-
+    //randomly change angle a little bit
     int change_angle = (QRandomGenerator::global()->bounded(10));
     if(!change_angle)
     {
@@ -58,19 +58,19 @@ void CRobot::returnToMap()
 
     if(x <= -map_size/2)
     {
-        dist_plus += abs(-map_size/2 - x_test);
+        dist_plus += std::abs(-map_size/2 - x_test);
     }
     else if(x >= map_size/2)
     {
-        dist_plus += abs(map_size/2 - x_test);
+        dist_plus += std::abs(map_size/2 - x_test);
     }
-    else if(y <- -map_size/2)
+    else if(y <= -map_size/2)
     {
-        dist_plus += abs(-map_size/2 - y_test);
+        dist_plus += std::abs(-map_size/2 - y_test);
     }
     else if(y >= map_size/2)
     {
-        dist_plus += abs(map_size/2 - y_test);
+        dist_plus += std::abs(map_size/2 - y_test);
     }
 
     x_test = x + cos(angle - rate) * robot_speed;
@@ -78,19 +78,19 @@ void CRobot::returnToMap()
 
     if(x <= -map_size/2)
     {
-        dist_minus += abs(-map_size/2 - x_test);
+        dist_minus += std::abs(-map_size/2 - x_test);
     }
     else if(x >= map_size/2)
     {
-        dist_minus += abs(map_size/2 - x_test);
+        dist_minus += std::abs(map_size/2 - x_test);
     }
-    else if(y <- -map_size/2)
+    else if(y <= -map_size/2)
     {
-        dist_minus += abs(-map_size/2 - y_test);
+        dist_minus += std::abs(-map_size/2 - y_test);
     }
     else if(y >= map_size/2)
     {
-        dist_minus += abs(map_size/2 - y_test);
+        dist_minus += std::abs(map_size/2 - y_test);
     }
 
     if(dist_plus <= dist_minus)
@@ -122,14 +122,15 @@ void CRobot::goTo(CObject *o)
     qreal det = x1*y2 - y1*x2;
 
     qreal diff = atan2(det, dot);
-    if(abs(diff) > rate/2 && abs(diff) <= M_PI)
+
+    if(std::abs(diff) > rate/2 && std::abs(diff) <= M_PI)
     {
         if(diff > 0)
             angle += rate;
         else
             angle -= rate;
     }
-    if(abs(diff) > rate/2 && abs(diff) > M_PI)
+    if(std::abs(diff) > rate/2 && std::abs(diff) > M_PI)
     {
         if(diff < 0)
             angle += rate;
@@ -142,51 +143,56 @@ void CRobot::avoid(std::vector<CNonMovable*> o, std::vector<CRobot*> r, std::vec
 {
     qreal rate = M_PI/36 * QRandomGenerator::global()->bounded(3, 5);
 
-    bool collides = 0;
-    bool will_collide = 0;
-    bool will_collide_obstacle = 0;
-    bool collides_obstacle = 0;
+    bool stay = false;
+    bool rotate = false;
+    bool doNothing = false;
 
     for(unsigned int i = 0; i<o.size(); i++)
     {
         if(willCollide(o[i], robot_speed, 0))
-            will_collide = 1;
+            rotate = true;
     }
-    for(unsigned int i = 0; i<o.size(); i++)
-    {
-        if(collidesWith(o[i]))
-            will_collide = 1;
-    }
+
+//    for(unsigned int i = 0; i<o.size(); i++)
+//    {
+//        if(collidesWith(o[i]))
+//            collides = 1;
+//    }
+//    for(unsigned int i = 0; i<r.size(); i++)
+//    {
+//        if(collidesWith(r[i]))
+//            collides = 1;
+//    }
     for(unsigned int i = 0; i<r.size(); i++)
     {
-        if(collidesWith(r[i]))
-            collides = 1;
-    }
-    for(unsigned int i = 0; i<r.size(); i++)
-    {
-        if(willCollide(r[i], robot_speed, robot_speed))
-            will_collide = 1;
+        if(willCollide(r[i], robot_speed, robot_speed && !collidesWith(r[i])))
+        {
+            rotate = true;
+            if(angle < r[i]->getAngle())
+                stay = true;
+        }
     }
 
     for(unsigned int i = 0; i<ob.size(); i++)
     {
-        if(willCollide(ob[i], robot_speed, obstacle_speed))
-            will_collide_obstacle = 1;
+        if(willCollide(ob[i], robot_speed, obstacle_speed) && !collidesWith(ob[i]))
+        {
+            rotate = true;
+            stay = true;
+        }
+        else if (willCollide(ob[i], robot_speed, obstacle_speed) && collidesWith(ob[i]))
+        {
+            stay = false;
+        }
     }
 
-    for(unsigned int i = 0; i<ob.size(); i++)
-    {
-        if(collidesWith(ob[i]))
-            collides_obstacle = 1;
-    }
+//    for(unsigned int i = 0; i<ob.size(); i++)
+//    {
+//        if(collidesWith(ob[i]))
+//            collides_obstacle = 1;
+//    }
 
-    if(!will_collide && !collides && (!will_collide_obstacle && !collides) || (collides_obstacle && will_collide_obstacle))
-    {
-        x += robot_speed * cos(angle);
-        y += robot_speed * sin(angle);
-    }
-
-    else
+    if(rotate && !doNothing)
     {
         qreal dist_plus = 0;
         qreal dist_minus = 0;
@@ -237,11 +243,10 @@ void CRobot::avoid(std::vector<CNonMovable*> o, std::vector<CRobot*> r, std::vec
             angle += rate;
         else
             angle -= rate;
-
-        //if(!will_collide_obstacle)
-        //{
-            x += robot_speed * cos(angle);
-            y += robot_speed * sin(angle);
-        //}
+    }
+    if(!stay && !doNothing)
+    {
+        x += robot_speed * cos(angle);
+        y += robot_speed * sin(angle);
     }
 }

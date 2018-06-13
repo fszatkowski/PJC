@@ -3,6 +3,7 @@
 #include "cgobject.h"
 #include "cdirt.h"
 
+/// \brief Graficzna reprezentacja brudu
 class CGDirt :public CGObject
 {
 public:

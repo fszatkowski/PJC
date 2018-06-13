@@ -1,0 +1,93 @@
+\hypertarget{class_c_bullet}{}\section{C\+Bullet Class Reference}
+\label{class_c_bullet}\index{C\+Bullet@{C\+Bullet}}
+
+
+Pociski wystrzeliwywane przez roboty walczące.  
+
+
+
+
+{\ttfamily \#include $<$cbullet.\+h$>$}
+
+Inheritance diagram for C\+Bullet\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_bullet}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_bullet_a56797cd539f173bbfc8cc9d238734fbc}{C\+Bullet}} (\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$m, \mbox{\hyperlink{class_c_fighting_robot}{C\+Fighting\+Robot}} $\ast$r)
+\begin{DoxyCompactList}\small\item\em Poza dodatkowym wskaźnikiem do robota, konstruktor analogiczny do reszty ruchomych obiektów. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_c_bullet_ac3502e35a7797b9d7d0efef288618a71}{$\sim$\+C\+Bullet}} ()
+\item 
+void \mbox{\hyperlink{class_c_bullet_a693e95f219a9a642e3977bb48be0cf5d}{move}} ()
+\begin{DoxyCompactList}\small\item\em Przy każdym wywołaniu przesuwa obiekt ze stałą prędkością w kierunku, w którym został wystrzelony. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_bullet_a9685917f7fc76d417e03744223b1b2c6}{update}} ()
+\begin{DoxyCompactList}\small\item\em Przy każdym wywołaniu sprawdza otoczenie; jeśli koliduje z jakimś robotem, który go nie wystrzelił, usuwa tego robota; jeśli życie pocisku jest równe zero, usuwa pocisk; jeśli nie, wywołuje \mbox{\hyperlink{class_c_bullet_a693e95f219a9a642e3977bb48be0cf5d}{move()}} i dekrementuje życie pocisku oraz zmniejsza jego rozmiar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Pociski wystrzeliwywane przez roboty walczące. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_bullet_a56797cd539f173bbfc8cc9d238734fbc}\label{class_c_bullet_a56797cd539f173bbfc8cc9d238734fbc}} 
+\index{C\+Bullet@{C\+Bullet}!C\+Bullet@{C\+Bullet}}
+\index{C\+Bullet@{C\+Bullet}!C\+Bullet@{C\+Bullet}}
+\subsubsection{\texorpdfstring{C\+Bullet()}{CBullet()}}
+{\footnotesize\ttfamily C\+Bullet\+::\+C\+Bullet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_map}{C\+Map}} $\ast$}]{m,  }\item[{\mbox{\hyperlink{class_c_fighting_robot}{C\+Fighting\+Robot}} $\ast$}]{r }\end{DoxyParamCaption})}
+
+
+
+Poza dodatkowym wskaźnikiem do robota, konstruktor analogiczny do reszty ruchomych obiektów. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & wskaźnik na robota, który wystrzelił dany pocisk \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_bullet_ac3502e35a7797b9d7d0efef288618a71}\label{class_c_bullet_ac3502e35a7797b9d7d0efef288618a71}} 
+\index{C\+Bullet@{C\+Bullet}!````~C\+Bullet@{$\sim$\+C\+Bullet}}
+\index{````~C\+Bullet@{$\sim$\+C\+Bullet}!C\+Bullet@{C\+Bullet}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Bullet()}{~CBullet()}}
+{\footnotesize\ttfamily C\+Bullet\+::$\sim$\+C\+Bullet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_bullet_a693e95f219a9a642e3977bb48be0cf5d}\label{class_c_bullet_a693e95f219a9a642e3977bb48be0cf5d}} 
+\index{C\+Bullet@{C\+Bullet}!move@{move}}
+\index{move@{move}!C\+Bullet@{C\+Bullet}}
+\subsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void C\+Bullet\+::move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Przy każdym wywołaniu przesuwa obiekt ze stałą prędkością w kierunku, w którym został wystrzelony. 
+
+
+
+Implements \mbox{\hyperlink{class_c_movable_a8e66e106f13362d24462ce0c9d0431af}{C\+Movable}}.
+
+\mbox{\Hypertarget{class_c_bullet_a9685917f7fc76d417e03744223b1b2c6}\label{class_c_bullet_a9685917f7fc76d417e03744223b1b2c6}} 
+\index{C\+Bullet@{C\+Bullet}!update@{update}}
+\index{update@{update}!C\+Bullet@{C\+Bullet}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void C\+Bullet\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Przy każdym wywołaniu sprawdza otoczenie; jeśli koliduje z jakimś robotem, który go nie wystrzelił, usuwa tego robota; jeśli życie pocisku jest równe zero, usuwa pocisk; jeśli nie, wywołuje \mbox{\hyperlink{class_c_bullet_a693e95f219a9a642e3977bb48be0cf5d}{move()}} i dekrementuje życie pocisku oraz zmniejsza jego rozmiar. 
+
+
+
+Implements \mbox{\hyperlink{class_c_movable_af45fc62960d86ef62949d078141e9d62}{C\+Movable}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cbullet_8h}{cbullet.\+h}}\item 
+\mbox{\hyperlink{cbullet_8cpp}{cbullet.\+cpp}}\end{DoxyCompactItemize}

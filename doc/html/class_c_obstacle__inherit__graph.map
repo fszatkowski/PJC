@@ -1,0 +1,4 @@
+<map id="CObstacle" name="CObstacle">
+<area shape="rect" id="node2" href="$class_c_movable.html" title="CMovable" alt="" coords="7,80,86,107"/>
+<area shape="rect" id="node3" href="$class_c_object.html" title="CObject" alt="" coords="12,5,81,32"/>
+</map>
